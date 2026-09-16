@@ -1,7 +1,7 @@
 \mainmatter
 
 {\centering
-	\chapter{Fundación}\label{parte1}
+	\chapter{Foundation}\label{parte1}
 }
 
 \thispagestyle{empty}
@@ -1266,7 +1266,7 @@ In 1976, David B. Benson \cite{Benson} built upon Thorp and Walden's work to for
 
 Finally, mention must be made of the work of \textit{Jin Bai Kim}, conceived in 1976 and published in two parts in 1978 \cite{KJB1, KJB2}. This study continues the tradition of using graphs to model Go, although Kim omits one of the possible board states and proposes an alternative definition of \textit{adjacencies}. In the second of these articles, we encounter the first formulation of three-dimensional Go (which we shall examine in Part~\ref{parte3}).
 
-\subsection{Formato y reglas}
+\subsection{Rules and formats}
 
 \begin{wrapfigure}[11]{r}{0.5\textwidth}
 	%\begin{figure}[H]
@@ -1321,15 +1321,16 @@ Finally, mention must be made of the work of \textit{Jin Bai Kim}, conceived in 
 			\filldraw[draw=black,fill=white] (2,2) circle (12pt);
 		\end{scope}
 	\end{tikzpicture}
-	\caption{Tablero vacío y un tablero con las libertades de una piedra y de grupos.}
+	\caption{
+		An empty board, alongside a board illustrating the liberties of a single stone and of groups.}
 	\label{fig:Fig 3}
-\end{wrapfigure} El Go se juega sobre un tablero cuadrado compuesto por una cuadrícula de líneas que se intersecan. Consta de dos jugadores: uno controla las piezas negras y el otro, las blancas. Los tamaños de tablero más habituales son $9 \times 9$, $13 \times 13$ y $19 \times 19$. Léase «nueve por nueve», «trece por trece», etc. Para explicar las reglas utilizaremos un tablero de $7 \times 7$, un tamaño más que suficiente para este propósito. 
+\end{wrapfigure}Go is played on a square board consisting of a grid of intersecting lines. It is contested by two players: one controls the black pieces and the other, the white ones. The most standard board sizes are \(9 \times 9\), \(13 \times 13\), and \(19 \times 19\) (read as ``nine-by-nine,'' ``thirteen-by-thirteen,'' etc.). To introduce the rules, we shall employ a \(7 \times 7\) board, a size more than adequate for this purpose.
 
-Como ilustra la Figura~\ref{fig:aguilar_chang}, las coordenadas se leen desde la esquina inferior izquierda, punto (1, 1), donde las coordenadas crecen hacia la derecha y hacia arriba. La partida comienza con el tablero vacío, Figura~\ref{fig:Fig 3}, a menos que se juegue con ventaja. Los pequeños puntos negros que se observan en algunas intersecciones sirven únicamente como referencia visual y para ubicar de forma estándar las piedras de ventaja.
+As illustrated in Figure~\ref{fig:aguilar_chang}, coordinates are read starting from the lower-left corner, point \((1, 1)\), with coordinates increasing to the right and upward. The game begins with an empty board (Figure~\ref{fig:Fig 3}), unless played with a handicap. The small black dots visible at certain intersections serve merely as visual reference points and provide standard placements for handicap stones.
 
-Durante su turno, un jugador puede realizar una de dos acciones: colocar una pieza (denominada \textit{piedra}) en una intersección libre, o bien pasar el turno. El jugador que controla las piedras negras juega primero y puede ubicar su piedra en cualquier intersección que desee.
+On their turn, a player may perform one of two actions: place a piece (termed a \textit{stone}) on an unoccupied intersection, or pass. The player controlling the black stones plays first and may place their stone on any vacant intersection of their choosing.
 
-Los puntos en un tablero tienen asociadas sus \textit{adyacencias}. Estas corresponden a otros puntos que se encuentran a una distancia de una unidad, ya sea en dirección horizontal o vertical. Al posicionar una piedra en el tablero, esta adquiere \textit{libertades}, las cuales se definen como las intersecciones vacías que son \textit{adyacentes} a la piedra o a un \textit{grupo}. Dos o más piedras adyacentes del mismo color conforman un \textit{grupo}; los grupos comparten las \textit{libertades} de cada una de las piedras individuales que los componen, véase Figura~\ref{fig:Fig 3}.
+Intersections on a board have associated \textit{adjacencies}. These correspond to other intersections located at a distance of one unit in either the horizontal or vertical direction. Upon placing a stone on the board, it acquires \textit{liberties}, defined as the unoccupied intersections that are \textit{adjacent} to the stone or to a \textit{group}. Two or more adjacent stones of the same color constitute a \textit{group}; groups share the \textit{liberties} of each individual stone comprising them (see Figure~\ref{fig:Fig 3}).
 
 \begin{wrapfigure}[19]{r}{0.55\textwidth}
 	%\begin{figure}[H]
@@ -1402,9 +1403,12 @@ Los puntos en un tablero tienen asociadas sus \textit{adyacencias}. Estas corres
 			\filldraw[draw=black,fill=white] (5,4) circle (12pt);
 		\end{scope}
 	\end{tikzpicture}
-	\caption{Captura de una piedra blanca y de un grupo negro.}
+	\caption{Capture of a white stone and a black group.}
 	\label{fig:Fig 4}
-\end{wrapfigure} Puede observarse que, en el segundo tablero la piedra negra posee 4 libertades y, el grupo de piedras blancas cuenta con 6 libertades, mientras que el de las negras posee 5. Durante el juego, una piedra o un grupo puede ser capturado; esto se logra al \textit{rodearlo completamente}, quitando todas las \textit{libertades} que posee. En la Figura~\ref{fig:Fig 4} se ilustra la captura de una piedra y un grupo. Al producirse una captura, las piedras involucradas se retiran del tablero. Para que una piedra pueda colocarse en el tablero, debe contar con libertades en la posición donde se desea jugar. La \textit{regla del suicidio} prohíbe colocar piedras en espacios sin libertades. Jugar en dichas intersecciones implicaría la captura inmediata de la piedra, equivaliendo a jugar contra uno mismo. Del mismo modo, si a un grupo de piedras propias le queda una única libertad, ocupar ese último espacio vital también constituye un suicidio y es, por tanto, un movimiento ilegal, véase Figura~\ref{fig:suicidio}.
+\end{wrapfigure}It can be observed that, on the second board, the black stone has four liberties, the white group possesses six liberties, and the black group has five. Throughout the game, a stone or group may be captured; this is accomplished by \textit{completely surrounding} it, thereby removing all the \textit{liberties} it possesses. Figure~\ref{fig:Fig 4} illustrates the capture of both a single stone and a group. When a capture occurs, the captured stones are removed from the board.
+
+For a stone to be placed on the board, it must have liberties at the intersection where it is played. The \textit{suicide rule} prohibits placing stones on intersections that offer no liberties. Playing on such intersections would entail the immediate capture of the newly placed stone, tantamount to playing against oneself. Likewise, if a friendly group has only a single remaining liberty, filling that last vital space also constitutes suicide and is therefore an illegal move (see Figure~\ref{fig:suicidio}).
+
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
@@ -1451,61 +1455,59 @@ Los puntos en un tablero tienen asociadas sus \textit{adyacencias}. Estas corres
 			\filldraw[Blue]  (3,3) circle  (6pt);
 		\end{scope}
 	\end{tikzpicture}
-	\caption{En azul las jugadas ilegales para negro pues son suicidio.}
+	\caption{In blue the illegal moves for Black as they are suicide.}
 	\label{fig:suicidio}
 \end{figure} 
-
-Existe, sin embargo, una excepción a esta regla: es legal jugar en una posición sin libertades si dicho movimiento realiza una captura. Al retirar las piedras capturadas, la piedra recién colocada obtiene libertades de manera inmediata, véase Figura~\ref{fig:Fig 6}.\label{primerreglako}
+There is, however, an exception to this rule: playing on an intersection with no liberties is legal if the move results in a capture. Upon removing the captured stones, the newly placed stone immediately gains liberties (see Figure~\ref{fig:Fig 6}).\label{primerreglako}.
 %\begin{wrapfigure}[11]{l}{0.5\textwidth}
 %	\begin{figure}[H]
-	%		\centering
-	%		\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
-		%			% Draw the background
-		%			\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
-		%			
-		%			% Draw the grid lines
-		%			\draw[step=1cm, black] (0,0) grid (6,6);
-		%			
-		%			% Draw the thick border
-		%			\draw[very thick] (0,0) rectangle (6,6);
-		%			
-		%			% Draw the central black dot
-		%			\filldraw[black] (3,3) circle (4pt);
-		%			\filldraw[draw=black,fill=white] (3,4) circle (12pt);
-		%			\filldraw[draw=black,fill=white] (2,3) circle (12pt);
-		%			\filldraw[draw=black,fill=white] (4,3) circle (12pt);
-		%			
-		%			\filldraw[black] (3,3) circle (12pt);
-		%			\filldraw[black] (3,1) circle (12pt);
-		%			\filldraw[black] (2,2) circle (12pt);
-		%			\filldraw[black] (4,2) circle (12pt);
-		%			\filldraw[OliveGreen] (3,2) circle (6pt);
-		%			\begin{scope}[xshift=8cm]
-			%				% Draw the background
-			%				\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
-			%				
-			%				% Draw the grid lines
-			%				\draw[step=1cm, black] (0,0) grid (6,6);
-			%				
-			%				% Draw the thick border
-			%				\draw[very thick] (0,0) rectangle (6,6);
-			%				
-			%				% Draw the central black dot
-			%				\filldraw[draw=black,fill=white] (3,4) circle (12pt);
-			%				\filldraw[draw=black,fill=white] (2,3) circle (12pt);
-			%				\filldraw[draw=black,fill=white] (4,3) circle (12pt);
-			%				\filldraw[draw=black,fill=white] (3,2) circle (12pt) node [color=black]{1};
-			%				\filldraw[black] (3,1) circle (12pt);
-			%				\filldraw[black] (2,2) circle (12pt);
-			%				\filldraw[black] (4,2) circle (12pt);
-			%				\filldraw[Blue] (3,3) circle (6pt);
-			%			\end{scope}
-		%		\end{tikzpicture}
-	%		\caption{Una jugada aparentemente suicida que resulta legal al capturar.}
-	%		\label{fig:Fig 6}
-	%	\end{figure}
-
-Ademas, en la figura, si ambos jugadores pudieran jugar en la intersección, el ciclo de capturas mutuas sería interminable. Para evitar este bucle existe la \textit{regla del ko}. Si el negro jugara en la coordenada $(4,4)$ (marcada con un punto azul en la figura), el tablero volvería exactamente a la posición del turno anterior. La \textit{regla del ko} prohíbe esto.\footnote{Veremos que la \textit{regla del ko} resulta insuficiente en ciertos escenarios, ya que pueden producirse ciclos más extensos que, sin violar esta regla, repiten una posición, véase la Sección~\ref{sec-superko}.}
+%			\centering
+%			\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+%					% Draw the background
+%					\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
+%					
+%					% Draw the grid lines
+%					\draw[step=1cm, black] (0,0) grid (6,6);
+%					
+%					% Draw the thick border
+%					\draw[very thick] (0,0) rectangle (6,6);
+%					
+%					% Draw the central black dot
+%					\filldraw[black] (3,3) circle (4pt);
+%					\filldraw[draw=black,fill=white] (3,4) circle (12pt);
+%					\filldraw[draw=black,fill=white] (2,3) circle (12pt);
+%					\filldraw[draw=black,fill=white] (4,3) circle (12pt);
+%					
+%					\filldraw[black] (3,3) circle (12pt);
+%					\filldraw[black] (3,1) circle (12pt);
+%					\filldraw[black] (2,2) circle (12pt);
+%					\filldraw[black] (4,2) circle (12pt);
+%					\filldraw[OliveGreen] (3,2) circle (6pt);
+%					\begin{scope}[xshift=8cm]
+%							% Draw the background
+%							\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
+%							
+%							% Draw the grid lines
+%							\draw[step=1cm, black] (0,0) grid (6,6);
+%							
+%							% Draw the thick border
+%							\draw[very thick] (0,0) rectangle (6,6);
+%							
+%							% Draw the central black dot
+%							\filldraw[draw=black,fill=white] (3,4) circle (12pt);
+%							\filldraw[draw=black,fill=white] (2,3) circle (12pt);
+%							\filldraw[draw=black,fill=white] (4,3) circle (12pt);
+%							\filldraw[draw=black,fill=white] (3,2) circle (12pt) node [color=black]{1};
+%							\filldraw[black] (3,1) circle (12pt);
+%							\filldraw[black] (2,2) circle (12pt);
+%							\filldraw[black] (4,2) circle (12pt);
+%							\filldraw[Blue] (3,3) circle (6pt);
+%						\end{scope}
+%				\end{tikzpicture}
+%			\caption{Una jugada aparentemente suicida que resulta legal al capturar.}
+%			\label{fig:Fig 6}
+%		\end{figure}
+Furthermore, as seen in the figure, if both players were allowed to play on that intersection, the cycle of reciprocal captures could continue indefinitely. To prevent this loop, the \textit{ko rule} is introduced. If Black were to play at coordinates \((4, 4)\) (marked with a blue dot in the figure), the board would revert to the exact position of the preceding turn. The \textit{ko rule} forbids this.\footnote{We will see that the standard \textit{ko rule} proves insufficient in certain scenarios, as longer cycles can occur that repeat a previous board position without violating this basic rule (see Section~\ref{sec-superko}).}
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
@@ -1589,11 +1591,11 @@ Ademas, en la figura, si ambos jugadores pudieran jugar en la intersección, el 
 			\filldraw[black] (4,2) circle (12pt);       
 		\end{scope}
 	\end{tikzpicture}
-	\caption{Posición ilegal ya que se vuelve a una posición anterior. Tras la jugada del negro en $(4, 6)$, podría recapturar en $(4, 4)$ en un turno posterior. El blanco evita esta posibilidad jugando en $(4, 4)$.}
+	\caption{
+		An illegal position, as it reverts to a previous state. Following Black's move at \((4, 6)\), Black could recapture at \((4, 4)\) on a subsequent turn. White prevents this possibility by playing at \((4, 4)\).}
 	\label{fig:Fig 6}
 \end{figure} 
-
-Para recapturar, el negro debe jugar antes en otra parte del tablero (amenaza de ko). Esto crea una configuración distinta; si el oponente responde, el negro podrá jugar en (4, 4) y capturar, ya que el tablero no será idéntico al anterior, véase el ultimo tablero de la  Figura~\ref{fig:Fig 6}.
+To recapture, Black must first play elsewhere on the board (a ko threat). This generates a different board configuration; if the opponent responds, Black may then play at \((4, 4)\) to recapture, as the board state will no longer be identical to the earlier one (see the final board in Figure~\ref{fig:Fig 6}).
 %		\begin{figure}[H]
 	%			\centering
 	%			\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
@@ -1711,11 +1713,11 @@ Para recapturar, el negro debe jugar antes en otra parte del tablero (amenaza de
 		\filldraw[Orange] (6,1) circle (6pt);
 		\filldraw[Orange] (4,2) circle (6pt);
 	\end{tikzpicture}
-	\caption{\textcolor{OliveGreen}{Territorio} negro, \textcolor{Blue}{Territorio} blanco y \textcolor{Orange}{libre}.}
+	\caption{Black \textcolor{OliveGreen}{territy}, white \textcolor{Blue}{Territory} and \textcolor{Orange}{neutral}.}
 	\label{fig:Fig 9}
-\end{wrapfigure}Se considera que una intersección vacía (o un grupo de ellas) constituye el \textit{territorio} de un color si está completamente rodeada por piedras de dicho color. Por el contrario, si un espacio vacío se encuentra delimitado por piedras de ambos jugadores, se considera que no es \textit{territorio} de ningún jugador, véase Figura~\ref{fig:Fig 9}. Cuando se enfrentan dos personas con distinto nivel de habilidad, se suele otorgar una ventaja al jugador de menor experiencia. Esta ventaja consiste en jugar con las piedras negras (primero) y colocar un número determinado de \textit{piedras} en el tablero antes de comenzar la partida; a mayor diferencia más piedras, véase Figura~\ref{fig:14}.
+\end{wrapfigure}An empty intersection (or a group thereof) is considered the \textit{territory} of a given color if it is completely surrounded by stones of that color. Conversely, if an empty space is bounded by stones of both players, it is regarded as neutral, belonging to neither player (see Figure~\ref{fig:Fig 9}).
 
-%\newpage
+When two players of different skill levels face each other, a handicap is ussually granted to the less experienced player. This advantage consists of playing with the black stones (moving first) and placing a predetermined number of \textit{handicap stones} on the board before the game begins; the greater the skill disparity, the more stones are placed (see Figure~\ref{fig:14}).
 
 \begin{wrapfigure}[14]{r}{0.35\textwidth}
 	%\begin{figure}[H]
@@ -1743,11 +1745,15 @@ Para recapturar, el negro debe jugar antes en otra parte del tablero (amenaza de
 		\filldraw[black] (6,9) circle (14pt) node [color=white]{9};
 		\filldraw[black] (9,9) circle (14pt) node [color=white]{1};
 	\end{tikzpicture}
-	\caption{Ventajas en un tablero de $13\times13$.}
+	\caption{Handicap on a $13\times13$ board.}
 	\label{fig:14}
-\end{wrapfigure} Esta es la disposición tradicional de las piedras de ventaja (tanto en tableros de $13 \times 13$ como de $19 \times 19$). Existe también la \textit{ventaja libre}, en donde el jugador de menor nivel decide libremente dónde posicionar estas piedras iniciales. 
+\end{wrapfigure} 
+This is the traditional placement of handicap stones (on both \(13 \times 13\) and \(19 \times 19\) boards). There also exists \textit{free handicap placement}, in which the weaker player freely chooses where to position these initial stones.
 
-El objetivo del Go es obtener más \textit{territorio} que el oponente. Durante su turno, un jugador puede optar por pasar y ceder la acción a su rival. La partida finaliza cuando ambos jugadores pasan de manera consecutiva. En ese momento, comienza una fase de acuerdo mutuo en que se identifican y retiran del tablero todas las piedras «muertas» (es decir, aquellas que no se tiene forma de evitar su captura). Tras retirar estas piedras, el ganador se determina sumando los \textit{territorios} asegurados y las piedras vivas que quedan al final de la partida. La Figura~\ref{fig: Fig 10} ilustra una partida terminada. El puntaje se calcularía de la siguiente manera: 11 piedras del jugador negro más 16 espacios en su territorio. Por su parte, el blanco cuenta con 11 piedras y 11 espacios en su territorio. Por lo tanto, el negro obtiene 27 puntos y el blanco 22, de modo que el negro gana por 5 puntos.\footnote{Este método corresponde a la forma china de contar puntos. Hay muchos otras formas, como la japonesa o la coreana.} Es posible cuestionar la victoria del jugador negro en este ejemplo, dado que tuvo la ventaja de realizar el primer movimiento. Para equilibrar esta disparidad, el jugador blanco recibe una compensación por jugar en segundo lugar, denominada \textit{komi}. Esta cantidad varía según el tamaño del tablero y la diferencia en el nivel de habilidad de los jugadores; por lo general, en tableros estándar se utilizan 5,5 puntos.\footnote{El \textit{komi} varía dependiendo del conjunto de reglas elegido. Además, en partidas con piedras de ventaja, se suele aplicar un \textit{komi} mínimo de 0,5 puntos.} Si se aplicara esta regla al ejemplo anterior, el blanco ganaría por 0,5 puntos, el menor margen posible. La inclusión de este medio punto en el \textit{komi} imposibilita los empates.
+
+The objective of Go is to secure more \textit{territory} than the opponent. On their turn, a player may choose to pass, conceding the initiative to the rival. The game ends when both players pass consecutively. At that point, a phase of mutual agreement begins, during which all ``dead'' stones (that is, those whose eventual capture cannot be prevented) are identified and removed from the board. After clearing these stones, the winner is determined by summing the secured \textit{territories} and the living stones remaining on the board at the end of the game. Figure~\ref{fig: Fig 10} illustrates a completed game. The score would be computed as follows: 11 stones for Black plus 16 intersections in Black's territory; White, for their part, has 11 stones and 11 intersections in territory. Consequently, Black scores 27 points and White 22, so Black wins by 5 points.\footnote{This method corresponds to Chinese scoring rules. There are several other counting systems, such as the Japanese or Korean rulesets.}
+
+One might oppose Black's victory, given the inherent advantage of making the first move. To offset this disparity, White is awarded a compensation for playing second, known as \textit{komi}. This value varies according to board size and the skill difference between the players; generally, 5.5 points are used on standard boards.\footnote{The exact value of \textit{komi} depends on the chosen ruleset. Furthermore, in handicap games, a minimal \textit{komi} of 0.5 points is typically applied.} Were this compensation applied to the preceding example, White would win by 0.5 points, the narrowest possible margin. The inclusion of this half-point in the \textit{komi} precludes the possibility of a draw.
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
@@ -1816,11 +1822,13 @@ El objetivo del Go es obtener más \textit{territorio} que el oponente. Durante 
 		\filldraw[black] (1,3) circle (12pt);
 		\filldraw[Orange] (1,3) circle (6pt);
 	\end{tikzpicture}
-	\caption{Tablero de una partida terminada, con sus puntos marcados; la piedra negra marcada con el punto \textcolor{Orange}{naranja} debe retirarse por estar muerta.}
+	\caption{
+		Final board position of a completed game, with its intersections scored; the black stone marked with the \textcolor{Orange}{orange} dot must be removed as they are dead.}
 	\label{fig: Fig 10}
 \end{figure}
+A group possesses an \textit{eye} if it completely surrounds an empty intersection. With at least two \textit{eyes}, it achieves the state of being \textit{alive} and can never be captured. In Figure~\ref{fig:Fig 12} (left), even if White attempts to attack the black group, they can only place one stone per turn. Because occupying either space would violate the suicide rule, White would need to play into both eyes simultaneously to capture, which is impossible. Consequently, the black group is \textit{alive}.
 
-Un grupo posee un \textit{ojo} si rodea completamente una intersección vacía. Con al menos dos \textit{ojos}, adquiere el estado de \textit{vivo} y jamás podrá ser capturado. En la Figura~\ref{fig:Fig 12} (izquierda), aunque el jugador blanco intente atacar al grupo negro, solo puede colocar una piedra por turno. Como ocupar esos espacios violaría la regla del suicidio, el blanco necesitaría jugar en ambos ojos simultáneamente para capturar, lo cual es imposible. Por lo tanto, el grupo negro está \textit{vivo}. Existen, sin embargo, los llamados ojos falsos, puntos que aparentan ser \textit{ojos}, pero donde un grupo que lo rodea corre el riesgo de quedar con una sola libertad (la del punto). En consecuencia, si el oponente logra capturar ese grupo vulnerable, la estructura se desarma y el supuesto ojo se pierde, véase Figura~\ref{fig:Fig 12} (derecha).
+There exist, however, so-called false eyes: intersections that resemble \textit{eyes}, but where one of the surrounding groups is at risk of being reduced to a single liberty (the eye). As a result, if the opponent succeeds in capturing this vulnerable group, the structure collapses and the eye is lost (see Figure~\ref{fig:Fig 12}, right).
 %\begin{wrapfigure}[13]{r}{0.5\textwidth}
 \begin{figure}[H]
 	\centering
@@ -1876,9 +1884,9 @@ Un grupo posee un \textit{ojo} si rodea completamente una intersección vacía. 
 			\filldraw[draw=black,fill=white] (4,5) circle (12pt);
 		\end{scope}
 	\end{tikzpicture}
-	\caption{Ojos de un grupo vivo (\textcolor{Blue}{azul}). Ojo falso (\textcolor{OliveGreen}{verde}). Si blanco juega en el punto \textcolor{Red}{rojo}, negro estará obligado a rellenar su ojo con una piedra o podría perderla.}
+	\caption{
+		Eyes of a living group (\textcolor{Blue}{blue}). False eye (\textcolor{OliveGreen}{green}). If White plays at the \textcolor{Red}{red} point, Black will be forced to fill their own eye with a stone, or risk losing it.}
 	\label{fig:Fig 12}
 \end{figure}
 
-
-Para construir el Go necesitamos de cuatro elementos: \textit{donde}, \textit{quienes}, \textit{qué} y \textit{cómo}.
+To construct Go, we require four elements: \textit{where}, \textit{who}, \textit{what}, and \textit{how}.

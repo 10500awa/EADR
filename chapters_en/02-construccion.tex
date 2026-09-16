@@ -1,5 +1,5 @@
 {\centering
-	\chapter{Construcción}\label{parte2}}
+	\chapter{Construction}\label{parte2}}
 \thispagestyle{empty}
 \noindent
 \begin{minipage}[t]{0.35\textwidth}
@@ -26,32 +26,34 @@
 	\vspace{1pt}
 	\raggedright
 	\emph
-	Treinta radios convergen en el centro de una rueda,\\
-	pero es su vacío lo que hace útil al carro.\\
+	Thirty spokes converge to form a wheel hub.\\
+	But it is the emptiness inside the hub that makes it useful.\\
 	
 	\vspace{0.8em}
-	Se moldea la arcilla para hacer un recipiente,\\
-	pero es en su vacío donde está la utilidad del recipiente.\\
+	Clay is kneaded to form a pot.\\
+	But it is the emptiness inside it that makes it useful.\\
 	
 	\vspace{0.8em}
-	Se abren puertas y ventanas en los muros de una casa,\\
-	y es por sus vacíos que la casa es habitable.\\
-	
+	Doorways and window bays are chiselled to form a house.\\
+	But it is the emptiness inside it that makes it useful.\\
+
 	\vspace{0.8em}
-	En el ser centramos nuestro interés,\\
-	pero del no-ser depende la utilidad.
+	Substance brings benefits.\\
+	Emptiness brings usefulness.
 \end{minipage}
 
 \vspace{1em}
-\hfill {\normalfont  道德經 —\textsc{Dàodé Jīng, Capítulo 11}}
+\hfill {\normalfont  道德經 —\textsc{Dàodé Jīng, Chapter 11}}
 
-\section{El Go en dos dimensiones y dos jugadores.}
+\section{Go in two dimensions and two players.}
 
-Interpretemos el tablero de forma conveniente, consideremos únicamente sus puntos de intersección. Sean $  n, m \in \mathbb{N} $. Definimos $ N = \{1, \dots, n\}  $, $  M = \{1, \dots, m\}$, con estos conjuntos, formalizamos el espacio de juego,\footnote{Utilizamos la letra $G$ porque emplearemos la terminología japonesa del Go para la notación, siempre que no resulte confuso. En dicho idioma, el tablero se denomina \textit{Goban} (碁盤).}
-$  G \coloneqq N \times M = \{(x,y) : x \in N,\, y \in M\}.  $
-Sean $t_1, t_2 \in G$ dos \textit{puntos}\footnote{Se usa la letra $t$ por el término \textit{ten} (点), punto en japonés.}. Si $t_1=(a,b)$, diremos que $t_2$ es adyacente a $t_1$ y lo denotaremos como $t_1 \sim t_2$ si cumple exactamente una de las siguientes condiciones,
+Let us interpret the board in a convenient manner by considering solely its points of intersection. Let \(n, m \in \mathbb{N}\). We define \(N = \{1, \dots, n\}\) and \(M = \{1, \dots, m\}\). With these sets, we formalize the game space:\footnote{We use the letter \(G\) because we will adopt Japanese Go terminology for our notation whenever it does not lead to confusion. In Japanese, the board is called \textit{Goban} (碁盤).}
+$$  G \coloneqq N \times M = \{(x,y) : x \in N,\, y \in M\}.  $$
+
+Let $t_1, t_2 \in G$ be two \textit{points}\footnote{The letter $t$ originates from the term \textit{ten} (点), meaning point in Japanese (and Chinese).}. If $t_1=(a,b)$, we say that $t_2$ is adjacent to $t_1$, denoted by $t_1 \sim t_2$, if it satisfies exactly one of the following conditions:
 $$t_2 = (a+1,b), \quad t_2 = (a,b+1), \quad t_2 = (a-1,b), \quad t_2 = (a,b-1).$$
-Si no se da ninguno de estos casos, $t_{1}$ no es adyacente a $t_{2}$, lo cual denotaremos como $t_{1} \nsim t_{2}$. La Figura~\ref{fig:Fig 13} ilustra las adyacencias de un punto.
+
+If none of these conditions hold, $t_1$ is not adjacent to $t_2$, which we denote by $t_1 \nsim t_2$. Figure~\ref{fig:Fig 13} illustrates the adjacencies of a point.
 
 \begin{figure}[H]
 	\centering
@@ -74,48 +76,59 @@ Si no se da ninguno de estos casos, $t_{1}$ no es adyacente a $t_{2}$, lo cual d
 		\fill[OliveGreen] (4,3) circle (5pt);
 		\fill[OliveGreen] (4,5) circle (5pt);
 	\end{tikzpicture}
-	\caption{Punto $(5,5)$ en \textcolor{Blue}{azul}, adyacencias en \textcolor{OliveGreen}{verde}.}
+	\caption{Point \((5,5)\) in \textcolor{Blue}{blue}, adjacencies in \textcolor{OliveGreen}{green}.}
 	\label{fig:Fig 13}
 \end{figure}
 
-Teniendo el \textit{dónde}, veamos \textit{quiénes} participan en él. Cuando vimos las reglas, notamos que cada punto del tablero puede estar en uno de tres estados posibles: no tener piedra, tener una piedra blanca o tener una piedra negra. Definimos $E$ como el conjunto de estados que un punto puede adoptar:
+Having established the \textit{where}, let us examine \textit{who} participates in it. When reviewing the rules, we observed that each point on the board can be in one of three possible states: unoccupied, occupied by a white stone, or occupied by a black stone. We define \(E\) as the set of states that a point may assume:
 $$E=\{0,1,2\}.$$
-Estos valores representan, respectivamente: libre, negro y blanco. Con esto, podemos dar cuenta de todos los estados posibles en el tablero:
+These values represent, respectively: vacant, black, and white. With this, we can account for all possible states on the board:
 \begin{align*}
 	E \times G &= \{(e,t) : e \in E, t \in G \}.
 \end{align*}
-Por ejemplo, el punto $(4,4) \in G$ puede encontrarse en uno de tres estados: $(0,(4,4))$, sin piedra en $(4,4)$; $(1,(4,4))$, piedra negra en $(4,4)$; o $(2,(4,4))$, piedra blanca en $(4,4)$.
+For example, the point \((4,4) \in G\) may be found in one of three states: \((0,(4,4))\), meaning no stone at \((4,4)\); \((1,(4,4))\), a black stone at \((4,4)\); or \((2,(4,4))\), a white stone at \((4,4)\).
 
-A los elementos de $E \times G$ los llamaremos \textit{piedras} y los denotaremos con la letra $i$, de modo que $i=(e,t)$\footnote{Por el término \textit{ishi} (石), que significa «piedra» en japonés.}, con $e \in E$ y $t \in G$. Pero, en el Go, un mismo punto no puede tener todos los estados al mismo tiempo, a lo sumo tendrá uno.
-\begin{definition}[Tablero]
-	Un subconjunto $T$ de $E\times G$ se dirá un \textit{tablero} si, dado $(e,t)\in T$, $$(e',t)\notin T, \forall e' \neq e.$$
+
+We shall refer to the elements of \(E \times G\) as \textit{stones}, denoted by the letter \(i\), such that \(i=(e,t)\),\footnote{From the term \textit{ishi} (石), meaning ``stone'' in Japanese.} with \(e \in E\) and \(t \in G\). In Go, however, a single point cannot exhibit all states simultaneously; it assumes at most one.
+
+\begin{definition}[Board]
+	A subset \(T \subseteq E \times G\) is said to be a \textit{board} if, given \((e,t) \in T\),
+	$$(e',t) \notin T, \quad \forall e' \neq e.$$
+
 \end{definition}
-Es decir, en $T$ hay un único estado para cada posición. Teniendo \textit{dónde} y \textit{quiénes}, podemos construir el \textit{qué}. Para ello necesitamos de dos funciones esenciales.
-\begin{definition}[Función estado de una piedra]\label{funcioncolor}
-	\[\text{Definimos } C: E \times G \to E, \quad (e,t) \mapsto e.\]
-\end{definition}
-\begin{definition}[Función posición de una piedra]\label{funcionposiciion}
-	\[\text{Definimos } P: E \times G \to G, \quad (e,t) \mapsto t.\]
-\end{definition}
-Con ellas, el concepto de grupo emerge naturalmente.
-\begin{definition}[Conexión]
-	Sea $T$ un tablero e $i_1, i_2 \in T$ dos piedras. Se dice que $i_1$ e $i_2$ están conectadas y lo notaremos por $i_1 \leftrightarrow i_2$ si,
-	\[C(i_1) = C(i_2) \text{ y } P(i_1) \sim P(i_2).\]
-\end{definition}
-\begin{definition}[Grupo de piedras]
-	Dado un tablero $T$, dos piedras $i_a$ e $i_b$ pertenecen al mismo grupo (lo cual denotaremos como $i_a \equiv i_b$) si existe una secuencia finita de piedras $\{i_1, i_2, \dots, i_k\}$ tal que $i_1 = i_a$, $i_k = i_b$, y cada piedra está conectada con la siguiente ($i_m \leftrightarrow i_{m+1}$). La relación $\equiv$ es de equivalencia.
+
+That is, in $T$ there is a unique state for each position. Having established the \textit{where} and \textit{who}, we can construct the \textit{what}. To do so, we require two fundamental functions:
+
+\begin{definition}[Stone State Function]
+	\label{funcioncolor}$$\text{We define } C: E \times G \to E, \quad (e,t) \mapsto e.$$
+	\end{definition}
 	
-	Notaremos a los grupos como $I^e$, donde $e$ indica el estado o color del grupo, o diremos «\textit{Sea $I$ un grupo de color $e$}» o bien simplemente $I$ si el color no resulta relevante.\footnote{\textit{ishi} (石, piedra/s). Igual que las piedras, pero en mayúscula al tratarse de un conjunto de ellas.}
+\begin{definition}[Stone Position Function]
+	\label{funcionposiciion}$$\text{We define } P: E \times G \to G, \quad (e,t) \mapsto t.$$
+	\end{definition}
+	
+Equipped with these, the notion of a group arises naturally:
+
+\begin{definition}[Connection]Let $T$ be a board and let $i_1, i_2 \in T$ be two stones. We say that $i_1$ and $i_2$ are connected, denoted by $i_1 \leftrightarrow i_2$, if
+	$$C(i_1) = C(i_2) \quad \text{and} \quad P(i_1) \sim P(i_2).$$
 \end{definition}
 
-\begin{definition}[Adyacencias de un grupo]
-	Sea $I$ un grupo de color $e$, $i=(e',t)$ una piedra del tablero. $I$ es adyacente a $i$ y lo denotaremos como $I \sim i$ si al menos una piedra del grupo es adyacente a $i$:
-	\[I \sim i \iff \exists \ i_k \in I : P(i_k) \sim P(i).\]
+
+\begin{definition}[Group of Stones]
+	Given a board $T$, two stones $i_a$ and $i_b$ belong to the same group (denoted by $i_a \equiv i_b$) if there exists a finite sequence of stones $\{i_1, i_2, \dots, i_k\}$ such that $i_1 = i_a$, $i_k = i_b$, and each stone is connected to the next ($i_m \leftrightarrow i_{m+1}$). The relation $\equiv$ is an equivalence relation.
+	
+	We shall denote groups by \(I^e\), where \(e\) designates the state or color of the group; alternatively, we may write ``\textit{Let \(I\) be a group of color \(e\)},'' or simply \(I\) whenever the color is not relevant.\footnote{From \textit{ishi} (石, stone/stones). Denoted similarly to individual stones, but capitalized to signify a set thereof.}
+\end{definition}
+	
+
+\begin{definition}[Adjacencies of a Group]
+	Let $I$ be a group of color $e$, and let $i=(e',t)$ be a stone on the board. We say that $I$ is adjacent to $i$, denoted by $I \sim i$, if at least one stone in the group is adjacent to $i$:
+	$$I \sim i \iff \exists \ i_k \in I : P(i_k) \sim P(i).$$
 \end{definition}
 
-Estas definiciones abarcan también a los grupos $I^{0}$. Dado que estos grupos son de vital importancia, recibirán un nombre particular: los llamaremos \textit{regiones} y los denotaremos simplemente con la letra $R$.
+These definitions likewise encompass the groups $I^{0}$. Given their fundamental importance, these groups are given a dedicated name: we shall refer to them as \textit{regions} and denote them simply by the letter $R$.
 
-Para referirnos al color de un grupo en su totalidad, definimos $C(I^{e}) = e$, basándonos en que todos los elementos que lo componen comparten el mismo estado.
+To refer to the color of a group as a whole, we define \(C(I^{e}) = e\), by virtue of the fact that all of its constituent elements share the same state.
 
 \begin{wrapfigure}[13]{r}{0.35\textwidth}
 	%\begin{figure}[H]
@@ -149,30 +162,32 @@ Para referirnos al color de un grupo en su totalidad, definimos $C(I^{e}) = e$, 
 		\fill[OliveGreen] (5,3) circle (5pt);
 		
 	\end{tikzpicture}
-	\caption{Grupo de piedras negras con sus \textcolor{OliveGreen}{adyacencias} marcadas.}
+	\caption{A black group with its \textcolor{OliveGreen}{adjacencies} marked.}
 	\label{ejemplo_adyacencias}
-\end{wrapfigure}Nos resultará muy útil conocer las adyacencias de una piedra o grupo. Para ello, definiremos el conjunto $K$\footnote{Por el término \textit{chikaku} (近く,cerca).} asociado a una piedra o grupo. véase Figura~\ref{ejemplo_adyacencias}
+\end{wrapfigure}
+It will prove very useful to identify the adjacencies of a stone or group. To this end, we define the set \(K\)\footnote{From the term \textit{chikaku} (近く, near/nearby).} associated with a stone or group (see Figure~\ref{ejemplo_adyacencias}).
 
 
-
-\begin{definition}[Conjunto de adyacencias]
-	Sea $i$ una piedra e $I$ un grupo de piedras de color $e$. Definimos el conjunto de adyacencias del grupo como las piedras que cumplen la definición de adyacencia, esto es:
-	\[K(I) = \{i_r : I \sim i_r\}.\]
-	Análogamente, lo definimos para una piedra $i$:
-	\[K(i) = \{i_r : P(i) \sim P(i_r)\}.\]
+\begin{definition}[Adjacency Set]
+	Let \(i\) be a stone and let \(I\) be a group of stones of color \(e\). We define the adjacency set of the stone as the stones satisfying the definition of adjacency, namely:
+	$$K(i) = \{i_r : P(i) \sim P(i_r)\}.$$
+	Analogously, for a group $I$, we define:
+	$$K(I) = \{i_r : I \sim i_r\}.$$
 \end{definition}
 
-Observemos que toda piedra adyacente del mismo color ya pertenece al grupo. Así, si el grupo es de color $e$, los estados de las adyacencias pertenecerán, a lo sumo, a $E\setminus\{e\}$.
 
-Para dar cuenta de los estados de las adyacencias, haremos uso (y abuso) de las funciones que hemos definido.
+Note that any adjacent stone of the same color already belongs to the group. Thus, if the group is of color $e$, the states of its adjacencies will belong, at most, to $E \setminus \{e\}$.
 
-\begin{definition}[Estado de las adyacencias de un grupo o piedra]\label{def_estados}
-	Sea $I$ un grupo de color $e$. Al aplicar la función $C$ elemento a elemento sobre el conjunto de sus adyacencias $K(I)$, obtenemos el conjunto que buscamos. Lo definimos como:
-	\[C(K(I)) = \{C(i) \mid   i\in K(I)\} \subset \{0, e'\}.\]
-	Análogamente, para una piedra individual $i = (e,t)$, lo definimos como:
-	\[C(K(i)) = \{C(i_k) \mid i_k \in K(i)\} \subset \{0, e'\}.\]
-\end{definition}
-Esta definición es fundamental para describir gran parte de la dinámica del Go. De ahora en adelante, siempre que hablemos de grupos $I$, ha de interpretarse que son de color distinto de $0$. Siempre que tratemos con $I^{0}$, utilizaremos la notación $R$, salvo que se indique lo contrario.
+To characterize the states of these adjacencies, we will make use (and abuse) of the functions previously defined.
+
+\begin{definition}[State of the Adjacencies of a Group or Stone]\label{def_estados}
+	Let $I$ be a group of color $e$. Applying the function $C$ elementwise to its adjacency set $K(I)$, we obtain the intended set, defined as:
+	$$C(K(I)) = \{C(i) \mid i \in K(I)\} \subseteq \{0, e'\}.$$
+	Analogously, for an individual stone $i = (e,t)$, we define:
+	$$C(K(i)) = \{C(i_k) \mid i_k \in K(i)\} \subseteq \{0, e'\}.$$
+	\end{definition}
+
+This definition is essential for describing much of the internal dynamics of Go. Henceforth, whenever we refer to groups $I$, it is to be understood that their color is distinct from $0$. Whenever we deal with $I^{0}$, we shall employ the notation $R$, unless explicitly stated otherwise.
 
 \begin{wrapfigure}[11]{r}{0.35\textwidth}
 	\vspace{-36pt}
@@ -246,59 +261,57 @@ Esta definición es fundamental para describir gran parte de la dinámica del Go
 		\filldraw[Orange] (4,3) circle (6pt);
 		\filldraw[Blue] (0,0) circle (6pt);
 	\end{tikzpicture}
-	\caption{Territorio \textcolor{Blue}{blanco}, \textcolor{OliveGreen}{negro} y \textcolor{Orange}{libre}.}
+	\caption{\textcolor{Blue}{White}, \textcolor{OliveGreen}{black}, and \textcolor{Orange}{neutral} territory.}
 	\label{fig:territorios}
 \end{wrapfigure}
 
-\begin{definition}[Territorio]
-	Una región $R$ es territorio del jugador de color $e$ si existe un conjunto $S$ de grupos de color $e$ tal que,
-	\begin{align*}
-		K(R) \subseteq \bigcup_{I\in S} I.
-	\end{align*}
+
+\begin{definition}[Territory]
+	A region \(R\) is territory belonging to the player of color \(e\) if there exists a set \(S\) of groups of color \(e\) such that
+	$$ K(R) \subseteq \bigcup_{I\in S} I. $$
 \end{definition}
-Es decir, todas las piedras adyacentes a la región pertenecen a grupos del mismo color. Denotaremos los \textit{territorios}\footnote{Por el término \textit{ji} (地), que significa «tierra» en japonés.} de cada color como,
-\vspace{-1em}
-$$J^{e} = \{R : C(K(R)) = \{e\}\}, e\neq 0.$$
 
-A las regiones que no son territorio de ningún jugador las notaremos y definiremos como,
-\vspace{-1em}
+That is to say, all stones adjacent to the region belong to groups of the same color. We shall denote the \textit{territories}\footnote{From the term \textit{ji} (地), meaning ``land'' in Japanese.} of each color as:
+$$J^{e} = \{R : C(K(R)) = \{e\}\}, \quad e \neq 0.$$
+Regions that do not constitute territory for either player will be denoted and defined as
 $$J^{0}\coloneqq \{R : |C(K(R))| \geq 2\}.$$
-La Figura~\ref{fig:territorios} ilustra los diferentes tipos de \textit{territorios}.
+
+Figure~\ref{fig:territorios} illustrates the different types of \textit{territories}.
 
 
-Con esto, hemos construido una partición del conjunto de \textit{regiones} ($I^{0}$), ya que toda región pertenece al territorio blanco o pertenece al territorio negro o bien, no forma parte de ningún territorio:
+With this, we have established a partition of the set of \textit{regions} ($I^{0}$), since every region belongs to White's territory, belongs to Black's territory, or forms part of neither player's territory:
 \begin{align*}
 	I^{0} = J^{0} \cup J^{1} \cup J^{2}.
 \end{align*}
 \label{posicion_espacial}
-Adicionalmente, la cardinalidad del conjunto de adyacencias de una piedra individual, $|K(i)|$, es de gran utilidad para determinar su ubicación espacial en el tablero. Dado que $|K(i)|$ se encuentra acotado por el Lema~\ref{lem:2n}, un simple análisis de la cantidad de adyacencias nos revela exactamente si la piedra está situada en el interior, en un borde o en una esquina. Esta propiedad geométrica será esencial y haremos uso de ella en la Sección~\ref{teoremas_go1} y \ref{sec_JR}.
+Additionally, the cardinality of the adjacency set of an individual stone, $|K(i)|$\footnote{This is exactly as the degree of a vertex in graph theory.}, proves remarkably useful for determining its spatial placement on the board. Because $|K(i)|$ is bounded by Lemma~\ref{lem:2n}, a straightforward analysis of the number of adjacencies reveals precisely whether the stone is situated in the interior, on an edge, or in a corner. This geometric property will be essential, and we shall make use of it in Sections~\ref{teoremas_go1} and~\ref{sec_JR}.
 
-Para formalizar las capturas, introducimos primero el concepto de \textit{libertad}.
+To formalize captures, we first introduce the concept of a \textit{liberty}.
 
-\begin{definition}[Libertades de un grupo]
-	Sea $I$ un grupo. Definimos el conjunto de libertades de dicho grupo como:
-	\[L(I) = \{i \in K(I) : C(i) = 0\}.\]
+\begin{definition}[Liberties of a Group]
+	Let \(I\) be a group. We define the set of liberties of said group as:
+	$$L(I) = \{i \in K(I) : C(i) = 0\}.$$
+	\end{definition}
+
+Note that if $L(I) = \varnothing$ for a given group, then that group is considered \textit{dead}. This situation can only occur upon executing a move and effecting a capture. But what constitutes a capture? What is a move?
+
+A group is captured when it loses all of its liberties. Captured stones are removed from the board\footnote{We employ Chinese rules for scoring; if another ruleset is used, such as the Japanese one, a point would be awarded for each captured stone.}.
+
+\begin{definition}[Capture Criterion]
+	Let $I$ be a group; then,
+	$$I \text{ is captured} \iff L(I) = \varnothing.$$
+	To formalize the removal of these stones from the board, if \(I = \{i_1, i_2, \dots, i_n\}\), it suffices to reassign their states by setting \(C(i_j) = 0\) for all \(j=1, \dots, n\).
 \end{definition}
-Notemos que, si para un grupo ocurre que $L(I) = \varnothing$, entonces dicho grupo se considera \textit{muerto}. Esta situación solo puede darse al momento de realizar una jugada y concretar una captura. Pero, ¿qué es una captura? ¿qué es una jugada?
 
+We favor the phrasing \textit{is captured}, since death is the consequence of a capture.
 
-Un grupo es capturado cuando pierde todas sus libertades. Las piedras capturadas se retiran del tablero\footnote{Nosotros hacemos uso de las reglas chinas para contar los puntos, si se juega con otro método, japonesas por ejemplo, habría que otorgar un punto por piedra capturada.}.
+\section{Toward Movement}
 
-\begin{definition}[Criterio de captura]
-	Sea $I$ un grupo, entonces,
-	\[I \text{ es capturado} \iff L(I) = \varnothing.\]
-	Para formalizar el retiro de estas piedras del tablero, si $I = \{i_1, i_2, \dots, i_n\}$, basta reasignar sus estados haciendo $C(i_j) = 0$ para todo $j=1, \dots, n$.
-\end{definition}
-Preferimos el término \textit{es capturado}, ya que la muerte es consecuencia de una captura.
+Thus far, we have described the static structure of the board. To model a game, we must incorporate the temporal evolution of play. To this end, we first define the space of all possible moves, which we denote by \(\mathcal{J}\):
+$$\mathcal{J} \coloneqq \left((E \setminus \{0\}) \times G\right) \cup \{\varnothing\}.$$
 
-\section{Hacia el movimiento}
-
-Hasta el momento hemos descrito la estructura estática del tablero. Para modelar una partida debemos incorporar la evolución temporal del juego. Para ello, definimos primero el espacio de todas las jugadas posibles, al que denotaremos como $\mathcal{J}$,
-$$ \mathcal{J} \coloneqq \left((E \setminus \{0\}) \times G\right) \cup \{\varnothing\}.$$
-
-\subsection{Función de jugada}
-\label{criterio_jugada}
-Al jugar al Go y ser nuestro turno, tomamos una piedra y la colocamos en el tablero o bien pasamos. Definimos la función de jugada como, $f: \mathbb{N} \to \mathcal{J}$. Veamos un ejemplo.
+\subsection{Move Function}\label{criterio_jugada}
+When playing Go on our turn, we rather take a stone and place it on the board, or else we pass. We define the move function as $f: \mathbb{N} \to \mathcal{J}$. Let us examine an example.
 \begin{wrapfigure}[4]{r}{0.4\textwidth}
 	%\begin{figure}[H]
 	\centering
@@ -353,7 +366,7 @@ Al jugar al Go y ser nuestro turno, tomamos una piedra y la colocamos en el tabl
 %\vspace{2.5cm} 
 \break
 
-\subsection{Reglas de la jugada legal}
+\subsection{Rules of a Legal Move}
 \begin{wrapfigure}[12]{r}{0.5\textwidth}
 	\vspace{-15pt}
 	%\begin{figure}[H]
@@ -377,7 +390,7 @@ Al jugar al Go y ser nuestro turno, tomamos una piedra y la colocamos en el tabl
 		\filldraw[draw=black,fill=white] (5,3) circle (12pt);
 		\filldraw[draw=black,fill=black] (5,4) circle (12pt);
 		\fill[draw=black,fill=BlueViolet, very thin] (3.75,2.75) rectangle (4.25,3.25);
-		\path (3,7.25) node [black,very thick]{\large{Juegan Blancas}} ;
+		\path (3,7.25) node [black,very thick]{\large{White plays}} ;
 		
 		
 		\begin{scope}[xshift=8cm]
@@ -399,18 +412,18 @@ Al jugar al Go y ser nuestro turno, tomamos una piedra y la colocamos en el tabl
 			\filldraw[black] (5,3) circle (12pt);
 			\fill[draw=black,fill=BlueViolet, very thin] (3.75,2.75) rectangle (4.25,3.25);
 			\filldraw[draw=black,fill=white] (5,4) circle (12pt);
-			\path (3,7.25) node [black,very thick]{\large{Juegan Negras}} ;
+			\path (3,7.25) node [black,very thick]{\large{Black plays}} ;
 		\end{scope}
 		
 	\end{tikzpicture}
-	\caption{En \textcolor{BlueViolet}{violeta} las jugadas ilegales, pues llevan al suicidio.}
+	\caption{In \textcolor{BlueViolet}{purple}, illegal moves, as they lead to suicide.}
 	\label{sui_ej}
 \end{wrapfigure}
+The function records the moves, but not their legality. Lets analyze the rules. The \textit{suicide rule} prohibits placing a stone if doing so results in the immediate capture of one's own group (Figure~\ref{sui_ej}). There exists a single exception: a move played with no liberties is legal if it simultaneously captures a group of the opposite color (see Figure~\ref{fig: fig1.19}). Note that, due to this mechanic, when it is Black's turn, only white groups may be captured, and vice versa.\break 
 
-La función registra las jugadas, pero no su legalidad. A continuación, analizaremos estas reglas. La \textit{regla del suicidio} prohíbe colocar una piedra si esto provoca la captura inmediata del propio grupo, Figura~\ref{sui_ej}. Existe una única excepción: una jugada sin libertades es legal si captura simultáneamente un grupo de otro color, véase la Figura~\ref{fig: fig1.19}. Notemos que, debido a esta mecánica, cuando es el turno del negro solo pueden ocurrir capturas de grupos blancos, y viceversa. \break 
 
 \begin{wrapfigure}[11]{r}{0.5\textwidth}
-	
+	\vspace{-12pt}
 	%\begin{figure}[H]
 	\centering
 	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
@@ -453,13 +466,13 @@ La función registra las jugadas, pero no su legalidad. A continuación, analiza
 			\path (3,3) node [white]{2};
 		\end{scope}
 	\end{tikzpicture}
-	\caption{Posición de una piedra bajo suicidio ya que captura.}
+	\caption{Position of a stone under apparent suicide that is legal because it captures.}
 	\label{fig: fig1.19}
-\end{wrapfigure} Para evaluar una jugada, primero verificamos si produce una captura. En ese caso, la jugada es legal. Si no captura, comprobamos sus libertades: si no tiene ninguna, es un suicidio y, por tanto, ilegal; en caso contrario, es legal. Como mencionamos en la Sección~\ref{primerreglako}, debemos tener presente la \textit{regla del ko}. Esta prohíbe la recaptura inmediata de una única piedra si dicha acción revierte el estado del tablero exactamente a la posición del turno previo véase la Figura~\ref{regla_ko_ej}. \break
+\end{wrapfigure}To evaluate a move, we first verify whether it results in a capture. If so, the move is legal. If it does not capture, we inspect its liberties: if it has none, it constitutes suicide and is therefore illegal; otherwise, it is legal. As noted in Section~\ref{primerreglako}, we must keep the \textit{ko rule} in mind. This rule forbids the immediate recapture of a single stone if doing so reverts the board state precisely to the position of the preceding turn (see Figure~\ref{regla_ko_ej}). \break
 
 \vspace{15pt}
 \begin{wrapfigure}[6]{r}{0.5\textwidth}
-	\vspace{-10pt}
+	\vspace{-12pt}
 	%\begin{figure}[H]
 	\centering
 	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
@@ -503,9 +516,10 @@ La función registra las jugadas, pero no su legalidad. A continuación, analiza
 			\path (3,3) node [white]{2};
 		\end{scope}
 	\end{tikzpicture}
-	\caption{Blanco no puede jugar en el \textcolor{OliveGreen}{punto verde}, pues repite posición.}
+	\caption{White cannot play at the \textcolor{OliveGreen}{green intersection}, as doing so repeats a prior board position.}
 	\label{regla_ko_ej}
-\end{wrapfigure}La \textit{regla del ko} es insuficiente, pues existen ciclos donde, sin recapturar la piedra inmediata, se repite el tablero. Véase la Figura~\ref{ciclo_ko}, donde se llega a la misma posición que antes, pero a través de capturas que no van en contra de la \textit{regla del ko}.
+\end{wrapfigure}The basic \textit{ko rule} is insufficient, as cycles exist where the board position is repeated without immediately recapturing the same stone. See Figure~\ref{ciclo_ko}, in which an earlier position is reached once again via a sequence of captures that do not violate the basic \textit{ko rule}.
+
 \vfill
 \begin{figure}[H]
 	\centering
@@ -638,12 +652,11 @@ La función registra las jugadas, pero no su legalidad. A continuación, analiza
 			\path (0,5) node [black]{3};
 		\end{scope}
 	\end{tikzpicture}
-	\caption{Tablero con un ciclo de tres jugadas.}
+	\caption{Board configuration featuring a three-move cycle.}
 	\label{ciclo_ko}
 \end{figure}
 \newpage
-
-Como la repetición de posiciones está prohibida, necesitamos una regla más general. Para ilustrar un caso extremo, véase la Figura~\ref{ciclo_inf}.\footnote{Existen ejemplos con ciclos mucho más grandes; para profundizar en ellos, véase \cite{cicloinfinito}.}
+Because repeating positions is prohibited, we require a more general rule. To illustrate an extreme case, see Figure~\ref{ciclo_inf}.\footnote{There exist examples involving far longer cycles; to explore them in greater depth, see \cite{cicloinfinito}.}
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}[scale=0.75]
@@ -808,73 +821,75 @@ Como la repetición de posiciones está prohibida, necesitamos una regla más ge
 			\path (1,1) node [black]{\Huge{\dots}};
 		\end{scope}
 	\end{tikzpicture}
-	\caption{Ciclo de longitud 8 que se puede repetir, en ausencia de alguna regla de SuperKo.}
+	\caption{A cycle of length 8 that can be repeated indefinitely in the absence of a Superko rule.}
 	\label{ciclo_inf}
 \end{figure}
-Podría argumentarse que, en el tablero de la Figura~\ref{ciclo_ko}, se ha repetido la posición, sí, pero el turno del jugador es distinto; por lo tanto, no se trata de una repetición completa. Este argumento conduce a la denominada regla del \textit{SuperKo Natural}. Sin embargo, nosotros haremos uso de una variante más restrictiva.
-\begin{definition}[SuperKo Posicional]\label{sec-superko}
-	Un jugador no puede colocar una piedra de manera tal que recree una posición que ya haya aparecido anteriormente en la partida.
+One might argue that on the board in Figure~\ref{ciclo_ko}, the position has indeed repeated, but the turn belongs to the other player; hence, it is not a full repetition. This line of reasoning leads to what is known as the \textit{Natural Superko} rule. We, however, shall adopt a more restrictive variant:
+\begin{definition}[Positional Superko]\label{sec-superko}
+	A player may not place a stone in such a way that it recreates a board position that has already appeared previously in the game.
 \end{definition}
+By this rule, in both Figure~\ref{ciclo_ko} and Figure~\ref{ciclo_inf}, any attempt to repeat a cycle will require intermediate moves that generate genuine game progress.
 
-Por esta regla, tanto en el escenario de la Figura~\ref{ciclo_ko} como en el de la Figura~\ref{ciclo_inf}, cualquier intento de repetir un ciclo requerirá de jugadas intermedias que generen un avance real en el juego. Resta considerar la restricción más elemental del juego. No es posible jugar en un punto que ya se encuentre ocupado por otra piedra.
+It remains to consider the most elementary restriction in Go: it is not permitted to play on an intersection that is already occupied by another stone.
 
-\begin{definition}[Condición de estado libre]
-	Si se pretende registrar la jugada $f(n) = i$ en el turno $n$, es indispensable que el punto correspondiente se encuentre previamente libre. Esto se expresa como:
-	\[f(n) = i \text{ es posicionable} \iff C(i) = 0.\]
-\end{definition}
-Ya tenemos el \textit{dónde}, \textit{quiénes} y \textit{qué}, veamos el \textit{cómo}. 
+\begin{definition}[Vacant State Condition]
+	For a move \(f(n) = i\) to be registered at turn \(n\), the corresponding point must previously be unoccupied. This is expressed as:
+	$$f(n) = i \text{ is playable} \iff C(i) = 0.$$
+	\end{definition}
 
-\subsection{Teorema de la jugada legal}
+Having established the \textit{where}, \textit{who}, and \textit{what}, let us examine the \textit{how}.
 
-Hemos visto que una piedra $i$ es posicionable si $C(i)=0$. Una jugada no es suicida si $L(i) \neq \varnothing$. Para detectar una captura, debemos simular transitoriamente la jugada en $i$ para verificar si existe alguna piedra o grupo enemigo adyacente $X \in K(i)$ cuyo grupo se quede sin libertades. Esto sucede si $L(X)=\varnothing$, como la única libertad que le quedaba a ese grupo era, justamente, el punto donde acabamos de jugar, al ocuparla se concreta la captura. 
+\subsection{Legal Move Theorem}
 
-De haberse cumplido $L(X)=\varnothing$ antes del turno, el grupo ya habría sido retirado.
-\[f(n) = i \text{ da lugar a una captura} \iff \exists X \in K(i) : L(X)=\varnothing.\]
-La detección del \textit{SuperKo} requiere de un análisis considerablemente mayor, por lo que nos ocuparemos de ella en la Sección~\ref{detec_superko}.
+We have seen that a stone \(i\) is playable if \(C(i)=0\). A move is non-suicidal if \(L(i) \neq \varnothing\). To detect a capture, we must tentatively simulate playing at \(i\) to verify whether there exists any adjacent opposing stone or group \(X \in K(i)\) whose group is thereby left with no liberties. This occurs if \(L(X)=\varnothing\); since the sole liberty remaining to that group was precisely the intersection just played, occupying it effects the capture.
 
-Definimos las funciones booleanas \text{Libre}, \text{Suicidio}, \text{Captura} y \text{SKo}. Estas tomarán como argumento una potencial jugada $f(n) = i$ y devolverán $1$ si la condición se cumple, o $0$ en caso contrario:
+Had \(L(X)=\varnothing\) held prior to the move, the group would already have been removed from the board.
+
+$$f(n) = i \text{ results in a capture} \iff \exists X \in K(i) : L(X)=\varnothing.$$
+The detection of \textit{Superko} requires considerably more extensive analysis, which we address in Section~\ref{detec_superko}.
+
+We define the Boolean functions \text{Vacant}, \text{Suicide}, \text{Capture}, and \text{SKo}. These functions take a candidate move $f(n) = i$ as their argument and return $1$ if the condition is satisfied, and $0$ otherwise:
 \begin{align*}
-	\text{Libre}(f(n)) &= \begin{cases}
-		1 & \text{si } C(i) = 0 \\
-		0 & \text{si } C(i) \neq 0.
+	\text{Vacant}(f(n)) &= \begin{cases}
+		1 & \text{if } C(i) = 0, \\
+		0 & \text{if } C(i) \neq 0;
 	\end{cases} & \quad
-	\text{Suicidio}(f(n)) &= \begin{cases}
-		1 & \text{si } L(i) = \varnothing \\
-		0 & \text{si } L(i) \neq \varnothing.
+	\text{Suicide}(f(n)) &= \begin{cases}
+		1 & \text{if } L(i) = \varnothing, \\
+		0 & \text{if } L(i) \neq \varnothing;
 	\end{cases} \\[1em]
-	\text{Captura}(f(n)) &= \begin{cases}
-		1 & \text{si genera captura} \\
-		0 & \text{si no}.
+	\text{Capture}(f(n)) &= \begin{cases}
+		1 & \text{if it captures}, \\
+		0 & \text{otherwise};
 	\end{cases} & \quad
 	\text{SKo}(f(n)) &= \begin{cases}
-		1 & \text{si viola la regla} \\
-		0 & \text{si no}.
+		1 & \text{if it breaks the rule}, \\
+		0 & \text{otherwise}.
 	\end{cases}
 \end{align*}
+With these functions, we can formally characterize when a move is legal.
 
-Con ellas podemos dar cuenta cuando una jugada es legal.
+\begin{theorem}[Legal Move Theorem]\label{teoremalegal}
+	Let \(f(n) = i\) be a move at turn \(n\) of a Go game. Said move is legal if and only if it satisfies the following logical proposition:
+	$$f(n) \text{ is legal} \iff \text{Vacant} \wedge \neg \text{SKo} \wedge (\neg \text{Suicide} \vee \text{Capture}).$$
+	\end{theorem}
 
-\begin{theorem}[Teorema de la jugada legal]\label{teoremalegal}
-	Sea $f(n) = i$ una jugada en el turno $n$ de una partida de Go. Dicha jugada es legal si y solo si satisface la siguiente proposición lógica:
-	\[ f(n) \text{ es legal} \iff \text{Libre} \wedge \neg \text{SKo} \wedge (\neg \text{Suicidio} \vee \text{Captura}). \]
-\end{theorem}
 \begin{proof}
-	$(\Rightarrow)$ Supongamos que $f(n)$ es una jugada legal.
-	Por definición, una jugada legal no viola la regla del \textit{SuperKo}, luego $\text{SKo}(f(n))=0$; por lo tanto, $\neg\text{SKo}(f(n))=1$.
 	
-	Además, sabemos que la \textit{regla del suicidio} prohíbe las jugadas suicidas a menos que estas produzcan una captura. Es decir, o bien la jugada no es un suicidio, o bien (si lo es) necesariamente produce captura. En términos lógicos, al ser $f(n)$ legal, la proposición $\neg\text{Suicidio} \vee \text{Captura}$ es siempre verdadera.
+	\((\Rightarrow)\) Suppose that \(f(n)\) is a legal move.
+	By definition, a legal move does not violate the \textit{Superko} rule; hence \(\text{SKo}(f(n))=0\), and consequently \(\neg\text{SKo}(f(n))=1\).
+	Furthermore, we know that the \textit{suicide rule} prohibits suicidal moves unless they result in a capture. That is, either the move is not a suicide, or (if it is) it necessarily effects a capture. In logical terms, since \(f(n)\) is legal, the proposition \(\neg\text{Suicide} \vee \text{Capture}\) is always true.
 	
-	La jugada debe realizarse sobre un punto vacío del tablero, es decir, $\text{Libre}(f(n))=1$.
+	The move must be placed on a vacant point on the board; that is, \(\text{Vacant}(f(n))=1\).
 	
-	Solo existen tres tipos de jugadas legales:
+	
+	There exist only three categories of legal moves:
 	\begin{enumerate}
-		\item El punto está libre, no hay \textit{SuperKo}, no hay suicidio y no se captura.
-		\item El punto está libre, no hay \textit{SuperKo}, no hay suicidio y hay captura.
-		\item El punto está libre, no hay \textit{SuperKo}, hay suicidio pero hay captura.
+		\item The intersection is vacant, there is no \textit{Superko}, there is no suicide, and no stones are captured.
+		\item The intersection is vacant, there is no \textit{Superko}, there is no suicide, and a capture occurs.
+		\item The intersection is vacant, there is no \textit{Superko}, there is suicide, but a capture occurs.
 	\end{enumerate}
-	
-	$(\Leftarrow)$ Analicemos la tabla de verdad de nuestra proposición. Denotaremos \text{Suicidio} como $S$ y \text{Captura} como $\text{Cap}$ por cuestiones de legibilidad. Omitiremos los casos donde se viola el \textit{SuperKo} ($\text{SKo}=1$) o donde el punto está ocupado ($C(i) \neq 0$), dado que son trivialmente falsos.
-	
+	\((\Leftarrow)\) Let us examine the truth table of our proposition. We denote \text{Suicide} by \(S\) and \text{Capture} by \(\text{Cap}\) for readability. We omit the cases where \textit{Superko} is violated (\(\text{SKo}=1\)) or where the intersection is occupied (\(C(i) \neq 0\)), as they are trivially false.
 	\[
 	\begin{array}{c|c|c|c|c|c}
 		\text{Libre} & \neg \text{SKo} & \neg S & \text{Cap} & \neg S \vee \text{Cap} & \text{Libre} \wedge \neg \text{SKo} \wedge (\neg S \vee \text{Cap}) \\ 
@@ -885,13 +900,14 @@ Con ellas podemos dar cuenta cuando una jugada es legal.
 		1 & 1 & 0 & 0 & 0 & 0 \\
 	\end{array}
 	\]
-	La tabla de verdad muestra que las únicas filas que hacen verdadera la proposición completa corresponden exactamente a las tres configuraciones deducidas en la ida.
+	The truth table demonstrates that the only rows rendering the full proposition true correspond precisely to the three configurations deduced in the forward direction.
 \end{proof}
-Más aún, no solo hemos caracterizado cuándo una jugada es legal, sino también qué tipos de jugadas existen:
+
+Furthermore, we have characterized not only when a move is legal, but also which types of moves exist:
 \begin{enumerate}
-	\item Colocar una piedra sin capturar.
-	\item Realizar una captura.
-	\item Realizar una captura mediante un suicidio.
+	\item Placing a stone without capturing.
+	\item Executing a capture.
+	\item Executing a capture by means of suicide.
 \end{enumerate}
 
 %		\subsection{SuperKo en dos dimensiones}
@@ -926,21 +942,20 @@ Más aún, no solo hemos caracterizado cuándo una jugada es legal, sino tambié
 	%		\end{bmatrix}.
 %		\]
 %		Supongamos también que, luego de $k$ turnos, nos encontramos con un tablero $\mathrm{Go}(t+k)$ que es idéntico a $\mathrm{Go}(t)$, a excepción de esa primera posición, donde ahora $e_{1,1}(t+k) = 0$. Si en este momento es el turno del jugador blanco, sería ilegal que jugara en $(1,1)$, puesto que dicha acción viola la regla del \textit{SuperKo}.
-\subsection{Contar los puntos}\label{contarpuntos}
+\subsection{Scoring}\label{contarpuntos}
+Eventually, by virtue of Superko and mutual agreement, the game concludes. The winner in Go is the player who amasses the greatest number of points. To compute this, it suffices to sum each player's living stones remaining on the board at the end of the game and add their secured territory. In addition, the \textit{komi} is added to White's total.
 
-En algún momento, por el SuperKo y mutuo acuerdo, la partida termina. Quien gana en el Go es el jugador que acumule la mayor cantidad de puntos. Para calcular esto, basta con sumar las piedras de cada jugador en el tablero al terminar la partida y sumar su territorio. Además, al jugador blanco se le suma el \textit{komi}.
 
-Si definimos $P(2)$ como los puntos del blanco y $P(1)$ como los del negro, obtenemos:
-\[P(1) = \sum_{I_1 \in I^{1}} |I_{1}| + \sum_{J_1 \in J^{1}} |J_{1}|, \quad P(2) = \sum_{I_2 \in I^{2}} |I_2| + \sum_{J_2 \in J^{2}} |J_{2}| + \text{komi}.\]
+If we define \(P(2)\) as White's score and \(P(1)\) as Black's score, we obtain:
+$$P(1) = \sum_{I_1 \in I^{1}} |I_{1}| + \sum_{J_1 \in J^{1}} |J_{1}|, \quad P(2) = \sum_{I_2 \in I^{2}} |I_2| + \sum_{J_2 \in J^{2}} |J_{2}| + \text{komi}.$$
+To determine the winner, it suffices to evaluate the difference. If $P(2) - P(1) \geq 0$, White wins; otherwise, Black wins.\footnote{We employ $\geq$ to account for the possibility of playing without \textit{komi} or with a \textit{komi} of $0$ points, thereby allowing for a draw.}
 
-Para determinar al ganador, basta con evaluar la diferencia. Si $P(2) - P(1)\geq 0$, gana el blanco; en caso contrario, gana el negro.\footnote{Usamos $\geq$, pues contemplamos la posibilidad de que se decida jugar sin \textit{komi} o con un \textit{komi} de $0$ puntos, habilitando el empate.}
+\section{Go in \texorpdfstring{$n$}{n} Dimensions and with \texorpdfstring{$m$}{m} Players}\label{Go_n_m}
 
-\section{El Go en \texorpdfstring{$n$}{n} dimensiones y \texorpdfstring{$m$}{m} jugadores}\label{Go_n_m}
+If we transition to an $n$-dimensional space, we require $n$ sets to construct the board. As before, for each dimension $i$, given $n_i \in \mathbb{N}$, we define $N_i = \{1, 2, \dots, n_i\}$. The board is then formed by the Cartesian product:
 
-Si pasamos a un espacio de $n$ dimensiones, necesitaremos $n$ conjuntos para poder construir el tablero. Tal como lo hicimos antes, para cada dimensión $i$, dado $n_i \in \mathbb{N}$, definimos $N_i = \{1, 2, \dots, n_i\}$. El tablero queda entonces conformado por el producto cartesiano:
 \[ G = N_1 \times N_2 \times \dots \times N_n. \]
-Para  $m$ jugadores, ampliamos el conjunto de estados a $E = \{0, 1, \dots, m\}$, reservando siempre el valor $0$ para las intersecciones libres.
-
+For $m$ players, we extend the set of states to $E = \{0, 1, \dots, m\}$, always reserving the value $0$ for vacant intersections.
 \begin{definition}[Adyacencia entre puntos]
 	Sea $T$ un tablero y, $t_1, t_2 \in T$ dos puntos dados por, $t_1 = (a_1, a_2, \dots, a_n),\ t_2 = (b_1, b_2, \dots, b_n).$
 	
