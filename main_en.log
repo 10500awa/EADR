@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026/Arch Linux) (preloaded format=xelatex 2026.8.12)  14 SEP 2026 19:39
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026/Arch Linux) (preloaded format=xelatex 2026.8.12)  15 SEP 2026 22:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**main.tex
-(./main.tex
+**main_en.tex
+(./main_en.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
 (/usr/share/texmf-dist/tex/latex/base/book.cls
@@ -1717,19 +1717,18 @@ guage=dflt;+tnum;+lnum;mapping=tex-text;"
 (fontspec)             <->"[TeXGyrePagellaX-BoldSlanted.otf]/OT:script=latn;lan
 guage=dflt;+tnum;+lnum;+smcp;mapping=tex-text;"
 
- (./main.aux
+ (./main_en.aux
 LaTeX Info: Redefining \. on input line 12.
 LaTeX Info: Redefining \% on input line 12.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
 (babel)             Reported on input line 12.
 )
-\openout1 = `main.aux'.
+\openout1 = `main_en.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/npxmi/m/it on input line 5.
 LaTeX Font Info:    Trying to load font information for OML+npxmi on input line
  5.
-
-(/usr/share/texmf-dist/tex/latex/newpx/omlnpxmi.fd
+ (/usr/share/texmf-dist/tex/latex/newpx/omlnpxmi.fd
 File: omlnpxmi.fd 2013/03/21 Fontinst v1.933 font definitions for OML/npxmi.
 )
 LaTeX Font Info:    ... okay on input line 5.
@@ -1853,11 +1852,11 @@ Package biblatex Info: XeTeX detected.
 (biblatex)             Assuming input encoding 'utf8'.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
-\openout4 = `main.bcf'.
+\openout4 = `main_en.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'main.bbl' found.
- (./main.bbl)
+Package biblatex Info: ... file 'main_en.bbl' found.
+ (./main_en.bbl)
 Package biblatex Info: Reference section=0 on input line 5.
 Package biblatex Info: Reference segment=0 on input line 5.
 Package caption Info: Begin \AtBeginDocument code.
@@ -1865,11 +1864,11 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring ON on input line 5.
 
-(./main.out) (./main.out)
+(./main_en.out) (./main_en.out)
 \@outlinefile=\write5
-\openout5 = `main.out'.
+\openout5 = `main_en.out'.
 
- (./chapters/00-intro.tex
+ (./chapters_en/00-intro.tex
 
 Package pgf Warning: No path specified that can be filled on input line 112.
 
@@ -1912,8 +1911,6 @@ LaTeX Font Warning: Font shape `TU/EBGaramond-Bold.ttf(0)/b/n' undefined
 [1
 
 ]
-File: figures/portadauma.pdf Graphic file (type pdf)
-<use figures/portadauma.pdf>
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
 36.
  (/usr/share/texmf-dist/tex/latex/lm/ot1lmr.fd
@@ -1962,284 +1959,7 @@ LaTeX Font Info:    Trying to load font information for U+npxsyc on input line
 
 (/usr/share/texmf-dist/tex/latex/newpx/unpxsyc.fd
 File: unpxsyc.fd 2013/03/24 Fontinst v1.933 font definitions for U/npxsyc.
-) [1
-
-
-]
-File: figures/ipe_cuarto.jpg Graphic file (type bmp)
-<figures/ipe_cuarto.jpg>
- [1
-
-] [2
-
-]
-
-LaTeX Font Warning: Font shape `TU/NotoSerifCJKSC(0)/m/it' undefined
-(Font)              using `TU/NotoSerifCJKSC(0)/m/n' instead on input line 178.
-
-
-[3
-
-] (./main.toc
-LaTeX Info: Redefining \sptext on input line 1.
-LaTeX Info: Redefining \. on input line 1.
-LaTeX Info: Redefining \% on input line 1.
 )
-\tf@toc=\write6
-\openout6 = `main.toc'.
-
- [4
-
-]) (./chapters/01-fundacion.tex
-Capítulo I.
-File: figures/Go_1200x1200.jpg Graphic file (type bmp)
-<figures/Go_1200x1200.jpg>
-[1
-
-
-
-]
-LaTeX Info: Redefining \. on input line 148.
-LaTeX Info: Redefining \% on input line 148.
-Package babel Info: 'spanish' activates 'spanish' shorthands.
-(babel)             Reported on input line 148.
- [2]
-Missing character: There is no ​ (U+200B) in font [TeXGyrePagellaX-Regular.otf]
-/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;!
-Missing character: There is no ​ (U+200B) in font [TeXGyrePagellaX-Regular.otf]
-/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;!
-LaTeX Info: Redefining \. on input line 608.
-LaTeX Info: Redefining \% on input line 608.
-[3]
-LaTeX Info: Redefining \. on input line 1064.
-LaTeX Info: Redefining \% on input line 1064.
- [4]
-LaTeX Info: Redefining \. on input line 1235.
-LaTeX Info: Redefining \% on input line 1235.
- [5]
-LaTeX Info: Redefining \. on input line 1296.
-LaTeX Info: Redefining \% on input line 1296.
- [6]
-LaTeX Info: Redefining \. on input line 1558.
-LaTeX Info: Redefining \% on input line 1558.
- [7]
-LaTeX Info: Redefining \. on input line 1784.
-LaTeX Info: Redefining \% on input line 1784.
- [8]) (./chapters/02-construccion.tex
-LaTeX Info: Redefining \. on input line 2.
-LaTeX Info: Redefining \% on input line 2.
- [9]
-Capítulo II.
-[10
-
-]
-LaTeX Info: Redefining \. on input line 154.
-LaTeX Info: Redefining \% on input line 154.
- [11]
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 25
-4.
-
-LaTeX Info: Redefining \. on input line 275.
-LaTeX Info: Redefining \% on input line 275.
-[12]
-Overfull \hbox (16.32452pt too wide) detected at line 352
-[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 352--355
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 352--355
-
- []
-
-LaTeX Info: Redefining \. on input line 410.
-LaTeX Info: Redefining \% on input line 410.
-[13]
-Underfull \hbox (badness 10000) in paragraph at lines 410--411
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 410--411
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 458--459
-
- []
-
-LaTeX Info: Redefining \. on input line 644.
-LaTeX Info: Redefining \% on input line 644.
-[14]
-LaTeX Info: Redefining \. on input line 853.
-LaTeX Info: Redefining \% on input line 853.
- [15]
-LaTeX Info: Redefining \. on input line 932.
-LaTeX Info: Redefining \% on input line 932.
- [16]
-LaTeX Info: Redefining \. on input line 970.
-LaTeX Info: Redefining \% on input line 970.
- [17]
-LaTeX Info: Redefining \. on input line 1049.
-LaTeX Info: Redefining \% on input line 1049.
- [18]
-LaTeX Info: Redefining \. on input line 1068.
-LaTeX Info: Redefining \% on input line 1068.
- [19]
-Underfull \hbox (badness 10000) in paragraph at lines 1185--1186
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1185--1186
-
- []
-
-LaTeX Info: Redefining \. on input line 1203.
-LaTeX Info: Redefining \% on input line 1203.
-[20]
-LaTeX Info: Redefining \. on input line 1237.
-LaTeX Info: Redefining \% on input line 1237.
- [21]
-LaTeX Info: Redefining \. on input line 1351.
-LaTeX Info: Redefining \% on input line 1351.
- [22]
-LaTeX Info: Redefining \. on input line 1377.
-LaTeX Info: Redefining \% on input line 1377.
- [23]
-LaTeX Info: Redefining \. on input line 1408.
-LaTeX Info: Redefining \% on input line 1408.
- [24]
-LaTeX Info: Redefining \. on input line 1636.
-LaTeX Info: Redefining \% on input line 1636.
- [25]
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 17
-19.
-
-
-Underfull \hbox (badness 1412) in paragraph at lines 1721--1722
-\TU/TeXGyrePagellaX(0)/m/n/10.95 el grupo $\OML/npxmi/m/it/10.95 I$ \TU/TeXGyre
-PagellaX(0)/m/n/10.95 ($\OML/npxmi/m/it/10.95 i$\TU/TeXGyrePagellaX(0)/m/n/10.9
-5 ). En el ejemplo de la Figura [][]2.15[][], Los pun-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1721--1722
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1721--1722
-
- []
-
-LaTeX Info: Redefining \. on input line 1737.
-LaTeX Info: Redefining \% on input line 1737.
-[26]
-LaTeX Info: Redefining \. on input line 1907.
-LaTeX Info: Redefining \% on input line 1907.
- [27]
-LaTeX Info: Redefining \. on input line 2005.
-LaTeX Info: Redefining \% on input line 2005.
- [28]
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 21
-46.
-
-LaTeX Info: Redefining \. on input line 2149.
-LaTeX Info: Redefining \% on input line 2149.
-[29]
-Overfull \hbox (11.63927pt too wide) detected at line 2168
-[]
- []
-
-LaTeX Info: Redefining \. on input line 2205.
-LaTeX Info: Redefining \% on input line 2205.
-[30]) (./chapters/03-interludio.tex) (./chapters/04-abstraccion.tex [31
-
-]
-Capítulo III.
-[32
-
-]
-LaTeX Info: Redefining \. on input line 227.
-LaTeX Info: Redefining \% on input line 227.
- [33]
-File: figures/3dgofoto1.png Graphic file (type bmp)
-<figures/3dgofoto1.png>
-LaTeX Info: Redefining \. on input line 256.
-LaTeX Info: Redefining \% on input line 256.
- [34]
-LaTeX Info: Redefining \. on input line 322.
-LaTeX Info: Redefining \% on input line 322.
- [35]
-LaTeX Info: Redefining \. on input line 468.
-LaTeX Info: Redefining \% on input line 468.
- [36]
-LaTeX Info: Redefining \. on input line 561.
-LaTeX Info: Redefining \% on input line 561.
- [37]
-LaTeX Info: Redefining \. on input line 670.
-LaTeX Info: Redefining \% on input line 670.
- [38]
-Underfull \hbox (badness 10000) in paragraph at lines 731--732
-
- []
-
-LaTeX Info: Redefining \. on input line 745.
-LaTeX Info: Redefining \% on input line 745.
-[39]
-LaTeX Info: Redefining \. on input line 1325.
-LaTeX Info: Redefining \% on input line 1325.
- [40]
-Underfull \hbox (badness 2573) in paragraph at lines 1325--1328
-\TU/TeXGyrePagellaX(0)/m/n/10.95 de construirse sobre el juego: $\LMS/npxsy/m/n
-/10.95 ¹\OML/npxmi/m/it/10.95 N \LMS/npxsy/m/n/10.95 ^^B
- []
-
-
-Overfull \hbox (2.01465pt too wide) in paragraph at lines 1325--1328
-\OML/npxmi/m/it/10.95 N; \LMS/npxsy/m/n/10.95 f\OT1/lmr/m/n/10.95 0\OML/npxmi/m
-/it/10.95 ; \OT1/lmr/m/n/10.95 1\OML/npxmi/m/it/10.95 ; \OT1/lmr/m/n/10.95 2\LM
-S/npxsy/m/n/10.95 g\OML/npxmi/m/it/10.95 ; A[] \LMS/npxsy/m/n/10.95 [ \OML/npxm
-i/m/it/10.95 A[]; \U/npxmia/m/it/10.95 ^^A[]\LMS/npxsy/m/n/10.95 º\OML/npxmi/m/
-it/10.95 :$ \TU/TeXGyrePagellaX(0)/m/n/10.95 Con $\LMS/npxsy/m/n/10.95 j\OML/np
-xmi/m/it/10.95 N\LMS/npxsy/m/n/10.95 j \U/npxmia/m/it/10.95 =
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1325--1328
-
- []
-
-LaTeX Info: Redefining \. on input line 1516.
-LaTeX Info: Redefining \% on input line 1516.
-[41]
-LaTeX Font Info:    Trying to load font information for T1+lmss on input line 1
-524.
- (/usr/share/texmf-dist/tex/latex/lm/t1lmss.fd
-File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `lmss' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-LaTeX Info: Redefining \. on input line 1570.
-LaTeX Info: Redefining \% on input line 1570.
- [42])
-(./chapters/05-conclusion.tex)
-LaTeX Info: Redefining \. on input line 14.
-LaTeX Info: Redefining \% on input line 14.
- [43] (./chapters/06-post.tex) [44
-
-]
 
 Package fontspec Info: 
 (fontspec)             Could not resolve font "Noto Sans CJK SC/I" (it
@@ -2264,10 +1984,178 @@ Package fontspec Info:
 (fontspec)             - 'bold italic' (b/it) with NFSS spec.: <->"Noto Sans
 (fontspec)             CJK SC/BI/OT:script=hani;language=dflt;"
 
- [45
+ [1
+
 
 ]
-(./main.aux
+File: figures/ipe_cuarto.jpg Graphic file (type bmp)
+<figures/ipe_cuarto.jpg>
+ [1
+
+] [2
+
+]
+
+LaTeX Font Warning: Font shape `TU/NotoSerifCJKSC(0)/m/it' undefined
+(Font)              using `TU/NotoSerifCJKSC(0)/m/n' instead on input line 178.
+
+
+[3
+
+] (./main_en.toc
+LaTeX Info: Redefining \sptext on input line 1.
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+)
+\tf@toc=\write6
+\openout6 = `main_en.toc'.
+
+ [4
+
+]) (./chapters_en/01-fundacion.tex
+Capítulo I.
+File: figures/Go_1200x1200.jpg Graphic file (type bmp)
+<figures/Go_1200x1200.jpg>
+[1
+
+
+
+]
+LaTeX Info: Redefining \. on input line 149.
+LaTeX Info: Redefining \% on input line 149.
+Package babel Info: 'spanish' activates 'spanish' shorthands.
+(babel)             Reported on input line 149.
+ [2]
+Missing character: There is no ​ (U+200B) in font [TeXGyrePagellaX-Regular.otf]
+/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;!
+Missing character: There is no ​ (U+200B) in font [TeXGyrePagellaX-Regular.otf]
+/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;!
+LaTeX Info: Redefining \. on input line 183.
+LaTeX Info: Redefining \% on input line 183.
+[3]
+LaTeX Info: Redefining \. on input line 629.
+LaTeX Info: Redefining \% on input line 629.
+ [4]
+LaTeX Info: Redefining \. on input line 645.
+LaTeX Info: Redefining \% on input line 645.
+ [5]
+
+LaTeX Warning: Reference `parte2' on page 6 undefined on input line 1088.
+
+
+LaTeX Warning: Reference `parte2' on page 6 undefined on input line 1088.
+
+LaTeX Info: Redefining \. on input line 1260.
+LaTeX Info: Redefining \% on input line 1260.
+[6]
+
+LaTeX Warning: Reference `ZobristHash' on page 7 undefined on input line 1261.
+
+
+LaTeX Warning: Reference `sec-vida' on page 7 undefined on input line 1265.
+
+LaTeX Info: Redefining \. on input line 1327.
+LaTeX Info: Redefining \% on input line 1327.
+[7]
+LaTeX Info: Redefining \. on input line 1507.
+LaTeX Info: Redefining \% on input line 1507.
+ [8]
+
+LaTeX Warning: Reference `sec-superko' on page 9 undefined on input line 1508.
+
+LaTeX Info: Redefining \. on input line 1821.
+LaTeX Info: Redefining \% on input line 1821.
+[9]) (./chapters_en/04-abstraccion.tex
+LaTeX Info: Redefining \. on input line 2.
+LaTeX Info: Redefining \% on input line 2.
+ [10]
+Capítulo II.
+
+LaTeX Warning: Reference `lem:2n' on page 11 undefined on input line 87.
+
+[11
+
+]
+LaTeX Info: Redefining \. on input line 227.
+LaTeX Info: Redefining \% on input line 227.
+ [12]
+File: figures/3dgofoto1.png Graphic file (type bmp)
+<figures/3dgofoto1.png>
+LaTeX Info: Redefining \. on input line 256.
+LaTeX Info: Redefining \% on input line 256.
+ [13]
+LaTeX Info: Redefining \. on input line 322.
+LaTeX Info: Redefining \% on input line 322.
+ [14]
+LaTeX Info: Redefining \. on input line 468.
+LaTeX Info: Redefining \% on input line 468.
+ [15]
+
+LaTeX Warning: Reference `lem:2n' on page 16 undefined on input line 533.
+
+LaTeX Info: Redefining \. on input line 561.
+LaTeX Info: Redefining \% on input line 561.
+[16]
+
+LaTeX Warning: Reference `lem:2n' on page 17 undefined on input line 647.
+
+LaTeX Info: Redefining \. on input line 670.
+LaTeX Info: Redefining \% on input line 670.
+[17]
+Underfull \hbox (badness 10000) in paragraph at lines 731--732
+
+ []
+
+LaTeX Info: Redefining \. on input line 745.
+LaTeX Info: Redefining \% on input line 745.
+[18]
+LaTeX Info: Redefining \. on input line 1325.
+LaTeX Info: Redefining \% on input line 1325.
+ [19]
+Underfull \hbox (badness 2573) in paragraph at lines 1325--1328
+\TU/TeXGyrePagellaX(0)/m/n/10.95 de construirse sobre el juego: $\LMS/npxsy/m/n
+/10.95 ¹\OML/npxmi/m/it/10.95 N \LMS/npxsy/m/n/10.95 ^^B
+ []
+
+
+Overfull \hbox (2.01465pt too wide) in paragraph at lines 1325--1328
+\OML/npxmi/m/it/10.95 N; \LMS/npxsy/m/n/10.95 f\OT1/lmr/m/n/10.95 0\OML/npxmi/m
+/it/10.95 ; \OT1/lmr/m/n/10.95 1\OML/npxmi/m/it/10.95 ; \OT1/lmr/m/n/10.95 2\LM
+S/npxsy/m/n/10.95 g\OML/npxmi/m/it/10.95 ; A[] \LMS/npxsy/m/n/10.95 [ \OML/npxm
+i/m/it/10.95 A[]; \U/npxmia/m/it/10.95 ^^A[]\LMS/npxsy/m/n/10.95 º\OML/npxmi/m/
+it/10.95 :$ \TU/TeXGyrePagellaX(0)/m/n/10.95 Con $\LMS/npxsy/m/n/10.95 j\OML/np
+xmi/m/it/10.95 N\LMS/npxsy/m/n/10.95 j \U/npxmia/m/it/10.95 =
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1325--1328
+
+ []
+
+
+LaTeX Warning: Reference `posicion_espacial' on page 20 undefined on input line
+ 1416.
+
+LaTeX Info: Redefining \. on input line 1516.
+LaTeX Info: Redefining \% on input line 1516.
+[20]
+LaTeX Font Info:    Trying to load font information for T1+lmss on input line 1
+524.
+ (/usr/share/texmf-dist/tex/latex/lm/t1lmss.fd
+File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmss' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Info: Redefining \. on input line 1570.
+LaTeX Info: Redefining \% on input line 1570.
+ [21])
+(./chapters/06-post.tex) [22
+
+] [23
+
+] (./main_en.aux
 LaTeX Info: Redefining \sptext on input line 12.
 LaTeX Info: Redefining \. on input line 12.
 LaTeX Info: Redefining \% on input line 12.
@@ -2280,19 +2168,22 @@ L3 programming layer <2020/03/25>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 30E2720A67A022E8505704C5528F0D04;7689.
-Package logreq Info: Writing requests to 'main.run.xml'.
-\openout1 = `main.run.xml'.
+
+LaTeX Warning: There were undefined references.
+
+Package rerunfilecheck Info: File `main_en.out' has not changed.
+(rerunfilecheck)             Checksum: AED3591D12A1F7E64D43F71DA37281E5;3432.
+Package logreq Info: Writing requests to 'main_en.run.xml'.
+\openout1 = `main_en.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 57661 strings out of 470130
- 1318754 string characters out of 5478057
- 2647122 words of memory out of 5000000
- 85327 multiletter control sequences out of 15000+600000
- 771810 words of font info for 302 fonts, out of 8000000 for 9000
+ 57515 strings out of 470130
+ 1317248 string characters out of 5478057
+ 2577908 words of memory out of 5000000
+ 85191 multiletter control sequences out of 15000+600000
+ 752807 words of font info for 270 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 89i,16n,120p,1909b,5571s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,16n,120p,1915b,5571s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.pdf (51 pages).
+Output written on main_en.pdf (29 pages).

@@ -116,8 +116,8 @@
 	% 2. Aplicación de la fuente al título
 	\begin{tikzpicture}
 		% Changes the node to Helvetica
-		\node[font=\fontspec{EBGaramond-Bold.ttf}\fontsize{24}{156}\bfseries\selectfont, text=black!90] at (0,0) {El arte de rodear};
-		\node[font=\fontspec{EBGaramond-Bold.ttf}\fontsize{16}{156}\bfseries\selectfont, text=black!80] at (0,-2) {Arias, W. Adrián};
+		\node[font=\fontspec{EBGaramond-Bold.ttf}\fontsize{24}{156}\bfseries\selectfont, text=black!90] at (0,-1) {The art of surrounding};
+		%\node[font=\fontspec{EBGaramond-Bold.ttf}\fontsize{16}{156}\bfseries\selectfont, text=black!80] at (0,-2) {Arias, W. Adrián};
 	\end{tikzpicture}
 	
 	
@@ -171,27 +171,25 @@
 \vfill % Empuja todo hacia arriba
 \clearpage
 \thispagestyle{empty}
-\section*{Prefacio}
+\section*{Preface}
 \thispagestyle{empty}
-What's Go? A game, of course. But one might ask: How is it done precisely?, What can be done and what not? Is it possible to extend it's concepts to other games?
+What's Go? A game, of course. But one might ask: How is it done precisely? What can be done and what not? Is it possible to extend its concepts to other games?
 
+\textit{圍道 — Wéi Dào — The art of surrounding} Tries to answer such questions by constructing a rigorous theory of the game of Go, followed by its generalization on and out of the board.
 
-\textit{圍道 — Wéi Dào — El arte de rodear} (The art of sorrounding but we choose The art of Go as the english title) Tries to answer such questions by constructing a rigurous theory of the game of Go, follow by it's generalization in and out of the table.
+This work is separated into three parts as follows:
 
-This work it's separated in three parts as follows:
+\textbf{Part I: Foundation.} We begin the study of the game by its history, starting in ancient China to its development in Argentina. We finish this part with the rules of the game and setting the construction motivation.
 
-\textbf{Parte I: Foundation.} We beging the study of the game by it's history, starting in ancient China to it's origin into Argentina. We finish this part with the rules of the game and setting the construction motivation.
+\textbf{Part II: Construction.} Now that we know the game, we are ready to build it formally. The two-dimensional version of the game is constructed. The board, the pieces, the colors, and the relations between them are defined. Followed by the concepts of group, captures, and SuperKo. The legality of a play is formalized via a theorem. The SuperKo detection is handled by Zobrist Hashing. The whole structure is named Go, and we begin to generalize it. Later, we discuss the \textit{life in the game of Go} also know as \textit{inconditional life} by interpretating, in this theory, the results of David Benson; also, we develop the theory around the \textit{conditional life} (Briefly, WIP). At the very end we discuss about two papers from Kim Jin Bai, in the second one of those there is a theorem that uses Benson results and we develop a counter-example of a Theorem.
 
-
-\textbf{Parte II: Construction.} Now that we know the game we are ready to build it formally. The two dimensional version of the game it's constructed. It's defined the board, the pieces, the colors, the relations between them. The concept of group, captures, SuperKo are defined. The legallity of a play it's formalized via a theorem of when a play it's legal. The SuperKo detection it's handled by Zobrist Hashing. The whole srtuctured it's name a Go and we begin to generalized it. Finally we discuss the \textit{life in the game of go} by 
-
-Una vez comprendido el juego, se construye formalmente un modelo en dos dimensiones y dos jugadores. Se definen con precisión las nociones de jugada legal, captura y SuperKo (resuelto mediante hashing de Zobrist), y posteriormente se generaliza el marco a $n$ dimensiones y $m$ jugadores. Finalmente, se estudia la noción de \textit{vida} dentro del juego, partiendo del trabajo de Benson, incorporando la vida condicional y presentando una observación a un teorema de Bai.
-
-\textbf{Parte III: Abstracciones.} Establecidas las bases, el estudio se vuelca hacia afuera. Se analiza el comportamiento de las adyacencias en dimensiones superiores, donde se evidencia que el Go tridimensional pierde el equilibrio y traiciona la esencia del juego original. También se estudia el caso unidimensional y, finalmente, se busca un origen común para estos juegos y otros aparentemente distintos.
+\textbf{Part III: Abstraction.} We now study the board from outside, taking in consideration a little intuiton about the three dimensional Go, a concept about the quantity of liberties of a board naturally appears, such concept leads to a problem about liberties and how to control how the growth whenever the board get's big (in dimension). We also attack the one dimensional Go and finally we try to look beyond The game of Go in order to find if the structure we have made up for it can suit up other games.
 
 \vfill
 
-Quisiera agradecer a Gusti Cabaña por ser mi primer lector y darme una dirección cuando menos la tenía. También a Diego Barrios y Eros Girardi, por leer el trabajo y darme muy útiles comentarios. Finalmente a Naza, por aguantarme todo estos años.
+I would like to thank Gusti Cabaña for being my first reader and giving me direction when I needed it most. Thanks also go to Diego Barrios and Eros Girardi for reviewing this work and providing invaluable feedback. Lastly, to Naza, for putting up with me throughout all these years and the years to come.
+
+Lastly I'd like to acknowledge that the very first installment of this ``Book'' was made for a monograph competition. This it just for future reference of how important such competition might be for the development of mathematics or, at the very least, the mathematical spirit within oneself.
 \clearpage
 
 \tableofcontents
