@@ -1,5 +1,5 @@
 	{\centering
-	\chapter{Abstracción}\label{parte3}}
+	\chapter{Abstraction}\label{parte3}}
 \thispagestyle{empty}
 \noindent
 \begin{minipage}[t]{0.35\textwidth}
@@ -22,21 +22,21 @@
 	\vspace{1pt}
 	\raggedright
 	\emph{
-		$\!\!$A la rana del pozo no se le puede hablar del mar,\\
-		pues está limitada por su espacio.\\[0.5em]
-		Al insecto del verano no se le puede hablar del hielo,\\
-		pues está restringido por su tiempo.\\[0.5em]
-		Al erudito de visión estrecha no se le puede hablar del Dao,\\
-		pues está atado por sus enseñanzas.
+		$\!\!$A frog in a well cannot be spoken to about the ocean\\
+		because it is confined by its own space.\\[0.5em]
+		A summer insect cannot be spoken to about ice \\
+		because it is bound by its own season.\\[0.5em]
+		A narrow-minded person cannot be spoken to about the Way \\
+		because they are bound by their own teachings.
 	}
 \end{minipage}
 
 \vspace{1em}
-\hfill {   秋水 — \textsc{Zhuāngzǐ, Capítulo 17}}
+\hfill {   秋水 — \textsc{Zhuāngzǐ, Chapter 17}}
 
-\section{Comparando adyacencias}
-\label{chap:6}
-Observando el tablero de dos dimensiones Figura~\ref{fig: tableronm}, podemos notar que este tendrá $xy$ puntos (intersecciones), pero surge la siguiente pregunta: ¿cuántas adyacencias poseen todos esos puntos?
+\section{Comparing Adjacencies}\label{chap:6}
+
+Observing the two-dimensional board in Figure~\ref{fig: tableronm}, we can note that it will have \(xy\) intersections; however, the following question arises: how many adjacencies do all these intersections possess?
 \begin{figure}[H]
 	\centering   
 	\begin{tikzpicture}[scale=0.8]
@@ -84,23 +84,23 @@ Observando el tablero de dos dimensiones Figura~\ref{fig: tableronm}, podemos no
 	\caption{Tablero de Go de dimensiones $x\times y$.}
 	\label{fig: tableronm}
 \end{figure}
-Por el Lema~\ref{lem:2n}, estos nodos tienen $2, 3$ o $4$ adyacencias. Los $4$ vértices cuentan con $2$ adyacencias. Hay cuatro aristas, dos de longitud $(x-2)$ y dos de $(y-2)$, cuyos nodos tienen $3$ adyacencias. Además, hay una región interna de $(x-2)(y-2)$ nodos, cada uno con $4$ adyacencias. Esto permite definir la cantidad total de adyacencias de un tablero de $Go^{2}$.
+By Lemma~\ref{lem:2n}, these nodes have $2$, $3$, or $4$ adjacencies. The $4$ vertices possess $2$ adjacencies. There are four edges—two of length \((x-2)\) and two of length \((y-2)\)—whose nodes have $3$ adjacencies. Furthermore, there is an internal region of \((x-2)(y-2)\) nodes, each with $4$ adjacencies. This allows us to define the total number of adjacencies on a \(\mathrm{Go}^{2}\) board.
 
-Sea $A(x,y)$ la cantidad total de adyacencias de un tablero de dimensiones $x\times y$. 
+Let \(A(x,y)\) be the total number of adjacencies on a board of dimensions \(x\times y\).
 \begin{align*}
 	A(x,y)&= 2\cdot4 + 3(2(x-2))+3(2(y-2))+4(x-2)(y-2)\\
 	A(x,y)&= 8 + 6x-12+6y-12+4xy-8x-8y+16\\
 	A(x,y)&= 4xy-2x-2y.
 \end{align*}
-Definamos también el promedio de adyacencias de un tablero, el cual resulta inmediato de la definición de adyacencias totales; basta dividir por el total de nodos.
-Sea $\tilde{A}(x,y)$ la cantidad de libertades promedio de un tablero de dos dimensiones, luego:
+Let us also define the average number of adjacencies on a board, which follows immediately from the definition of total adjacencies; it suffices to divide by the total number of nodes.
 
+Let \(\tilde{A}(x,y)\) be the average number of liberties on a two-dimensional board, then:
 \begin{align*}
 	\tilde{A}(x,y)= \frac{4xy-2x-2y}{xy}.
 \end{align*}
-\subsection{El Go en tres dimensiones}
+\subsection{Go in Three Dimensions}
 
-Consideremos el caso para el $Go^3$, de $xyz$ nodos, para esto nos apoyamos en el siguiente esquema, Figura~\ref{fig:3dim_esquema} (izquierda):
+Let us consider the case for \(\mathrm{Go}^3\), consisting of \(xyz\) nodes. To this end, we rely on the following diagram, Figure~\ref{fig:3dim_esquema} (left):
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}[scale=1]
@@ -140,11 +140,11 @@ Consideremos el caso para el $Go^3$, de $xyz$ nodos, para esto nos apoyamos en e
 			\fill[color=black] (-2,1.5) circle (0.07);
 		\end{scope}
 	\end{tikzpicture}
-	\caption{Exterior del tablero tres dimensional. Un vértice con $3$ adyacencias, aristas y un nodo con $4$ adyacencias.}
+	\caption{Exterior of the three-dimensional board. A vertex with $3$ adjacencies, edges, and a node with $4$ adjacencies.}
 	\label{fig:3dim_esquema}
 \end{figure}
 
-Procediendo igual que antes, observamos que este posee $8$ vértices, cada uno con $3$ adyacencias. Identificamos $4$ aristas de $(x-2)$ nodos, $4$ de $(y-2)$ y $4$ de $(z-2)$, cada una con nodos que poseen $4$ adyacencias, véase Figura~\ref{fig:3dim_esquema} (derecha).
+Proceeding as before, we observe that it possesses $8$ vertices, each with $3$ adjacencies. We identify $4$ edges of \((x-2)\) nodes, $4$ of \((y-2)\), and $4$ of \((z-2)\), each with nodes possessing $4$ adjacencies, see Figure~\ref{fig:3dim_esquema} (right).
 
 %	\begin{figure}[H]
 	%		\centering
@@ -173,7 +173,7 @@ Procediendo igual que antes, observamos que este posee $8$ vértices, cada uno c
 	%		\label{fig:tablero3d}
 	%	\end{figure}
 
-Luego tenemos las caras. Estas se dividen en tres pares: $2$ caras de $(x-2)(y-2)$, $2$ de $(x-2)(z-2)$ y $2$ de $(y-2)(z-2)$, con nodos que poseen $5$ adyacencias cada uno Figura~\ref{fig:3gocaras}.
+Next, we have the faces. These are divided into three pairs: $2$ faces of \((x-2)(y-2)\), $2$ of \((x-2)(z-2)\), and $2$ of \((y-2)(z-2)\), with nodes possessing $5$ adjacencies each, Figure~\ref{fig:3gocaras}.
 
 \begin{figure}[H]
 	\centering
@@ -212,49 +212,50 @@ Luego tenemos las caras. Estas se dividen en tres pares: $2$ caras de $(x-2)(y-2
 		
 		
 	\end{tikzpicture}
-	\caption{Caras del tablero de tres dimensiones con un nodo de $5$ adyacencias.}
+	\caption{Faces of the three-dimensional board with a node of $5$ adjacencies.}
 	\label{fig:3gocaras}
 \end{figure}
 
-Resta el volumen interno, que consiste de $(x-2)(y-2)(z-2)$ nodos, cada uno con $6$ adyacencias. Estamos entonces en condiciones de definir la cantidad total de libertades de un tablero de tres dimensiones.
+Remaining is the internal volume, which consists of \((x-2)(y-2)(z-2)\) nodes, each with $6$ adjacencies. We are thus in a position to define the total number of liberties on a three-dimensional board. 
 
-Sea $A(x,y,z)$ a la cantidad de adyacencias de un  tablero 3-Dimensional, si
+Let \(A(x,y,z)\) be the number of adjacencies of a three-dimensional board; if:
 \begin{itemize}
-	\item$V = 8 \cdot3$, adyacencias de los vértices.
-	\item$R =4(4(x-2)+4(y-2)+4(z-2))$, adyacencias de las aristas.
-	\item$C=5(2(x-2)(y-2)+2(x-2)(z-2)+2(y-2)(z-2))$, adyacencias de las caras.
-	\item$I=6(x-2)(y-2)(z-2)$, adyacencias en el interior.
+	\item \(V = 8 \cdot 3\), adjacencies of the vertices.
+	\item \(R = 4(4(x-2)+4(y-2)+4(z-2))\), adjacencies of the edges.
+	\item \(C = 5(2(x-2)(y-2)+2(x-2)(z-2)+2(y-2)(z-2))\), adjacencies of the faces.
+	\item \(I = 6(x-2)(y-2)(z-2)\), adjacencies in the interior.
 \end{itemize}
-De esta manera, podemos calcular las adyacencias de cualquier tablero de tres dimensiones como sigue,
+
+In this manner, we can calculate the adjacencies of any three-dimensional board as follows:
 \begin{align*}
 	A(x,y,z)&=V+R+C+I\\
 	A(x,y,z)&=6 x y z - 2 x y - 2 x z - 2 y z.
-\end{align*}	
-Y su promedio,
+\end{align*}    
+And its average,
 \begin{align*}
 	\tilde{A}(x,y,z)&=\frac{6 x y z - 2 x y - 2 x z - 2 y z}{xyz}.
 \end{align*}
-A su vez, podemos definir el \textit{exterior} del tablero 3-Dimensional, sea $A(x,y,z)_{\partial}$, la cantidad de adyacencias que tiene el tablero de dimensiones $x,y,z$ que solo toma en cuenta el exterior. Como vimos antes, basta sumar los vértices, las aristas y en caso de las caras, ya no contamos con la adyacencia que va hacia el interior, pues ya no existe al no haber nodos interiores, de modo que nuestras caras tienen 4 adyacencias. Basta tomar $C'= 4(2(x-2)(y-2)+2(x-2)(z-2)+2(y-2)(z-2))$, luego:
+
+In turn, we can define the \textit{exterior} of the three-dimensional board; let \(A(x,y,z)_{\partial}\) be the number of adjacencies of a board of dimensions \(x, y, z\) that only takes the exterior into account. As seen previously, it suffices to sum the vertices, the edges, and, in the case of the faces, we no longer count the adjacency pointing toward the interior, since it ceases to exist as there are no interior nodes, such that our faces have $4$ adjacencies. It suffices to take \(C'= 4(2(x-2)(y-2)+2(x-2)(z-2)+2(y-2)(z-2))\), hence:
 \begin{align*}
 	A(x,y,z)_{\partial}&=V+A+C'\\
 	A(x,y,z)_{\partial}&=8 (x y + x z - 2 x + y z - 2 y - 2 z + 3).
 \end{align*}
-Definimos inmediatamente el promedio, basta quitar los nodos que no estamos considerando, sea  $\tilde{A}(x,y,z)_{\partial}$ el promedio de libertades del exterior del tablero de dimensiones $x,y,z$:
+
+We immediately define the average by subtracting the nodes we are not considering; let \(\tilde{A}(x,y,z)_{\partial}\) be the average number of liberties on the exterior of a board of dimensions \(x, y, z\):
 \begin{align*}
 	\tilde{A}(x,y,z)_{\partial}&=\frac{8 (x y + x z - 2 x + y z - 2 y - 2 z + 3)}{(xyz)-(x-2)(y-2)(z-2)}.
 \end{align*}
-\subsection{Comparando adyacencias promedio}
-\label{key:libprom}
-Previo a la elaboración de este trabajo, como jugador de Go indagué si existía una versión tridimensional del juego. Al encontrar en Internet únicamente imágenes conceptuales, me pregunté: ¿por qué no desarrollarlo? Así nació \href{https://github.com/10500x/3dGo}{3dGo}. 
+\subsection{Comparing Average Adjacencies}\label{key:libprom}
+
+Prior to the development of this work, as a Go player, I wondered whether a three-dimensional version of the game existed. Upon finding only conceptual images on the Internet, I asked myself: why not develop it? Thus, \href{https://github.com/10500x/3dGo}{3dGo} was born.
 \begin{figure}[H]
 	\begin{center}
 		\includegraphics[width=0.9\linewidth]{figures/3dgofoto1}
 	\end{center}
 	\caption{Tablero de $5\times 4\times 3$ en \href{https://github.com/10500x/3dGo}{3dGo}.}
 \end{figure}
-Una vez implementadas las reglas, la selección de tamaño del tablero arbitrario y demás opciones noté, junto con quien jugaba, que no se trataba del mismo juego. El 3dGo se sentía más libre, más agresivo. La mayor cantidad de adyacencias alteraba el estilo de juego, diferenciándolo del Go convencional. Para entender esta diferencia, incluso sin experiencia previa, analizaremos el comportamiento del promedio de adyacencias en el límite\footnote{Esta fue la razón de comenzar este escrito.}:
-
-Veamos cuales son los límites de las adyacencias promedio de los tableros de dos y tres dimensiones.
+Once the rules, arbitrary board-size selection, and other options were implemented, my opponent and I noticed that it was not the same game. \textit{3dGo} felt freer, more aggressive. The greater number of adjacencies altered the playing style, differentiating it from conventional Go. To understand this difference, even without prior experience, we shall analyze the behavior of the average number of adjacencies in the limit\footnote{This was the motivation for initiating this writing.}: Let us examine the limits of the average adjacencies for two- and three-dimensional boards.
 \begin{align*}
 	\lim_{x,y\to\infty} \tilde{A}(x,y) &= \lim_{x,y\to\infty} \frac{4xy-2x-2y}{xy} = \lim_{x,y\to\infty} \left( 4 - \frac{2x}{xy} - \frac{2y}{xy} \right) = 4,
 \end{align*}
@@ -262,24 +263,25 @@ Veamos cuales son los límites de las adyacencias promedio de los tableros de do
 	\lim_{x,y,z\to\infty} 
 	\tilde{A}(x,y,z)&=\lim_{x,y,z\to\infty}\frac{6 x y z - 2 x y - 2 x z - 2 y z}{xyz}=6.\\
 \end{align*}
-Es evidente que el promedio de adyacencias en el $Go^{3}$ es considerablemente superior. Esta diferencia se percibe en la experiencia de juego. Surge entonces el problema: ¿Cómo acercar este promedio a $4$? Jugar al $Go^{3}$ debe equivaler a jugar al Go; para ello, debe imitarlo fielmente en reglas, tamaño y sensación de juego.Es por eso que es necesaria esta reducción, porque jugar al $Go^{3}$ no es jugar al $Go^{2}$.
+It is evident that the average number of adjacencies in \(\mathrm{Go}^{3}\) is considerably higher. This difference is perceptible in the gameplay experience. The following problem then arises: How can we bring this average closer to $4$? Playing \(\mathrm{Go}^{3}\) must be equivalent to playing Go; to achieve this, it must faithfully imitate it in rules, size, and gameplay feel. This is why this reduction is necessary, because playing \(\mathrm{Go}^{3}\) is not playing \(\mathrm{Go}^{2}\).
 
-\subsection{Quitar, sí. Pero ¿cómo?}
+\subsection{Removing Nodes, Yes. But How?}
 \label{def_partial}
 
-Como ya vimos, la mayoría de los nodos en el tablero del $Go^{3}$ están en el interior, siempre que el tamaño sea suficientemente grande, donde cada uno tiene $6$ adyacencias. Por ello, la eliminación de nodos debe comenzar por esta región. Le siguen en prioridad las caras ($5$ adyacencias), mientras que las aristas y vértices, al tener $4$ o menos, no afectan el promedio que buscamos. Si tomamos únicamente el exterior del tablero, las caras poseen justamente $4$ adyacencias (perdemos la que va hacia adentro); por lo tanto, analizando su límite, encontramos que:
+As we have seen, the majority of the nodes on a \(\mathrm{Go}^{3}\) board lie in the interior—provided the size is sufficiently large—where each possesses $6$ adjacencies. Therefore, the elimination of nodes must begin in this region. Next in priority are the faces ($5$ adjacencies), whereas the edges and vertices, possessing $4$ or fewer, do not affect the average we seek. If we consider only the exterior of the board, the faces possess precisely $4$ adjacencies (we lose the one pointing inward); consequently, analyzing their limit, we find that:
 \begin{align*}
 	\lim_{x,y,z\to\infty} \tilde{A}(x,y,z)_{\partial}&=
 	\lim_{x,y,z\to\infty}\frac{8 (x y + x z - 2 x + y z - 2 y - 2 z + 3)}{(xyz)-(x-2)(y-2)(z-2)}=4.
 \end{align*}
-Así, nuestro tablero exterior posee las mismas adyacencias en promedio en el límite, que el $Go^{2}$ es decir: $$\lim_{y,x\to\infty}  \tilde{A}(x,y)= \lim_{x,y,z\to\infty} \tilde{A}(x,y,z)_{\partial}.$$
+Thus, our exterior board possesses the same average adjacencies in the limit as \(\mathrm{Go}^{2}\)—that is:
+ $$\lim_{y,x\to\infty}  \tilde{A}(x,y)= \lim_{x,y,z\to\infty} \tilde{A}(x,y,z)_{\partial}.$$
 
 
-\subsection{Tablero Toroidal}
+\subsection{Toroidal Board}
 \label{key:sectoro}
-En el $Go^{2}$, el límite del promedio al hacerlo arbitrariamente grande es 4. Cabe preguntarse: ¿es posible establecer un tablero cuyas libertades promedio sean exactamente 4?
+In \(\mathrm{Go}^{2}\), the limit of the average as the board is made arbitrarily large is $4$. One might ask: is it possible to establish a board whose average liberties are precisely $4$?
 
-Si unimos los bordes opuestos del tablero obtendremos lo siguiente, Figura~\ref{fig:plano_toro1}
+If we join the opposite edges of the board, we obtain the following, as shown in Figure~\ref{fig:plano_toro1}.
 
 %\begin{wrapfigure}{i}{0.6\textwidth}
 \begin{figure}[H]
@@ -316,11 +318,11 @@ Si unimos los bordes opuestos del tablero obtendremos lo siguiente, Figura~\ref{
 			\end{scope}
 		\end{tikzpicture}
 	\end{center}
-	\caption{Transición del plano a cilindro al unir sus lados opuestos.}
+	\caption{Transition from the plane to a cylinder by joining its opposite sides.}
 	\label{fig:plano_toro1}
 \end{figure}
 
-Repitamos el proceso, unamos nuestros $4$ vértices, que son ahora $2$, en uno solo, Figura~\ref{fig:plano_toro2}.
+Let us repeat the process; let us join our $4$ vertices—which are now $2$—into a single one, Figure~\ref{fig:plano_toro2}.
 
 %\begin{wrapfigure}[15]{r}{0.57\textwidth}
 \begin{figure}[H]
@@ -372,10 +374,10 @@ Repitamos el proceso, unamos nuestros $4$ vértices, que son ahora $2$, en uno s
 			\end{scope}
 		\end{tikzpicture}
 	\end{center}
-	\caption{Transición del cilindro al toro tras unir sus caras opuestas.}
+	\caption{Transition from the cylinder to the torus after joining its opposite faces.}
 	\label{fig:plano_toro2}
 \end{figure}
-Notemos cómo han cambiado las adyacencias de los vértices, en el plano vimos que eran $2$ para cada uno, pero en el cilindro puede verse que tienen $3$ y más aún en el toro son $4$. Lo mismo ocurre con los nodos en las aristas Figura~\ref{fig:Fig 27}.
+Let us observe how the adjacencies of the vertices have changed: in the plane, we saw that they were $2$ for each, but in the cylinder, it can be seen that they have $3$, and furthermore, on the torus, they are $4$. The same occurs with the nodes on the edges, Figure~\ref{fig:Fig 27}.
 %\begin{wrapfigure}{r}{0.6\textwidth}
 \begin{figure}[H]
 	\begin{center}
@@ -454,23 +456,22 @@ Notemos cómo han cambiado las adyacencias de los vértices, en el plano vimos q
 			
 		\end{tikzpicture}
 	\end{center}
-	\caption{Cambio de las adyacencias desde el plano al toro.}
+	\caption{Change in adjacencies from the plane to the torus.}
 	\label{fig:Fig 27} % Assign a unique label
 \end{figure}
+It is therefore worth asking: Is it possible to do this in any dimension? That is, taking them to their ``toroidal'' form. Indeed, it is possible, and furthermore, it is very simple and, unlike Figure~\ref{fig:Fig 27}, we do not lose points.
 
-Vale la pena preguntarse entonces, ¿Es posible hacer esto en cualquier dimensión? Es decir, el llevarlos a su forma «toroidal». Efectivamente es posible y, más aún, es muy sencillo y, a diferencia de la Figura~\ref{fig:Fig 27}, no perdemos puntos.
-
-Bajo nuestra lupa, $G$ solo contiene puntos, el criterio de adyacencia determina sus relaciones. Para relacionar los bordes, basta agregar nuevas relaciones. Lo que buscamos es unir cada cara con su opuesta, a modo de lograr esto, realizamos la siguiente definición, del criterio de adyacencia por opuestos $A_{op}$. Sea $G = N_1 \times \dots \times N_m$, un tablero, donde $|N_k| = n_k$. Diremos que dos puntos $g_1,g_2\in G$ están relacionados opuestamente, si son idénticos en todas sus coordenadas excepto en una, la $k$-ésima, donde toman valores de los extremos:
+Under our scrutiny, \(G\) contains only points, and the adjacency criterion determines their relationships. To relate the edges, it suffices to add new relationships. What we seek is to join each face with its opposite; to achieve this, we formulate the following definition of the adjacency criterion by opposites, denoted as \(A_{op}\). Let \(G = N_1 \times \dots \times N_m\) be a board, where \(|N_k| = n_k\). We shall say that two points \(g_1, g_2 \in G\) are oppositely related if they are identical in all their coordinates except in one, the \(k\)-th, where they take values at the extremes:
 \begin{equation*}
 	g_1=(x_1,\dots, 1, \dots, x_d) \ \sim \ (x_1, \dots, n_k, \dots, x_d)=g_2.
 \end{equation*}
-Así, de manera tan sencilla, hemos definido el tablero toroidal, que no es más que el mismo tablero que antes, solo que ahora estamos considerando más puntos adyacentes, formalmente, si al criterio canónico le llamamos $A_{ort}$ (adyacencias ortogonales), pasamos de la forma $(G,A_{ort})$, a $(G,A_{ort} \cup A_{op})$.
+Thus, in this simple manner, we have defined the toroidal board, which is nothing more than the same board as before, except that we are now considering more adjacent points. Formally, if we call the canonical criterion \(A_{ort}\) (orthogonal adjacencies), we transition from the form \((G,A_{ort})\) to \((G,A_{ort} \cup A_{op})\).
 
-Es claro que el tablero toroidal tendrá para cada uno de sus nodos $4$ adyacencias. Sea $A(x,y)_{\tau}$ la cantidad de adyacencias del tablero toroidal de tamaño $xy$, realicemos una vez más el proceso que hicimos al principio. El tablero toroidal tendrá; ningún vértice, ningún lado y, en consecuencia, tendrá una sola cara compuesta de $xy$ nodos que, como ya vimos, tendrán $4$ adyacencias por nodo, así.
+It is clear that the toroidal board will have $4$ adjacencies for each of its nodes. Let \(A(x,y)_{\tau}\) be the number of adjacencies on a toroidal board of size \(xy\); let us carry out once again the process we performed at the beginning. The toroidal board will have no vertices, no edges, and consequently, a single face composed of \(xy\) nodes which, as we have already seen, possess $4$ adjacencies per node; thus:
 $$A(x,y)_{T}=4xy.$$
-Y su promedio será $4$ pues,
+And its average will be $4$, since:
 $$A(x,y)_{T}=4xy/xy=4.$$
-De esta forma, hemos hallado un tablero tal que para todo nodo, la cantidad de adyacencias es la misma. Hagamos lo mismo en el $Go^{3}$, podemos formular el siguiente esquema, de la Figura~\ref{carasgo3}.
+In this way, we have found a board such that for every node, the number of adjacencies is uniform. Let us do the same in $\mathrm{Go}^{3}$; we can formulate the following scheme from Figure~\ref{carasgo3}.
 
 \begin{wrapfigure}{r}{0.5\textwidth}
 	%\begin{figure}[H]
@@ -515,24 +516,24 @@ De esta forma, hemos hallado un tablero tal que para todo nodo, la cantidad de a
 		\fill[color=Red] (-2.3,-2.3) circle (0.07);
 		
 	\end{tikzpicture}
-	\caption{Caras del $Go^{3}$.}
+	\caption{Faces of the $Go^{3}$.}
 	\label{carasgo3}
 \end{wrapfigure}
 
-Aquí, si aplicamos la nueva relación, obtenemos que todos los puntos tendrán $6$ adyacencias. Pues los vértices obtendrán $3$ nuevas adyacencias, llevándolas a $6$, los lados obtendrán $2$ nuevas adyacencias, llevándolos a $6$. Finalmente las caras obtienen una sola adyacencia nueva, la opuesta. Obteniendo así la igualdad en el límite.
+Here, if we apply the new relation, we obtain that all points will have $6$ adjacencies. Indeed, the vertices will acquire $3$ new adjacencies, bringing them to $6$; the edges will acquire $2$ new adjacencies, bringing them to $6$; and finally, the faces will acquire a single new adjacency—the opposite one. Thus, equality is achieved in the limit.
 
-Ahora bien ¿qué pasaría si tomamos en cuenta solo los puntos que están en el borde? 
+Now then, what would happen if we consider only the points lying on the boundary?
 
 \noindent
-Si $x\in G, x=(x_1,\dots,x_n)$ con, $x_i \leq k_i=|n_i|$, el borde será el de los puntos dados por $G'=\{x\in G: \exists i, (x_i= 1 \lor x_i =n_i) \}$.
+If \(x\in G\), \(x=(x_1,\dots,x_n)\) with \(x_i \leq k_i=|n_i|\), the boundary will be that of the points given by \(G'=\{x\in G: \exists i, (x_i= 1 \lor x_i =n_i) \}\).
 
-A través del criterio de adyacencia canónico, obtenemos un tablero que es tal que posee en su límite $4$ adyacencias por punto, pues tan solo los vértices poseen $3$ adyacencias, lo que vimos en la Sección~\ref{def_partial}.
+Through the canonical adjacency criterion, we obtain a board such that it possesses, in the limit, $4$ adjacencies per point, since only the vertices possess $3$ adjacencies, as we saw in Section~\ref{def_partial}.
 
-Si a este tablero le adjuntamos las adyacencias dadas por el criterio por opuestos, obteniendo $(G',A\cup A_o)$. Tendrá $5$ adyacencias para todo punto, pues al carecer de los puntos interiores, las caras, pierden una adyacencia, pero la ganan a través de la cara opuesta. los bordes, que poseen $4$ adyacencias, ganan $2$ y los vértices obtienen $3$. Como las caras representan la mayor cantidad de puntos, es claro que su límite será $5$, claro está, llevado a tamaños grandes.
+If we attach to this board the adjacencies given by the opposite criterion, obtaining \((G',A\cup A_o)\), it will have $5$ adjacencies for every point; since they lack the interior points, the faces lose one adjacency, but they gain it back through the opposite face. The edges, which possess $4$ adjacencies, gain $2$, and the vertices obtain $3$. Since the faces account for the largest number of points, it is clear that their limit will be $5$, naturally, when scaled to large sizes.
 
-Si recordamos el Lema~\ref{lem:2n}. Al realizar estos procedimientos a un tablero cualquiera, siempre podemos llegar a la igualdad de $2n$ adyacencias por punto. Pues el criterio por opuestos garantiza llenar todas las adyacencias faltantes. Es fácil ver que, al tomar tableros arbitrariamente grandes, cualquier tablero de n dimensiones posee en el límite $2n$ adyacencias promedio. 
+If we recall Lemma~\ref{lem:2n}, upon applying these procedures to any given board, we can always achieve the equality of $2n$ adjacencies per point, for the opposite criterion guarantees the filling of all missing adjacencies. It is easy to see that, by taking arbitrarily large boards, any \(n\)-dimensional board possesses an average of $2n$ adjacencies in the limit.
 
-Para este problema, para $n=2$, $A_{ort}$ proporciona una solución al caso de grado lo más cercano a 4, mientras que la relación $\mathcal{A} = A_{ort} \cup A_{{op}}$ satisface la condición de grado exactamente 4. Además, para el caso $ n = 3 $, fuimos capaces de hallar una solución parcial sobre el borde: si $G' = \{ x \in G \mid \exists i \text{ tal que } (x_i = 1 \lor x_i = n_i) \}$ denota la frontera, entonces el grafo $(G', \mathcal{A} )$ es una solución para el caso de grado lo más cercano posible a 4 sobre la superficie.
+For this problem, for \(n=2\), \(A_{ort}\) provides a solution for the case with a degree as close to $4$ as possible, whereas the relation \(\mathcal{A} = A_{ort} \cup A_{{op}}\) satisfies the degree condition of exactly $4$. Furthermore, for the case \(n = 3\), we were able to find a partial solution on the boundary: if \(G' = \{ x \in G \mid \exists i \text{ such that } (x_i = 1 \lor x_i = n_i) \}\) denotes the boundary, then the graph \((G', \mathcal{A} )\) is a solution for the case with a degree as close to $4$ as possible on the surface.
 
 %	Veamos una solución general. Para forzar 4 adyacencias en $n \ge 2$ manteniendo la estructura original de $G$, aprovechamos que el grado de un vértice en un producto cartesiano de grafos es la suma de los grados de sus factores. Dado que un ciclo $C_k$ es exactamente 2-regular, el producto cartesiano de exactamente dos ciclos ($C_a \times C_b$) siempre resultará en un grafo 4-regular. La estrategia consiste en colapsar las $n$ dimensiones en exactamente dos «meta-dimensiones''.
 %		
@@ -559,7 +560,7 @@ Para este problema, para $n=2$, $A_{ort}$ proporciona una solución al caso de g
 %	Obtenemos $H = (G, R_U \cup R_V)$ es conexo, simple (siempre que $m_U \ge 3$ y $m_V \ge 3$), y estrictamente 4-regular para cualquier $n$.
 %		
 \newpage
-\section{El Go en una dimensión}\label{Go_1dim}
+\section{Go in One Dimension}\label{Go_1dim}
 %\begin{figure}[H]
 \begin{wrapfigure}[5]{r}{0.4\textwidth}
 	\centering
@@ -599,22 +600,22 @@ Para este problema, para $n=2$, $A_{ort}$ proporciona una solución al caso de g
 		\end{scope}
 		
 	\end{tikzpicture}
-	\caption{Tablero vacío y, tablero con una piedra negra y una blanca.}
+	\caption{Empty board and board with a black and a white stone.}
 	\label{fig:1dim_go}
 \end{wrapfigure}
-Primero veamos cómo se ve Figura~\ref{fig:1dim_go}. Claramente hay dos libertades por punto, excepto en los bordes, que cuentan con una. Por lo tanto,
+First, let us examine what it looks like, Figure~\ref{fig:1dim_go}. Clearly, there are two liberties per point, except at the boundaries, which possess one. Therefore,
 \begin{align*}
 	A(n)&=2*1+(n-2)*2=2n-2.\\
 	\tilde{A}(n)&=\frac{2n-2}{n}=2-\frac{2}{n}.
 \end{align*}
-Luego, es claro que en el límite de su promedio es $2$.
+Then, it is clear that the limit of its average is $2$.
 
 \label{teoremas_go1}
 \begin{lemma}
-	En el $Go^{1}$, canónico, las únicas regiones que pueden constituir un ojo son los puntos extremos del tablero, toda otra región vital es una unión.
+	In canonical \(\mathrm{Go}^{1}\), the only regions that can constitute an eye are the extreme points of the board; any other vital region is a union.
 \end{lemma}
 \begin{proof}
-	Por definición, un ojo para un grupo es una región vital rodeada completamente por un único grupo $I$. Sea $R$ una región, para que $I$ rodee a $R$, y sea vital, su frontera $\partial R$ debe pertenecer a $I$.
+	By definition, an eye for a group is a vital region completely surrounded by a single group \(I\). Let \(R\) be a region; for \(I\) to surround \(R\) and for \(R\) to be vital, its boundary \(\partial R\) must belong to \(I\).
 	\begin{figure}[H]
 		\centering
 		\begin{tikzpicture}[scale=0.7]
@@ -640,40 +641,38 @@ Luego, es claro que en el límite de su promedio es $2$.
 			\fill[draw=black,fill=cyan, very thin] (3.75,-0.25) rectangle (4.25,0.25);
 			
 		\end{tikzpicture}
-		\caption{\textcolor{purple}{Ojo} en el borde, \textcolor{cyan}{unión} en el interior.}
+		\caption{\textcolor{purple}{Eye} at the boundary, \textcolor{cyan}{union} in the interior.}
 		\label{fig:ej_go1dim}
 	\end{figure}
-	\paragraph{$R$ en el interior:}
-	Por el lema \ref{lem:2n}, si $x\in R$, posee dos adyacencias: $x-1$ y $x+1$. 
+	\paragraph{\(R\) in the interior:}
+	By Lemma~\ref{lem:2n}, if \(x\in R\), it possesses two adjacencies: \(x-1\) and \(x+1\).
 	
-	Para que $x$ sea ojo de $I$, debe cumplirse que $\{(x-1, e), (x+1, e)\} \subset I$. Al ser $I$ conexo, existiría un camino en $I$ entre $x-1$ y $x+1$. Sin embargo, la forma del tablero obliga a pasar por $x$, que está vacío, por lo que tal camino no existe.
+	For \(x\) to be an eye of \(I\), it must hold that \(\{(x-1, e), (x+1, e)\} \subset I\). Since \(I\) is connected, there would exist a path in \(I\) between \(x-1\) and \(x+1\). However, the geometry of the board forces the path to pass through \(x\), which is empty; thus, such a path does not exist.
 	
-	En consecuencia, $x-1$ y $x+1$ están desconectados y no pueden pertenecer al mismo grupo $I$. Una región en el interior está siempre rodeada por dos grupos distintos. A lo sumo, puede darse que $\partial R$ esté dado pos dos grupos de un mismo color, luego es una unión. 
+	Consequently, \(x-1\) and \(x+1\) are disconnected and cannot belong to the same group \(I\). An interior region is always surrounded by two distinct groups. At most, it may happen that \(\partial R\) is given by two groups of the same color, in which case it is a union.
 	
-	\paragraph{$R$ en el borde:}
-	Si $x = 1$, su única adyacencia es el punto $2$. Si un grupo $I$ posee una piedra en $2$, entonces la totalidad de la frontera de $x$ pertenece a $I$. Por lo tanto $x$ es vital para $I$ y, al ser que hay un solo grupo que rodea a $x$, $x$ es un Ojo para $I$. El caso $x=n$ es análogo.
+	\paragraph{\(R\) at the boundary:}
+	If \(x = 1\), its only adjacency is point $2$. If a group \(I\) possesses a stone at $2$, then the entire boundary of \(x\) belongs to \(I\). Therefore, \(x\) is vital for \(I\) and, since there is a single group surrounding \(x\), \(x\) is an eye for \(I\). The case \(x=n\) is analogous.
 \end{proof}
-\section{Hallando el origen en común}
+\section{Common Origin}
 
-Hasta ahora, hemos construido el Go bidimensional y explorado sus generalizaciones a una y tres dimensiones. Aunque sus dinámicas difieren, surge una pregunta natural: ¿se trata realmente de estructuras distintas? Veremos que todas ellas pueden obtenerse a partir de un mismo origen.
+Thus far, we have constructed two-dimensional Go and explored its generalizations to one and three dimensions. Although their dynamics differ, a natural question arises: are they truly distinct structures? We shall see that all of them can be derived from a single common origin.
 
-Un juego de Go queda determinado por una estructura $(G,E,A,\Delta)$. Para relacionar distintas variantes, introduciremos ciertas aplicaciones naturales que permiten construir unas variantes a partir de otras preservando las adyacencias y las reglas del juego.
+A Go game is determined by a structure \((G,E,A,\Delta)\). To relate different variants, we shall introduce certain natural mappings that allow us to construct some variants from others while preserving the adjacencies and the rules of the game.
 
-Para dotar de dimensión a un conjunto de nodos, definimos la aplicación
-$$\phi:(G,E,A,\Delta)\to(G\times\{1\},E,A,\Delta).$$
-Dada por $\phi(g)=(g,1)$.
-La preservación de la adyacencia es inmediata, además, $\phi$ es inyectiva.
+$$\phi:(G,E,A,\Delta)\to(G\times\{1\},E,A,\Delta),$$given by $\phi(g)=(g,1)$.The preservation of adjacency is immediate; furthermore, $\phi$ is injective:
 $$\phi(g_1)\sim\phi(g_2)\iff(g_1,1)\sim(g_2,1).$$
-Para expandir el tablero con un conjunto $M$ hacemos uso de la aplicación
+To expand the board with a set $M$, we make use of the mapping
 $$\Xi:(G,E,A,\Delta)\to(G\times M,E,A,\Delta).$$
-Fijando una coordenada $m \in M$, definimos $\Xi(g) = (g,m)$. Nuevamente, la adyacencia se conserva y es inyectiva, ya que $(g_1,m) = (g_2,m) \implies g_1 = g_2$.:
-$$\Xi(g_1) \sim \Xi(g_2) \iff (g_1,m) \sim (g_2,m).$$
-Para incorporar jugadores adicionales, definimos una inclusión $$\iota: (G,E,A,\Delta) \to (G,E \cup \{y\},A,\Delta).$$ Con $y \notin E$, tal que $\iota(e) = e$ para todo $e \in E$. 
+Fixing a coordinate $m \in M$, we define $\Xi(g) = (g,m)$.
 
-Es inyectivo ($\iota(e_1) = \iota(e_2) \Rightarrow e_1 = e_2$) y preserva la identidad de los estados previos. Por diseño no es sobreyectivo, para poder acomodar el nuevo elemento.
+Once again, adjacency is preserved and the mapping is injective, since $(g_1,m) = (g_2,m) \implies g_1 = g_2$:$$\Xi(g_1) \sim \Xi(g_2) \iff (g_1,m) \sim (g_2,m).$$To incorporate additional players, we define an inclusion
+$$\iota: (G,E,A,\Delta) \to (G,E \cup \{y\},A,\Delta),$$
+with $y \notin E$, such that $\iota(e) = e$ for all $e \in E$.
 
+It is injective ($\iota(e_1) = \iota(e_2) \Rightarrow e_1 = e_2$) and preserves the identity of previous states. By design, it is non-surjective, so as to accommodate the new element.
 
-Consideremos $Go^0_0 = (\{1\}, \{0\}, A, \Delta)$, un juego de un solo nodo sin jugadores. Sabiendo que $\{1\} \times N \cong_A N$, obtenemos el siguiente diagrama (Figura~\ref{fig:familia-go}).
+Let us consider $\mathrm{Go}^0_0 = (\{1\}, \{0\}, A, \Delta)$, a single-node game with no players. Knowing that $\{1\} \times N \cong_A N$, we obtain the following diagram (Figure~\ref{fig:familia-go}).
 \begin{figure}[H]
 	\centering
 	\begin{tikzcd}
@@ -698,10 +697,10 @@ Consideremos $Go^0_0 = (\{1\}, \{0\}, A, \Delta)$, un juego de un solo nodo sin 
 		\arrow["\iota"', hook, from=5-1, to=5-3]
 		\arrow["\dots"', hook, from=5-3, to=5-5]
 	\end{tikzcd}
-	\caption{Estructura de la familia de \textit{Juegos de Go}. A derecha agregamos jugadores, hacia abajo expandimos el tablero.}
+	\caption{Structure of the family of \textit{Go Games}. Players are added to the right; the board is expanded downward.}
 	\label{fig:familia-go}
 \end{figure}
-Al recordar a 老子 — \textit{Lao Tse}, redescubrimos lo ya dicho:\\
+Recalling 老子 — \textit{Laozi}, we rediscover what has already been stated:\\
 \noindent
 \begin{minipage}[t]{0.35\textwidth}
 	\begin{flushright}
@@ -721,31 +720,34 @@ Al recordar a 老子 — \textit{Lao Tse}, redescubrimos lo ya dicho:\\
 	\raggedright
 	\vspace{1pt}
 	\emph{
-		$\ \!\!\!$El Tao engendra al Uno.\\
-		El Uno engendra al Dos.\\
-		El Dos engendra al Tres.\\
-		El Tres engendra las diez mil cosas.}
+		$\ \!\!\!$The way brings forth one, \\
+		One brings forth two, \\
+		Two brings forth three, \\
+		Three brings forth all things.}
 \end{minipage}
 
 \vspace{1pt}
-\hfill  道德經 — {\textsc{Dàodé jīng Capítulo 42}}\\
+\hfill  道德經 — {\textsc{Dàodé jīng Chapter 42}}\\
 
-Podemos ir un poco más lejos, si recordamos lo visto en el Sección~\ref{key:sectoro}, podemos definir una transformación natural que asocia a cada tablero plano su versión toroidal.
+We can go a bit further; recalling what was seen in Section~\ref{key:sectoro}, we can define a natural transformation that associates each flat board with its toroidal version.
 
-Esta aplicación no altera la cantidad de nodos ni de jugadores; únicamente modifica las relaciones de adyacencia, identificando posiciones opuestas del tablero.
+This mapping alters neither the number of nodes nor the players; it merely modifies the adjacency relations, identifying opposite positions on the board.
 
-Definimos entonces la aplicación toroidal
-\[\tau:(G,E,A,\Delta)\to(G,E,A\cup A_o,\Delta),\]
-donde $A$ es la relación de adyacencia original y $A_o$ la relación entre posiciones opuestas.
-La aplicación actúa como la identidad sobre los nodos. Además,
-\[g_1\sim_A g_2\implies\tau(g_1)\sim_{A\cup A_o}\tau(g_2).\]
-Como $A\subseteq A\cup A_o$, esta propiedad es inmediata. En particular, $\tau$ es inyectiva.
+We thus define the toroidal mapping
+$$\tau:(G,E,A,\Delta)\to(G,E,A\cup A_o,\Delta),$$
+where $A$ is the original adjacency relation and $A_o$ is the relation between opposite positions.
 
-Por otra parte, recordando el análisis de las adyacencias realizado en la Sección~\ref{chap:6}, observamos que las posiciones del borde poseen un comportamiento distinto al de las posiciones interiores. Para aislar este fenómeno introducimos la aplicación de frontera
-\[\partial:(G,E,A,\Delta)\to(\partial G,E,A,\Delta),\]
-Donde $\partial G = \{ x \in G : \exists i, x_i = 1 \text{ o } x_i = n_i \}$, tal como lo definimos en el Sección~ \ref{key:sectoro}.
-\subsection*{El Toro Hueco}
-Combinando ambas construcciones, nos permite construir el diagrama de la Figura~\ref{fig: torohueco}. 
+The mapping acts as the identity on the nodes. Furthermore,$$g_1\sim_A g_2\implies\tau(g_1)\sim_{A\cup A_o}\tau(g_2).$$Since $A\subseteq A\cup A_o$, this property is immediate. In particular, $\tau$ is injective.
+
+On the other hand, recalling the adjacency analysis carried out in Section~\ref{chap:6}, we observe that boundary positions exhibit a different behavior from that of interior positions.
+
+To isolate this phenomenon, we introduce the boundary mapping
+$$\partial:(G,E,A,\Delta)\to(\partial G,E,A,\Delta),$$
+where $\partial G = \{ x \in G : \exists i, x_i = 1 \text{ or } x_i = n_i \}$, as we defined it in Section~\ref{key:sectoro}.
+
+\subsection*{The Hollow Torus}
+
+Combining both constructions allows us to build the diagram of Figure~\ref{fig: torohueco}.
 
 \begin{figure}[H]
 	\centering
@@ -759,7 +761,7 @@ Combinando ambas construcciones, nos permite construir el diagrama de la Figura~
 		\arrow["{\tau, \partial}", maps to, from=1-3, to=3-3]
 		\arrow["{\Xi, \iota}"', hook, from=3-1, to=3-3]
 	\end{tikzcd}
-	\caption{Diagrama de la estructura completa. Las flechas horizontales ($\Xi$) expanden dimensiones y jugadores ($\iota$). Las verticales ($\tau$) cierran el espacio y ($\partial$) vacían el interior.}
+	\caption{Diagram of the complete structure. The horizontal arrows (\(\Xi\)) expand dimensions and players (\(\iota\)). The vertical ones (\(\tau\)) close the space, and (\(\partial\)) hollow out the interior.}
 	\label{fig: torohueco}
 \end{figure}
 
@@ -1286,16 +1288,20 @@ Combinando ambas construcciones, nos permite construir el diagrama de la Figura~
 	%	$\Delta=\varnothing$. El juego nulo no tiene reglas ni jugadas posibles. Al igual que con las adyacencias, la preservación de las reglas al pasar a otro juego se satisface por vacuidad de forma única:  $x \to \varnothing$
 	%
 	
-	\subsection*{La Proyección al grafo}
+	\subsection*{The Projection onto the Graph}
 	
-	Para estudiar propiedades geométricas del tablero, como en la Sección~\ref{chap:6}, resulta útil ignorar temporalmente los estados de las posiciones y la dinámica del juego.
-	Definimos entonces la aplicación
+	To study the geometric properties of the board, as in Section~\ref{chap:6}, it is useful to temporarily ignore the state of the positions and the game dynamics.
+	We thus define the mapping
 	\[U:(G,E,A,\Delta)\to (G,A).\]
-	Esta aplicación asocia a cada juego su grafo subyacente. De este modo, propiedades como la cantidad de libertades \(A(n,m)\) pueden estudiarse únicamente a partir de la estructura de adyacencia.
-	Nótese que distintos juegos pueden determinar un mismo grafo, por lo que la aplicación no es inyectiva.
-	\section{Hacia los Juegos de Rodear}
-	\label{sec_JR}
-	Veamos que nuestra teoría nos podría llevar más lejos de lo que pensamos inicialmente. \subsection*{Othello} En la Figura~\ref{fig:Tab_Othello}, en el tablero de Othello, se juega dentro de los cuadrados; esto no supone dificultad, pues basta pensar que las intersecciones son los cuadrados. A diferencia del Go, las piedras son adyacentes en todas las direcciones (diagonales incluidas), Basta modificar $A$. Además, en Othello «capturar» consiste en voltear las piedras para cambiar su color. A su vez, para «rodear» solo hace falta hacerlo en una dimensión, es decir, encerrar en una recta — ya sea ortogonalmente o diagonalmente — a un grupo de otro color. Esto ya podemos hacerlo: basta considerar que al capturar, en vez de quitar las piedras (es decir, asignar $C(i)=0$), asignamos el color de quien captura (voltea).
+	This mapping associates each game with its underlying graph. In this way, properties such as the number of liberties $A(n,m)$ can be studied solely from the adjacency structure.Note that different games may determine the same graph, so the mapping is not injective.
+	
+	\section{Toward Surrounding Games}\label{sec_JR}
+	
+	Let us see how our theory could take us further than we initially thought.
+	
+	\subsection*{Othello}
+	
+	In Figure~\ref{fig:Tab_Othello}, on the Othello board, play takes place inside the squares; this poses no difficulty, as it suffices to think of the intersections as the squares. Unlike Go, stones are adjacent in all directions (including diagonals); we simply need to modify \(A\). Furthermore, in Othello, ``capturing'' consists of flipping the stones to change their color. In turn, to ``surround,'' it is only necessary to do so in one dimension—that is, to enclose a group of another color along a straight line, either orthogonally or diagonally. We can already accomplish this: it suffices to consider that upon capturing, instead of removing the stones (i.e., assigning \(C(i)=0\)), we assign the color of the capturing player (by flipping them).
 	
 	\begin{wrapfigure}[9]{i}{0.55\textwidth}
 		\centering
@@ -1319,14 +1325,12 @@ Combinando ambas construcciones, nos permite construir el diagrama de la Figura~
 			\filldraw[black] (4.5,4.5)  circle (12pt);
 			
 		\end{tikzpicture}
-		\caption{Tablero de Othello con su posición inicial.}
+		\caption{Othello board with its initial position.}
 		\label{fig:Tab_Othello}
 	\end{wrapfigure}
-	Si tuviéramos $\Delta_{oth}$, el Othello puede construirse sobre el juego:
+	If we had \(\Delta_{oth}\), Othello can be constructed over the game:
 	$(N\times N, \{0,1,2\}, A_{ort} \cup A_{diag}, \Delta_{Oth}).$
-	Con $|N|=8$, $A_{diag}$ el criterio que toma en cuenta las diagonales $(\pm1,\pm1)$ y $\Delta_{Oth}$ las reglas de cambios en el Othello. De esta manera, la construcción desarrollada sugiere una posible formalización del \textit{Othello} dentro del mismo marco teórico.\hfill\break
-	
-	\subsection*{Havannah}
+	With $|N|=8$, $A_{diag}$ being the criterion that takes diagonals $(\pm1,\pm1)$ into account, and $\Delta_{Oth}$ the rules of change in Othello. Thus, the developed construction suggests a possible formalization of \textit{Othello} within the same theoretical framework.\hfill\break\subsection*{Havannah}
 	
 	\begin{wrapfigure}[13]{r}{0.35\textwidth}
 		\centering
@@ -1406,14 +1410,14 @@ Combinando ambas construcciones, nos permite construir el diagrama de la Figura~
 				{ -- ++(\a:\r) } -- cycle;
 			}
 		\end{tikzpicture}
-		\caption{Las tres estructuras ganadoras en el Havannah: \textcolor{Blue}{anillo}, \textcolor{Red}{puente} y \textcolor{OliveGreen}{tenedor}.}
+		\caption{The three winning structures in Havannah: \textcolor{Blue}{ring}, \textcolor{Red}{bridge}, and \textcolor{OliveGreen}{fork}.}
 		\label{fig:havannah}
 	\end{wrapfigure}
-	Otro ejemplo interesante es el Havannah. A diferencia del Go, este juego se desarrolla sobre un tablero hexagonal y las piedras son adyacentes según la geometría propia de dicho tablero. Nuevamente, basta modificar el criterio de adyacencia. La particularidad del Havannah es que existen tres formas distintas de ganar: construir un \textcolor{Blue}{anillo}, un \textcolor{Red}{puente} o un \textcolor{OliveGreen}{tenedor}, véase Figura~\ref{fig:havannah}.
+	Another interesting example is Havannah. Unlike Go, this game takes place on a hexagonal board, and stones are adjacent according to the intrinsic geometry of said board. Once again, it suffices to modify the adjacency criterion. The particularity of Havannah is that there are three distinct ways to win: constructing a \textcolor{Blue}{ring}, a \textcolor{Red}{bridge}, or a \textcolor{OliveGreen}{fork} (see Figure~\ref{fig:havannah}).
 	
-	Nuestra teoría ya contempla el caso del \textcolor{Blue}{anillo}. En efecto, un anillo es simplemente un grupo que encierra una región. Si distinguimos las seis esquinas del tablero como subconjuntos especiales de posiciones, un \textcolor{Red}{puente} puede describirse como un grupo que contiene piedras en al menos dos esquinas distintas. Del mismo modo, si distinguimos los seis bordes del tablero, un \textcolor{OliveGreen}{tenedor} puede describirse como un grupo que contiene piedras en al menos tres bordes distintos.
+	Our theory already accounts for the case of the \textcolor{Blue}{ring}. Indeed, a ring is simply a group that encloses a region. If we distinguish the six corners of the board as special subsets of positions, a \textcolor{Red}{bridge} can be described as a group containing stones in at least two distinct corners. Likewise, if we distinguish the six edges of the board, a \textcolor{OliveGreen}{fork} can be described as a group containing stones in at least three distinct edges.
 	
-	Si recordamos las propiedades de $|K(i)|$ discutidas en la Parte~\ref{parte1} esto nos basta para poder identificar qué puntos pertenecen a las esquinas o bordes, Sección~\ref{posicion_espacial}. De esta manera, la condición de victoria del Havannah puede expresarse únicamente en términos de grupos, regiones y subconjuntos del tablero. En consecuencia, el juego parece admitir una formalización natural dentro del mismo marco teórico.
+	Recalling the properties of $|K(i)|$ discussed in Part~\ref{parte1}, this suffices for us to identify which points belong to the corners or edges (Section~\ref{posicion_espacial}). In this manner, Havannah's winning condition can be expressed solely in terms of groups, regions, and board subsets. Consequently, the game appears to admit a natural formalization within the same theoretical framework.
 	\subsection*{Hex}
 	\begin{wrapfigure}[12]{i}{0.47\textwidth}
 		\centering
@@ -1463,14 +1467,14 @@ Combinando ambas construcciones, nos permite construir el diagrama de la Figura~
 				\pgfmathsetmacro{\y}{0.55*1.5*\j}
 				\filldraw[fill=Red] (\x,\y) ++(30:\r) \foreach \a in {90,150,210,270,330} { -- ++(\a:\r)} -- cycle; }
 		\end{tikzpicture}
-		\caption{\textcolor{Red}{Cadena} ganadora que conecta dos bordes opuestos.}
+		\caption{\textcolor{Red}{Winning chain} connecting two opposite edges.}
 		\label{fig:hex}
 	\end{wrapfigure}
-	Consideremos ahora el Hex, Figura~\ref{fig:hex}. El tablero es hexagonal, basta adaptar el criterio de adyacencia. A diferencia del Go, en Hex no existen capturas. Para ganar se tiene que construir un camino de una esquina a su opuesta. Basta distinguir los bordes opuestos del tablero como subconjuntos de posiciones, la condición de victoria puede expresarse de manera muy sencilla: un jugador gana si existe un grupo de su color que interseca ambos bordes opuestos de su color. Así, la victoria en Hex se reduce a una propiedad de los grupos.
+	Let us now consider Hex, Figure~\ref{fig:hex}. The board is hexagonal; it suffices to adapt the adjacency criterion. Unlike Go, there are no captures in Hex. To win, one must construct a path from one corner to its opposite. By distinguishing the opposite edges of the board as position subsets, the winning condition can be expressed very simply: a player wins if there exists a group of their color that intersects both opposite edges of their color. Thus, victory in Hex reduces to a property of the groups.
+	\newpage
+	\subsection*{Shannon's Game}
 	
-	\subsection*{El juego de Shannon}
-	
-	El Juego de Shannon constituye un ejemplo particularmente interesante, a diferencia del Go, Hex o Havannah, no se desarrolla sobre un tablero, sino, sobre un grafo finito arbitrario. Los jugadores que son dos, alternan turnos, el jugador Short toma una arista del grafo y la colorea, Cut toma una arista del grafo y la elimina. Short vence si sus aristas elegidas contiene un camino que conecta los vértices distinguidos $A$ y $B$. Cut gana si logra desconectar los vértices $A$ y $B$.
+	Shannon's game constitutes a particularly interesting example; unlike Go, Hex, or Havannah, it does not take place on a board, but rather on an arbitrary finite graph. The two players alternate turns: player Short takes an edge of the graph and colors it, while Cut takes an edge of the graph and removes it. Short wins if their chosen edges contain a path connecting the distinguished vertices $A$ and $B$. Cut wins if they succeed in disconnecting vertices $A$ and $B$.
 	\begin{figure}[H]
 		\centering
 		\begin{tikzpicture}[
@@ -1512,16 +1516,10 @@ Combinando ambas construcciones, nos permite construir el diagrama de la Figura~
 			
 			
 		\end{tikzpicture}
-		\caption{Las aristas azules pertenecen a Short, las rojas a Cut y las negras permanecen libres. El conjunto de aristas azules determina un camino entre los vértices distinguidos $A$ y $B$, por lo que Short gana.}
+		\caption{The blue edges belong to Short, the red ones to Cut, and the black ones remain free. The set of blue edges determines a path between the distinguished vertices $A$ and $B$, so Short wins.}
 	\end{figure}
 	
-	Sea $G=(V,E)$ un grafo finito y sean $A,B\in V$ dos vértices distinguidos. Consideraremos cada arista del grafo como una posición jugable. En consecuencia, el conjunto de posiciones vendrá dado por $T=E$. Los estados posibles de una posición serán $E_s=\{0,1,2\}$,	donde $0$ representa una arista libre, $1$ una arista controlada por Short y $2$ una arista controlada por Cut.
-	
-	Definimos una relación de adyacencia $T_s$ sobre $T$, dos posiciones $e_1,e_2\in T$ son adyacentes cuando las aristas correspondientes comparten un vértice, es decir,
-	$$	e_1\sim e_2	\iff e_1\cap e_2\neq\varnothing.$$
-	Con esta definición, los grupos introducidos anteriormente coinciden con componentes conexas de aristas de un mismo color. Denotamos la dinámica del juego por $\Delta_s$, cualquier Juego de Shannon asociado al grafo $G$ puede representarse mediante la estructura:
-	$$(T,E_s,T_s,\Delta_s).$$
-	Este ejemplo resulta especialmente revelador, pues muestra que la estructura desarrollada no depende de nociones geométricas como regiones o territorios. Aun tratándose de un juego definido sobre un grafo arbitrario, las nociones de posición, estado, adyacencia y grupo siguen siendo suficientes para describir completamente su dinámica. Parece ser que la teoría desarrollada no describe únicamente al Go, sino a una familia más amplia de juegos, los \emph{Juegos de Rodear} $(\mathsf{JR})$.\footnote{Este nombre no es correcto pero, es el que surgió durante el desarrollo. Se adopta aquí por conveniencia y no pretende identificar una matemática establecida. La determinación de una denominación adecuada requeriría un estudio más amplio.}
+	Let $G=(V,E)$ be a finite graph, and let $A,B\in V$ be two distinguished vertices. We shall consider each edge of the graph as a playable position. Consequently, the set of positions will be given by $T=E$. The possible states of a position will be $E_s=\{0,1,2\}$, where $0$ represents a free edge, $1$ an edge controlled by Short, and $2$ an edge controlled by Cut.We define an adjacency relation $T_s$ on $T$: two positions $e_1, e_2 \in T$ are adjacent when the corresponding edges share a vertex—that is,$$e_1\sim e_2 \iff e_1\cap e_2\neq\varnothing.$$With this definition, the groups introduced earlier coincide with connected components of edges of the same color. We denote the game dynamics by $\Delta_s$; any Shannon game associated with the graph $G$ can be represented by the structure:$$(T,E_s,T_s,\Delta_s).$$This example is especially revealing, as it shows that the developed structure does not depend on geometric notions such as regions or territories. Even though it is a game defined on an arbitrary graph, the notions of position, state, adjacency, and group remain sufficient to completely describe its dynamics. It appears that the developed theory describes not only Go, but a broader family of games: \emph{Surrounding Games} ($\mathsf{JR}$).\footnote{This name is not entirely accurate, but it is the one that emerged during development. It is adopted here for convenience and does not pretend to identify an established branch of mathematics. Determining an appropriate designation would require a broader study.}
 	%	por lo tanto, $Othello \in \textsf{JR}$.
 	%	\begin{figure}[H]
 		%		\centering

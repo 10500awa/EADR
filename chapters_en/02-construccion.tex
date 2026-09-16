@@ -956,47 +956,55 @@ If we transition to an $n$-dimensional space, we require $n$ sets to construct t
 
 \[ G = N_1 \times N_2 \times \dots \times N_n. \]
 For $m$ players, we extend the set of states to $E = \{0, 1, \dots, m\}$, always reserving the value $0$ for vacant intersections.
-\begin{definition}[Adyacencia entre puntos]
-	Sea $T$ un tablero y, $t_1, t_2 \in T$ dos puntos dados por, $t_1 = (a_1, a_2, \dots, a_n),\ t_2 = (b_1, b_2, \dots, b_n).$
+
+\begin{definition}[Adjacency Between Points]
+	Let \(T\) be a board, and let \(t_1, t_2 \in T\) be two points given by \(t_1 = (a_1, a_2, \dots, a_n)\) and \(t_2 = (b_1, b_2, \dots, b_n)\).
 	
-	Luego, $t_1$ es adyacente a $t_2$ y lo notaremos como $t_1 \sim t_2$ cuando,
-	\[\exists! \ i \in \{1, 2, \dots, n\} : \big( \forall r \neq i, \ a_r = b_r \ \land \ a_i = b_i \pm 1 \big). \]
+	We say that \(t_1\) is adjacent to \(t_2\), denoted by \(t_1 \sim t_2\), if:
+	$$\exists! \ i \in \{1, 2, \dots, n\} : \big( \forall r \neq i, \ a_r = b_r \ \land \ a_i = b_i \pm 1 \big).$$
 \end{definition}
 
-Reducido a dos dimensiones, la condición exige una coordenada idéntica y otra difiriendo exactamente en 1, recuperando naturalmente la definición del tablero clásico.
+When reduced to two dimensions, the condition demands one identical coordinate and another differing by exactly 1, naturally recovering the definition of the classical board. Likewise, we extend the notion of connection between stones.
 
-De igual manera, extendemos la conexión entre piedras.
+\begin{definition}[Connection]
+	Let $T$ be a board and let $i_1, i_2 \in T$ be two stones such that $i_1 = (e, t_1)$ and $i_2 = (e', t_2)$. These are connected if:$$i_1 \leftrightarrow i_2 \iff t_1 \sim t_2 \text{ and } C(i_1) = C(i_2).$$\end{definition}
+
 \begin{definition}[Conexión]
 	Sea $T$ un tablero e $i_1, i_2 \in T$ tales que $i_1 = (e, t_1)$ e $i_2 = (e', t_2)$, estas están conectadas cuando:
 	\[ i_1 \leftrightarrow i_2 \iff t_1 \sim t_2 \text{ y } C(i_1) = C(i_2). \]
 \end{definition}
-De ahora en adelante, cuando hagamos referencia a este tipo de conexión, la denominaremos \textit{adyacencia ortogonal}, puesto que veremos que es posible usar otros criterios en la Parte~\ref{parte3}.
 
-Las definiciones de los grupos se mantienen idénticas, puesto que solo dependen de la conexión entre las piedras. A su vez, los territorios y las capturas funcionan exactamente igual, ya que solo necesitamos de las adyacencias del grupo. Lo único que realmente cambia al introducir más jugadores es el criterio de captura; más específicamente, la manera en que se distribuyen los puntos al retirar piedras enemigas. 
+From now on, whenever we refer to this type of connection, we shall call it \textit{orthogonal adjacency}, since we will see that it is possible to employ other criteria in Part~\ref{parte3}.
 
-Antes de continuar, destaquemos una propiedad geométrica que es de vital importancia en las secciones siguientes.
+The definitions of groups remain identical, as they depend solely on the connection between stones. In turn, territories and captures function in exactly the same manner, since we only require the adjacencies of the group. The only element that truly changes upon introducing more players is the capture criterion; more specifically, the manner in which points are distributed upon removing opposing stones.
+
+Before proceeding, let us highlight a geometric property of vital importance for the subsequent sections.
+
 
 \begin{lemma}\label{lem:2n}
-	En un tablero de Go de $n$ dimensiones, un punto $t=(a_1,a_2,\dots,a_n)$ tiene al menos $n$ y a lo sumo $2n$ adyacencias.
+	On an \(n\)-dimensional Go board, with the orthogonal adjacency, a point \(t=(a_1,a_2,\dots,a_n)\) has at least \(n\) and at most $2n$ adjacencies.
 \end{lemma}
 
+
 \begin{proof}
-	Para cada coordenada de $t$ existe al menos una dirección válida, pues si una está bloqueada por el borde la opuesta permanece disponible. En consecuencia cada dimensión aporta al menos una adyacencia. En un punto interior, cada coordenada aporta exactamente dos. Luego, hay al menos $n$ adyacencias y a lo sumo $2n$.
+	For each coordinate of \(t\), there exists at least one valid direction, since if one is blocked by the edge, the opposite direction remains available. Consequently, each dimension contributes at least one adjacency. At an interior point, each coordinate contributes exactly two. Therefore, there are at least \(n\) adjacencies and at most $2n$.
 \end{proof}
-Para simplificar la notación, convendremos en denotar al Go de $n$ dimensiones y $m$ jugadores como $\mathrm{Go}^n_m$. Si quisiéramos explicitar el tamaño de cada dimensión, podríamos hacerlo de la siguiente manera: $\mathrm{Go}^2_2(19,19)$ para el caso del tablero convencional. En caso de omitir la cantidad de jugadores, se interpretará que hablamos de un tablero de dimensión $n$ genérico, denotado por $\mathrm{Go}^n$. Del mismo modo, $\mathrm{Go}_m$ representará un tablero de dimensión arbitraria jugado por $m$ jugadores.
-\subsection{Capturas y puntos para \texorpdfstring{$m$}{m} jugadores}\label{capturas_n_jug}
 
-Sea $I$ un grupo de piedras. Así como en el tablero clásico, para que a dicho grupo se lo considere capturado, debe ocurrir que $L(I)=\varnothing$. Consideremos el tablero de $\mathrm{Go}^{2}_{4}$ ilustrado en la Figura~\ref{fig:capturasm}. Supongamos que nuestros jugadores son: celeste ($c$), rojo ($r$), verde ($v$) y marrón ($m$). Nuestro conjunto de estados queda definido entonces como $E = \{0, c, r, v, m\}$.
+To simplify notation, we shall adopt the convention of denoting Go in \(n\) dimensions and with \(m\) players as \(\mathrm{Go}^n_m\). Should we wish to explicitly specify the size of each dimension, we may do so in the following manner: \(\mathrm{Go}^2_2(19,19)\) for the case of the standard board. If the number of players is omitted, it is to be understood that we are referring to a generic \(n\)-dimensional board, denoted by \(\mathrm{Go}^n\). Likewise, \(\mathrm{Go}_m\) will represent a board of arbitrary\footnote{The inifite theory of Go is yet to be develop, im reffering to numerable dimension.} dimension played by \(m\) players.
 
-En este ejemplo, observamos que un grupo de 4 piedras rojas es capturado luego de que el jugador marrón coloca su piedra en la posición $(6,4)$. Sin embargo, notamos que el grupo rojo no fue rodeado en su totalidad de manera exclusiva por piedras marrones. De las 9 intersecciones adyacentes (las libertades que poseía originalmente el grupo rojo), 3 han sido ocupadas por el jugador verde, 2 por el celeste y, finalmente, 4 por el marrón.
+\subsection{Captures and Points for \texorpdfstring{\(m\)}{m} Players}\label{capturas_n_jug}
 
-¿Cómo distribuimos los puntos de captura en este escenario? Nuestra propuesta es repartir el puntaje de manera estrictamente proporcional a la influencia que cada color tuvo sobre el grupo capturado. Si el total a repartir son los 4 puntos correspondientes a las piedras rojas, los asignamos según la fracción de libertades ocupadas por cada atacante:
+Let \(I\) be a group of stones. Just as on the classical board, for said group to be considered captured, it must hold that \(L(I)=\varnothing\). Consider the \(\mathrm{Go}^{2}_{4}\) board illustrated in Figure~\ref{fig:capturasm}. Let us suppose our players are: cyan (\(c\)), red (\(r\)), green (\(v\)), and brown (\(m\)). Our state set is then defined as \(E = \{0, c, r, v, m\}\).
+
+In this example, we observe that a group of 4 red stones is captured after the brown player places their stone at position \((6,4)\). However, we note that the red group was not completely surrounded exclusively by brown stones. Of the 9 adjacent intersections (the liberties originally possessed by the red group), 3 have been occupied by the green player, 2 by the cyan player, and, finally, 4 by the brown player.
+
+How do we distribute the capture points in this scenario? Our proposal is to distribute the points in strict proportion to the influence each color had over the captured group. If the total to be distributed is the 4 points corresponding to the red stones, we allocate them according to the fraction of liberties occupied by each attacker:
 \begin{align*}
-	\text{Puntos del verde} = \frac{3}{9} \cdot 4,\quad
-	\text{Puntos del celeste} = \frac{2}{9} \cdot 4,\quad
-	\text{Puntos del marrón} = \frac{4}{9} \cdot 4.
+	\text{Green's points} = \frac{3}{9} \cdot 4,\quad
+	\text{Cyan's points} = \frac{2}{9} \cdot 4,\quad
+	\text{Brown's points} = \frac{4}{9} \cdot 4.
 \end{align*}
-En efecto, la suma de las partes es igual a la totalidad de los puntos:
+Indeed, the sum of the parts equals the total number of points:
 \[ \left(\frac{3}{9} + \frac{2}{9} + \frac{4}{9}\right) \cdot 4 = 4. \]
 \begin{figure}
 	\centering
@@ -1052,36 +1060,37 @@ En efecto, la suma de las partes es igual a la totalidad de los puntos:
 			\path (5,3) node [white]{1};
 		\end{scope}
 	\end{tikzpicture}
-	\caption{Captura en el $Go^{2}_{4}$. Juegan marrones y capturan al grupo rojo.}
+	\caption{
+		Capture in \(\mathrm{Go}^{2}_{4}\). Brown plays and captures the red group.}
 	\label{fig:capturasm}
 \end{figure}
+In this manner, a proportional distribution is achieved, rewarding the player who contributes most to the capture. Awarding the points solely to the player who executes the capture would disincentivize aggression; it would be unfeasible to surround an opponent if, during the \(m-1\) intermediate turns, others could ``steal'' the capture.
 
-De esta forma, se produce una distribución proporcional que recompensa a quien más contribuye a la captura. Otorgar los puntos solo a quien captura desincentivaría la agresión; sería inviable rodear a un oponente si en los $m-1$ turnos intermedios otros pudieran «robar» la captura.
+\subsection{Komi for Multiple Players}\label{komi_n_jug}
 
-\subsection{Komi para muchos jugadores}\label{komi_n_jug}
+The origin of \textit{komi} lies in preventing draws and counterbalancing the disadvantage of playing second; therefore, it is necessary to reinterpret this concept when multiple players are involved. What follows is a proposal on how we might generalize it.
 
-El origen del \textit{komi} radica en evitar empates y contrarrestar la desventaja de jugar segundo, por ello, es necesario reinterpretar este concepto cuando intervienen múltiples jugadores. Lo que sigue es una propuesta de cómo podríamos generalizarlo.
-\subsection*{Komi escalonado}
-Podemos definir el \textit{komi} como una función que depende estrictamente del orden del turno. Si consideramos el conjunto de jugadores $E \setminus \{0\}$, podemos establecer una constante de compensación $\alpha \in \mathbb{Q}$.  De esta forma, la función de \textit{komi} $K: E \setminus \{0\} \to \mathbb{R}$ se define como:
-\[K(j) = (j - 1) \cdot \alpha.\]
-Así, el primer jugador recibe $0$ puntos de compensación, el segundo recibe $\alpha$, el tercero $2\alpha$, y el último jugador recibe $(m-1)\alpha$.
-\subsection*{Komi irracional}
-Si además buscamos preservar la segunda función histórica del \textit{komi} — evitar empates —, podemos proseguir de la siguiente manera. Para garantizar que no existan dos jugadores con el mismo resultado final, podemos asignar un componente irracional único al \textit{komi} de cada participante. Dado que tanto el conteo de piedras y territorios (enteros) como las capturas proporcionales (racionales) se mantienen estrictamente dentro de $\mathbb{Q}$, la adición de un valor irracional específico para cada jugador rompe cualquier posibilidad de igualdad. Al ser la suma de un racional y un irracional es siempre irracional, la igualdad entre dos puntajes es imposible pues sus irracionales son siempre distintos.
+\subsection*{Stepped Komi}
+We can define \textit{komi} as a function that depends strictly on the turn order. If we consider the set of players \(E \setminus \{0\}\), we can establish a compensation constant \(\alpha \in \mathbb{Q}\). Thus, the \textit{komi} function \(K: E \setminus \{0\} \to \mathbb{R}\) is defined as:
+$$K(j) = (j - 1) \cdot \alpha.$$
 
-\subsection*{Komi mediante subasta}
-Antes de iniciar la partida, cada jugador $j \in E \setminus \{0\}$ declara de forma secreta una apuesta $b_j \in \mathbb{Q}$, que representa la cantidad de puntos que está dispuesto a sacrificar de su recuento final a cambio del privilegio de asegurar la iniciativa, es decir un \textit{komi} negativo. Una vez se tienen todas las apuestas, se revelan. Se establece el orden de los turnos de manera estrictamente decreciente: el jugador con el valor $b_j$ más alto jugará primero, seguido por el segundo más alto, y así sucesivamente. En caso de igualdad entre dos o más apuestas, el orden de esos jugadores se resuelve a favor de quien apostó primero.
+\subsection*{Irrational Komi}
+If we additionally seek to preserve the second historical function of \textit{komi}—preventing draws—we may proceed as follows. To guarantee that no two players achieve the same final score, we can assign a unique irrational component to the \textit{komi} of each participant. Given that both the counting of stones and territories (integers) and the proportional captures (rationals) remain strictly within $\mathbb{Q}$, the addition of a specific irrational value for each player eliminates any possibility of a tie. Because the sum of a rational and an irrational is always irrational, equality between two scores is impossible, as their irrational components are always distinct.
 
-Estas soluciones pueden usarse en simultáneo o bien ser reforzadas, lo aquí presentado son ideas de cómo poder subsanar la carencia de un \textit{komi} bien definido en el Go generalizado.\footnote{Nota de autor: A mi parecer el \textit{komi} no debería existir, la iniciativa (\textit{sente}) puede perderse en cualquier momento. Además, mientras mayor es el tablero, menos importa quien juega primero. Esta invención del siglo XX solo es útil para jugadores profesionales.}
+\subsection*{Auction Komi}
+Prior to the start of the game, each player $j \in E \setminus \{0\}$ secretly declares a bid $b_j \in \mathbb{Q}$, representing the number of points they are willing to sacrifice from their final score in exchange for the privilege of securing the initiative (i.e., a negative \textit{komi}). Once all bids have been collected, they are revealed. The turn order is established in strictly decreasing order: the player with the highest $b_j$ value will play first, followed by the second highest, and so forth. In the event of a tie between two or more bids, the turn order for those players is resolved in favor of whoever placed their bid first.
 
-\section{Detección del SuperKo posicional}\label{detec_superko}
+These solutions may be employed simultaneously or further refined; what is presented here are ideas on how to rectify the lack of a well-defined \textit{komi} in generalized Go.\footnote{Author's note: In my opinion, \textit{komi} should not exist; the initiative (\textit{sente}) can be lost at any moment. Furthermore, the larger the board, the less it matters who plays first. This 20th-century invention is only useful for professional players.}
 
-Gracias al Teorema de la jugada legal~\ref{teoremalegal}, el cual por su construcción vale para $n$ dimensiones, poseemos la herramienta para saber si una jugada es legal o no; sin embargo, hasta ahora no hemos discutido el mecanismo para detectarlo.
+\section{Positional Superko Detection}\label{detec_superko}
 
-Ya hemos formalizado cómo determinar si hay captura, si hay suicidio, o si el punto deseado se encuentra ocupado. Ahora bien, ¿Cuándo hay \textit{SuperKo}? Es decir, ¿cómo sabemos de manera efectiva que hemos roto esta regla?
+By virtue of the Legal Move Theorem~\ref{teoremalegal}, which by construction holds for \(n\) dimensions, we possess the theoretical tool to determine whether a move is legal; however, thus far we have not discussed the mechanism for its practical detection.
 
-Que exista una violación a la \textit{regla del SuperKo} implica que la jugada propuesta recrea una configuración del tablero que ya ha ocurrido en la partida. Para detectar esto, bastaría con poseer un registro histórico de los estados de cada punto en cada turno. De esta manera, simulando el turno que se pretende jugar y comparándolo con el historial, sabríamos que, si existe una coincidencia exacta, se ha roto la regla.
+We have already formalized how to determine whether a capture or a suicide occurs, or whether the intended intersection is occupied. Now, when does a \textit{Superko} occur? That is to say, how do we effectively ascertain that we have violated this rule?
 
-Para resolver este problema, haremos uso del trabajo desarrollado por Albert L. Zobrist \cite{zobrist1970hashing}. 
+A violation of the \textit{Superko} rule implies that the candidate move recreates a board configuration that has already occurred in the game. To detect this, it would suffice to maintain a historical record of the states of every intersection at each turn. Thus, by tentatively simulating the intended move and comparing the resulting state against the history, we could determine that the rule has been broken if an exact match exists.
+
+To solve this problem, we shall make use of the work developed by Albert L. Zobrist\cite{zobrist1970hashing}.
 
 %		El primer método propone lo siguiente: dado un tablero $\mathrm{Go}^{n}_{m}$, buscamos simplificar la representación espacial de las $n$-tuplas y colapsar todas las coordenadas en un vector. El tamaño o dimensión de este vector será exactamente el cardinal del tablero:
 %		\[|T| = \prod_{i=1}^{n} |N_i| = \tau.\]
@@ -1172,13 +1181,13 @@ Para resolver este problema, haremos uso del trabajo desarrollado por Albert L. 
 %	  Afortunadamente, existe otra forma de hacer todo esto en tiempo constante ($O(1)$), con el único inconveniente de que renuncia a la biyección absoluta y adquiere una naturaleza probabilística (puede fallar por colisiones). 
 
 
-\subsection{Hash de Zobrist}\label{ZobristHash}
+\subsection{Zobrist Hashing}\label{ZobristHash}
 
-Para este método, haremos uso del operador lógico \textit{o exclusivo}, denotado como XOR ($\oplus$), aplicado sobre números aleatorios $r_i$ representados como enteros de $n$ bits.
+For this method, we shall make use of the logical \textit{exclusive or} operator, denoted as XOR (\(\oplus\)), applied to random numbers \(r_i\) represented as \(n\)-bit integers.
 
-Un entero de $n$ bits es, una secuencia de $n$ dígitos binarios. Por ejemplo, el número 15 en 4 bits se representa como $1111$, puesto que:
+An \(n\)-bit integer is a sequence of \(n\) binary digits. For example, the number 15 in 4 bits is represented as $1111$, since:
 \[ 2^3 \cdot 1 + 2^2 \cdot 1 + 2^1 \cdot 1 + 2^0 \cdot 1 = 8 + 4 + 2 + 1 = 15. \]
-Del mismo modo, el número 9 en 4 bits es $1001$. Si recordamos la tabla de verdad para el operador lógico XOR, Figura~\ref{TablaXOR}.
+Likewise, the number 9 in 4 bits is $1001$. Let us recall the truth table for the logical XOR operator (see Figure~\ref{TablaXOR}).
 \vspace{10pt}
 
 \begin{wrapfigure}[9]{l}{0.43\textwidth}
@@ -1195,36 +1204,36 @@ Del mismo modo, el número 9 en 4 bits es $1001$. Si recordamos la tabla de verd
 		1 & 1 & 0
 	\end{array}
 	\]
-	\caption{Tabla de verdad del XOR.}
+	\caption{XOR truth table.}
 	\label{TablaXOR}
-\end{wrapfigure}Realizar la operación XOR entre 15 y 9 en base 2 significa aplicar el operador de manera individual a cada bit correspondiente. Vale aclarar que, si bien escribimos el número de forma contigua, en realidad lo tratamos como si fueran, en este caso, 4-tuplas: $1111 \oplus 1001 = 0110$. Si $r_i$ y $r_j$ son dos secuencias aleatorias de enteros de $n$ bits, asumiremos que se cumplen las siguientes propiedades:\hfill\break
+\end{wrapfigure}Performing the XOR operation between 15 and 9 in base 2 means applying the operator individually to each corresponding bit. It is worth clarifying that, although we write the numbers contiguously, we actually treat them as if they were, in this case, 4-tuples: \(1111 \oplus 1001 = 0110\). If \(r_i\) and \(r_j\) are two random sequences of \(n\)-bit integers, we shall assume that the following properties hold:\hfill\break
 
 \begin{enumerate}
-	\item[P1)] $( r_i \oplus r_j ) \oplus r_k = r_i \oplus ( r_j \oplus r_k )$. \hfill(Asociatividad)
-	\item[P2)] $r_i \oplus r_j = r_j \oplus r_i$.\hfill (Conmutatividad)
-	\item[P3)] $r_i \oplus r_i = 0$.\hfill (nilpotencia)
-	\item[P4)] Si $s = r_1 \oplus r_2 \oplus \dots \oplus r_k$, entonces $s$ es también una secuencia aleatoria.
-	\item[P5)] Los valores resultantes $s$ se encuentran uniformemente distribuidos.
+	\item[P1)] \(( r_i \oplus r_j ) \oplus r_k = r_i \oplus ( r_j \oplus r_k )\). \hfill(Associativity)
+	\item[P2)] \(r_i \oplus r_j = r_j \oplus r_i\).\hfill (Commutativity)
+	\item[P3)] \(r_i \oplus r_i = 0\).\hfill (Nilpotence)
+	\item[P4)] If \(s = r_1 \oplus r_2 \oplus \dots \oplus r_k\), then \(s\) is also a random sequence.
+	\item[P5)] The resulting values \(s\) are uniformly distributed.
 \end{enumerate}
 
-Para comenzar a construir nuestro algoritmo, debemos tomar el conjunto de todas las configuraciones posibles de una piedra en el tablero, es decir, $E \setminus \{0\} \times G.$
-Donde excluimos el $0$ puesto que no colocamos piedras de color $0$ al jugar. Luego, asignamos un número aleatorio de $n$ bits, único, a cada elemento. Si recordamos que un jugador posee la opción de \textit{pasar} su turno (una jugada que no altera el estado del tablero), a esta acción se le asignará $\vec{0}$, lo que garantiza que el estado no cambie.
+To begin constructing our algorithm, we must take the set of all possible configurations of a stone on the board, namely, \(E \setminus \{0\} \times G.\)
+We exclude $0$ since we do not place stones of color $0$ during play. Next, we assign a unique, random \(n\)-bit integer to each element. If we recall that a player has the option to \textit{pass} their turn (a move that does not alter the board state), this action will be assigned \(\vec{0}\), which guarantees that the state remains unchanged (as \(\vec{0}\) is the neutral of the sum).
 
-Para inicializar el hash, debemos garantizar más números que posiciones. Conociendo la cardinalidad $|E\setminus\{0\}\times G|$ y sumando 1 para el tablero vacío, la longitud mínima de n es:
+To initialize the hash, we must guarantee more numbers than positions. Knowing the cardinality \(|E\setminus\{0\}\times G|\) and adding 1 for the empty board, the minimum length of \(n\) is:
 \[ 2^n \geq |E \setminus \{0\} \times G| + 1. \]
-Para nuestro caso, en el tablero convencional, tendremos $361$ intersecciones y $2$ estados posibles para las piedras (blanco y negro). Por lo tanto:
+For our case, on the standard board, we will have $361$ intersections and $2$ possible states for the stones (white and black). 
+Therefore:
 $$|E\setminus\{0\} \times G| = 2 \times 361 = 722.$$
-Luego, el número mínimo de bits necesario para mapear el tablero base será $n = 10$, puesto que
+Hence, the minimum number of bits required to map the basic board will be $n = 10$, since
 $$2^{10} = 1024 \geq 722 + 1.$$
 
-Zobrist advierte sobre la existencia de dos tipos de errores. Un \textit{error Tipo 1} ocurre cuando dos configuraciones distintas del tablero producen exactamente el mismo valor de hash; en el contexto del \textit{SuperKo}, esto resultaría en un falso positivo. Por otro lado, un \textit{error Tipo 2} se produce debido a limitaciones de espacio en la memoria, lo cual no consideraremos.
-
-Para reducir la posibilidad de un error Tipo 1, Zobrist propone dos soluciones complementarias. La primera consiste en generar un segundo hash en simultáneo, utilizando una secuencia independiente, para descartar los falsos positivos. La segunda solución radica en utilizar una mayor cantidad de bits de los que parecen necesarios. Si $n$ es la cantidad de bits que pretendíamos usar y $m$ los bits a agregar, Zobrist demuestra que la probabilidad de que no ocurran errores de Tipo 1 viene dada por la siguiente expresión (Tabla~\ref{Tabla_prob}):
+Zobrist warns of the existence of two types of errors. A \textit{Type 1 error} occurs when two distinct board configurations produce exactly the same hash value; in the context of \textit{Superko}, this would result in a false positive. On the other hand, a \textit{Type 2 error} occurs due to memory space limitations, which we shall not consider.
+To reduce the probability of a Type 1 error, Zobrist proposes two complementary solutions. The first consists of generating a second hash simultaneously, utilizing an independent sequence, to rule out false positives. The second solution entails using a greater number of bits than strictly necessary. If $n$ is the number of bits we intended to use and $m$ is the number of bits to add, Zobrist demonstrates that the probability of no Type 1 errors occurring is given by the following expression (see Table~\ref{Tabla_prob}):
 $$p(\text{no error}) = \left( 1 - \frac{1}{2^{n+m}} \right)^{2^n} \approx \left( \frac{1}{e} \right)^{2^{-m}}.$$
 \begin{table}[H]
 	\centering
 	\begin{tabular}{c|c || c|c}
-		\textbf{$m$ (bits extra)} & \textbf{Prob. de no error} & \textbf{$m$ (bits extra)} & \textbf{Prob. de no error} \\ \hline
+		\textbf{$m$ (extra bits)} & \textbf{Prob. of no error} & \textbf{$m$ (extra bits)} & \textbf{Prob. of no error} \\ \hline
 		0 & 0.36778 & 6  & 0.98449 \\
 		1 & 0.60653 & 7  & 0.99222 \\
 		2 & 0.77879 & 8  & 0.99611 \\
@@ -1232,30 +1241,30 @@ $$p(\text{no error}) = \left( 1 - \frac{1}{2^{n+m}} \right)^{2^n} \approx \left(
 		4 & 0.93941 & 10 & 0.99901 \\
 		5 & 0.96924 & \multicolumn{2}{c}{}
 	\end{tabular}
-	\caption{Probabilidad de no error al utilizar más bits.}
+	\caption{Probability of no error by using more bits.}
 	\label{Tabla_prob}
 \end{table}
-Por lo tanto, bastaría con utilizar números de 21 o incluso 32 bits para lograr que la probabilidad de evitar un error de Tipo 1 sea de 0.9999995 o 0.9999999997, respectivamente. Podríamos generar dos, tres o cuantas secuencias de verificación consideremos necesarias, con el fin de minimizar el error.
+Therefore, it would suffice to utilize 21-bit or even 32-bit numbers to achieve a probability of avoiding a Type 1 error of 0.9999995 or 0.9999999997, respectively. We could generate two, three, or however many verification sequences we deem necessary in order to minimize the error.
 
-Para verificar la regla del \textit{SuperKo}, basta con realizar $S \cdot (t-1)$ operaciones, donde $S$ es el número total de secuencias hash independientes implementadas. Si $H_{s}(t)$ representa el valor del hash en el turno $t$ para la secuencia $s$, entonces:
-$$ \text{SuperKo en el turno } t \iff H_{s}(t) \oplus H_{s}(t-k) = \vec{0}\ \ \text{y}\ \  f(t),f(t-k)\neq \varnothing.$$
-para algún $k \in \{1, 2, \dots, t-1\}$ y para toda secuencia $s \in \{1, \dots, S\}$. Los números que asignamos a las piedras, los notaremos por por $h_s(i)$. Además, para procesar las capturas, haremos uso de las propiedades del operador XOR que asumimos previamente. Cuando una piedra es capturada, esta es retirada del tablero. Por lo tanto, si la piedra $p_{j}$ es removida, basta con aplicar la operación $H_s(t) \oplus h_s(i_{j})$ al estado actual.
+To verify the \textit{Superko} rule, it suffices to perform \(S \cdot (t-1)\) operations, where \(S\) is the total number of independent hash sequences implemented. If \(H_{s}(t)\) represents the hash value at turn \(t\) for sequence \(s\), then:
+$$ \text{SuperKo at turn } t \iff H_{s}(t) \oplus H_{s}(t-k) = \vec{0}\ \ \text{y}\ \  f(t),f(t-k)\neq \varnothing.$$
+for some $k \in \{1, 2, \dots, t-1\}$ and for every sequence $s \in \{1, \dots, S\}$. We shall denote the numbers assigned to the stones by $h_s(i)$. Furthermore, to process captures, we shall make use of the XOR operator properties assumed previously. When a stone is captured, it is removed from the board. Therefore, if stone $p_{j}$ is removed, it suffices to apply the operation $H_s(t) \oplus h_s(i_{j})$ to the current state.
 
-Gracias a las Propiedades P1 y P2, podemos reordenar el cálculo del hash:
+By virtue of Properties P1 and P2, we can rearrange the hash calculation:
 \begin{align*}
 	H_s(t) \oplus h_s(i_{j}) &= \big( h_s(i_{1}) \oplus \dots \oplus h_s(i_{j}) \oplus \dots \oplus h_s(i_{m}) \big) \ \textcolor{Red}{\oplus \ h_s(i_{j})} \\
 	H_s(t) \oplus h_s(i_{j}) &= h_s(i_{1}) \oplus \dots \oplus \big( h_s(i_{j}) \ \textcolor{Red}{\oplus \ h_s(i_{j})} \big) \oplus \dots \oplus h_s(i_{m}) & \text{(P1 y P2)} \\
 	H_s(t) \oplus h_s(i_{j}) &= h_s(i_{1}) \oplus \dots \oplus \textcolor{Red}{\vec{0}} \oplus \dots \oplus h_s(i_{m}). & \text{(P3)}
 \end{align*}
 
-Dado que el vector nulo $\vec{0}$ es el elemento neutro de la operación $(\vec{0}\oplus h(i_{p})=h(i_{p}))$, el término desaparece. Así, demostramos que retirar una piedra (capturar) equivale a sumar nuevamente su hash. Para cerrar este capítulo, ilustremos con un ejemplo concreto en un tablero pequeño de $\mathrm{Go}^{2}_{2}(3,3)$.
+Given that the null vector \(\vec{0}\) is the identity element of the operation \((\vec{0}\oplus h(i_{p})=h(i_{p}))\), the term vanishes. Thus, we have demonstrated that removing a stone (capturing) is equivalent to adding its hash once again. To conclude this chapter, let us illustrate with a concrete example on a small \(\mathrm{Go}^{2}_{2}(3,3)\) board.
 
-Como el tablero posee 9 puntos, tenemos $|(E\setminus\{0\}) \times G| = 18$. Luego, el número mínimo de bits $n$ necesario será 5, puesto que $2^5 = 32 \geq 18 + 1$. Si decidimos agregar 3 bits adicionales como margen de seguridad, tendremos números de 8 bits. Para inicializar, basta con asignar de manera aleatoria un número a cada estado posible en cada punto. A tales efectos, construimos la siguiente tabla:
+Since the board possesses 9 intersections, we have \(|(E\setminus\{0\}) \times G| = 18\). Hence, the minimum number of bits \(n\) required will be 5, because \(2^5 = 32 \geq 18 + 1\). If we decide to append 3 additional bits as a safety margin, we will have 8-bit numbers. To initialize, it suffices to randomly assign a number to each possible state at every intersection. To this end, we construct the following table:
 \begin{table}[H]
 	\centering
 	\small
 	\begin{tabular}{lc|lc|lc}
-		\textbf{Piedra} & \textbf{Número} & \textbf{Piedra} & \textbf{Número} & \textbf{Piedra} & \textbf{Número} \\ \hline
+		\textbf{Stone} & \textbf{Number} & \textbf{Stone} & \textbf{Number} & \textbf{Stone} & \textbf{Number} \\ \hline
 		(1,(1,1)) & 01111111 & (1,(2,1)) & 00010110 & (1,(3,1)) & 01001101 \\
 		(1,(1,2)) & 10001101 & (1,(2,2)) & 11110001 & (1,(3,2)) & 11101111 \\
 		(1,(1,3)) & 10111110 & (1,(2,3)) & 10110001 & (1,(3,3)) & 00011110 \\
@@ -1263,12 +1272,12 @@ Como el tablero posee 9 puntos, tenemos $|(E\setminus\{0\}) \times G| = 18$. Lue
 		(2,(1,2)) & 10010011 & (2,(2,2)) & 10111010 & (2,(3,2)) & 01000111 \\
 		(2,(1,3)) & 10110111 & (2,(2,3)) & 10010001 & (2,(3,3)) & 11001100 \\
 	\end{tabular}
-	\caption{Tabla de los hashes de cada punto del tablero de $3\times 3$}
+	\caption{Hash table of each point in the $3\times 3$ board.}
 	\label{tablahash}
 \end{table}
 
-Inicializamos el hash de la partida en el vector nulo $\vec{0} = 00000000$, representado el tablero vacío. A partir de aquí, por cada jugada efectuada, actualizamos el estado aplicando la operación XOR ($\oplus$) entre el hash del turno actual y el valor de la nueva piedra colocada (o retirada, en caso de captura). Supongamos que se realiza la siguiente secuencia de jugadas,
-obteniendo el tablero de la Figura~\ref{fig:tablero_ejsko}: \begin{align*}
+We initialize the game hash to the null vector \(\vec{0} = 00000000\), representing the empty board. From this point onward, for every executed move, we update the state by applying the XOR operation (\(\oplus\)) between the hash of the current turn and the value of the newly placed stone (or removed stone, in the event of a capture). Let us suppose that the following sequence of moves is executed, yielding the board shown in Figure~\ref{fig:tablero_ejsko}:
+ \begin{align*}
 	f(1)&=(1,(2,2)), &f(2)&=(2,(1,3)),	&f(3)&=(1,(2,3)), &f(4)&=(2,(2,1)),\\
 	f(5)&=(1,(3,1)), &f(6)&=(2,(3,2)), &f(7)&=(1,(1,2)), &f(8)&=\varnothing,\\
 	f(9)&=\varnothing. 
@@ -1277,8 +1286,6 @@ obteniendo el tablero de la Figura~\ref{fig:tablero_ejsko}: \begin{align*}
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}[scale=0.75]
-		
-		
 		% Draw the background
 		\fill[goban] (-0.5,-0.5) rectangle (2.5,2.5);
 		% Draw the grid lines
@@ -1342,11 +1349,10 @@ obteniendo el tablero de la Figura~\ref{fig:tablero_ejsko}: \begin{align*}
 			\path (2,1) node [black]{6};
 		\end{scope}
 	\end{tikzpicture}
-	\caption{Partida terminada en un tablero de $3\times 3$.}
+	\caption{Finished game on a \(3\times 3\) board.}
 	\label{fig:tablero_ejsko}
 \end{figure}
-
-Calcularemos los estados turno a turno, separando los vectores en bloques de 4 bits para facilitar su lectura. Si denotamos el hash de una piedra como $h(p_i)$, donde $p_i = (e, t)$, la evolución de la partida sería como sigue. En la sexta jugada se efectúa una captura sobre la piedra negra en $(3,1)$, por lo tanto, además de aplicar el hash de la piedra jugada, debemos aplicar el hash de la piedra retirada para «deshacer» su presencia. Si se capturaran múltiples piedras, bastaría con iterar la operación para cada una de ellas en cualquier orden (por P1, P2):
+We shall compute the states turn by turn, partitioning the vectors into 4-bit blocks to facilitate readability. Denoting the hash of a stone by \(h(p_i)\), where \(p_i = (e, t)\), the evolution of the game proceeds as follows. On the sixth move, a capture is executed upon the black stone at \((3,1)\); consequently, in addition to applying the hash of the newly played stone, we must apply the hash of the removed stone to ``undo'' its presence. Should multiple stones be captured, it would suffice to iterate the operation for each of them in any arbitrary order (by virtue of P1 and P2):
 \begin{figure}[H]
 	\centering
 	\begin{align*}
@@ -1361,74 +1367,82 @@ Calcularemos los estados turno a turno, separando los vectores en bloques de 4 b
 		H(8)  &= H(7) \oplus \textcolor{Blue}{0000\, 0000} = H(7) \\
 		H(9)  &= H(8) \oplus  \textcolor{Blue}{0000\, 0000} = H(8).
 	\end{align*}
-	\caption{Hashes de la partida, en azul las \textcolor{Blue}{jugadas}, en rojo las \textcolor{Red}{capturas}.}
-\end{figure} 
-En los turnos 8 y 9, pasar el turno produce un estado idéntico al anterior. Esto no viola el \textit{SuperKo}, pues la regla prohíbe unicamente colocar una piedra para recrear una posición.
+	\caption{Game hashes; \textcolor{Blue}{moves} in blue, \textcolor{Red}{captures} in red.}
+\end{figure}
+At turns 8 and 9, passing the turn produces a state identical to the preceding one. This does not violate the \textit{Superko} rule, as the rule solely prohibits placing a stone to recreate a position.
 
-Ahora bien, podría suceder que, $h(2,(3,2))=1100\ 1011$. Provocando en el sexto turno un falso positivo para Superko, pues $H(6)= H(5)\oplus h(2,(3,2)) = 1011\ 1110.$ y comparando con el historial, $$H(6)\oplus H(3)=0000\ 0000.$$
-De esta manera, con más bits e implementando múltiples secuencias simultáneas para anular las colisiones, el método de Zobrist queda implementado en el Go.
+However, it could occur that \(h(2,(3,2))=1100\ 1011\). This would trigger a false positive for \textit{Superko} on the sixth turn, since \(H(6)= H(5)\oplus h(2,(3,2)) = 1011\ 1110\) and, upon comparing it with the history,
+$$H(6)\oplus H(3)=0000\ 0000.$$
+Thus, by employing additional bits and implementing multiple simultaneous sequences to rule out collisions, Zobrist's method is fully implemented in Go.
 
-\section{La estructura del tiempo}
+\section{The Structure of Time}
+
+We are now in a position to inject time into the structure. We define \(\mathcal{T}\) as the space of all boards,
 
 Ya estamos en condiciones de inyectar el tiempo en la estructura. Definimos a $\mathcal{T}$ como el espacio de todos los tableros,
-$$ \mathcal{T} = \{ T \subset E \times G \mid T \text{ es un tablero}\}.$$
+$$ \mathcal{T} = \{ T \subset E \times G \mid T \text{ is a board}\}.$$
 
-\subsection{La partida como trayectoria}
-Una partida resulta una sucesión de jugadas $f:\mathbb{N} \rightarrow \mathcal{J}$, donde $f(t)$ representa la acción elegida por el jugador activo en el turno $t$. Esta función $f$ induce de manera natural una sucesión de tableros en $\mathcal{T}$, a la que denominaremos trayectoria:
-$$\{T_0, T_1, \dots, T_{fin}\} $$
+\subsection{The Game as a Trajectory}
+A game constitutes a sequence of moves $f:\mathbb{N} \rightarrow \mathcal{J}$, where $f(t)$ represents the action chosen by the active player at turn $t$. This function $f$ naturally induces a sequence of boards in $\mathcal{T}$, which we shall term a trajectory:
+$$\{T_0, T_1, \dots, T_{fin}\}$$
+The sequence is constructed recursively by means of $\Delta$:
 
-La sucesión se construye de manera recursiva a través de $\Delta$:
 \begin{enumerate}
-	\item \textbf{Estado inicial ($t=0$):} $T_0$ es el tablero vacío, es decir, el conjunto $T_0 = \{(0, t) : t \in G\}$.
-	\item \textbf{Transición ($t \rightarrow t+1$):} El tablero en el turno siguiente es el resultado de aplicar la transición a la jugada del turno actual:
-	$$ T_t = \Delta(T_{t-1}, f(t)) $$
-\end{enumerate}
+	\item \textbf{Initial state (\(t=0\)):} \(T_0\) is the empty board; that is, the set \(T_0 = \{(0, t) : t \in G\}\).
+	\item \textbf{Transition (\(t \rightarrow t+1\)):} The board at the subsequent turn is the result of applying the transition to the move of the current turn:
+	$$T_t = \Delta(T_{t-1}, f(t))$$
+	\end{enumerate}
 
-\subsection{Dinámica del estado}
+\subsection{State Dynamics}
 
-Bajo esta construcción, formalizamos las propiedades del flujo del juego. Denotaremos como $E^k(T_t) = \{i \in T_t : C(i) = k\}$ al conjunto de todas las piedras de color $k$ presentes en el tablero en el turno $t$, y como $|E^k(T_t)|$ a su cantidad.
+Under this construction, we formalize the properties of the game's flow. We shall denote by \(E^k(T_t) = \{i \in T_t : C(i) = k\}\) the set of all stones of color \(k\) present on the board at turn \(t\), and by \(|E^k(T_t)|\) its cardinality.
 
 \begin{itemize}
-	\item \textbf{Crecimiento y decrecimiento:} Si en el turno $t$ el jugador activo es $k \in E \setminus \{0\}$, el nuevo tablero dado por $T_t = \Delta(T_{t-1}, f(t))$, poseerá, a lo sumo, una piedra más de su color. En contraste, las piedras de los demás colores ($j \neq k$) solo pueden decrecer o mantenerse constantes debido a posibles capturas:
+	\item \textbf{Growth and Decrease:} If at turn \(t\) the active player is \(k \in E \setminus \{0\}\), the new board given by \(T_t = \Delta(T_{t-1}, f(t))\) will possess, at most, one additional stone of their color. In contrast, the stones of the other colors (\(j \neq k\)) can only decrease or remain constant due to potential captures:
 	\begin{align*}
 		|E^k(T_t)| &\le |E^k(T_{t-1})| + 1,\\
 		|E^j(T_t)| &\le |E^j(T_{t-1})|, \quad \forall j \neq k.
 	\end{align*}
 	
-	
-	\item \textbf{Condición de parada:} Sea $m = |E \setminus \{0\}|$ la cantidad total de jugadores. La partida concluye en el turno $T_{fin}$ cuando todos los jugadores pasan consecutivamente. Esto ocurre cuando:
-	$$f(T_{fin}) = f(T_{fin-1}) = \dots = f(T_{fin-m+1}) = \varnothing$$
-	En consecuencia, el estado del tablero se congela, resultando en:
-	$$T_{{fin}} = T_{{fin-1}} = \dots = T_{{fin-m}}$$
-	Este estado $T_{{fin}}$ constituye el Tablero Final.
+	\item \textbf{Halting Condition:} Let \(m = |E \setminus \{0\}|\) be the total number of players. The game concludes at turn \(T_{end}\) when all players pass consecutively. This occurs when:
+	$$f(T_{end}) = f(T_{end-1}) = \dots = f(T_{end-m+1}) = \varnothing$$
+	Consequently, the state of the board freezes, resulting in:
+	$$T_{{end}} = T_{{end-1}} = \dots = T_{{end-m}}$$
+	This state \(T_{{fin}}\) constitutes the Final Board.
 \end{itemize}
 
-\subsection{Anatomía de una jugada}
-Entendamos cómo funciona $\Delta$. Supongamos que estamos jugando al Go y que, en nuestro turno, pretendemos jugar $f(t)$.
-Si $f(t) = \varnothing$, el tablero permanece idéntico y pasamos el turno, es decir,
+
+\subsection{Anatomy of a Move}
+
+Let us understand how \(\Delta\) functions. Suppose we are playing Go and that, on our turn, we intend to play \(f(t)\).
+If \(f(t) = \varnothing\), the board remains identical and we pass the turn; that is,
 $$T_{t} = \Delta(T_{t-1}, \varnothing) = T_{t-1}.$$
-Si $f(t) = i^{*} = (e, p)$, hemos de validar dicha jugada, el cálculo del nuevo tablero $T_t = \Delta(T_{t-1}, i^{*})$ en virtud del teorema~\ref{teoremalegal} se realiza de la siguiente manera:
+
+If $f(t) = i^{*} = (e, p)$, we must validate said move. The computation of the new board $T_t = \Delta(T_{t-1}, i^{*})$ by virtue of Theorem~\ref{teoremalegal} is performed as follows:
 \begin{enumerate}
-	\item \textbf{Colocación:} Si existe $(e',p)\in T_{t-1}$ tal que $e' \neq 0$, la jugada es ilegal. Si $e' =0$, generamos un tablero transitorio $T'$ donde el punto $p$, previamente vacío, adquiere el estado $e$. Luego avanzamos al siguiente paso.
-	$$ T' = \left(T_{t-1} \setminus \{(0, p)\}\right) \cup \{(e, p)\}.$$
-	\item \textbf{Detección de SuperKo:}
-	Calculamos $H(T_{t-1}) \oplus h(i^{*})$ y lo comparamos con el historial. Si su comparación da $\vec{0}$, en cada hash, hemos roto la regla y la jugada se descarta, en caso contrario avanzamos al siguiente paso.
-	\item \textbf{Detección de captura:} Evaluando las adyacencias en $T'$, identificamos el conjunto $Cap$, uniendo todos los grupos, de adversarios, que no poseen libertades.
-	$$ Cap = \bigcup \{ i\in I^{e'} \subset T' \mid L(I^{e'}) = \varnothing, e' \notin \{0, e\}\}.$$
-	Si $Cap \neq \varnothing$, la jugada es legal y saltamos al paso $5$, en caso contrario avanzamos al siguiente paso.
-	\item \textbf{Detección de suicidio:} Considerando $Cap = \varnothing$, evaluamos el estado de la piedra jugada $i^* = (e, p)$ en $T'$. El análisis se divide en dos casos:
-	\begin{itemize}
-		\item \textbf{Piedra aislada:} Si $i^*$ no se conecta con ninguna piedra de su mismo color, evaluamos sus libertades. Si $L(i^*) = \varnothing$, la jugada constituye un suicidio.
-		\item \textbf{Unión a un grupo:} Sea $I$ el grupo al que pertenece $i^*$ en este nuevo tablero. Si $L(I) = \varnothing$, la jugada  constituye un suicidio.
-	\end{itemize}
-	Si ocurre cualquiera de estos dos escenarios, la jugada es ilegal. Si no hay suicidio, avanzamos al siguiente paso.
+	\item \textbf{Placement:} If there exists $(e',p)\in T_{t-1}$ such that $e' \neq 0$, the move is illegal. If $e'=0$, we generate a temporary board $T'$ where intersection $p$, previously empty, acquires state $e$. We then proceed to the next step.
+	$$T' = \left(T_{t-1} \setminus \{(0, p)\}\right) \cup \{(e, p)\}.$$
 	
-	\item \textbf{Actualización:} Transformamos las piedras capturadas a estado libre ($Cap_0$) y actualizamos el tablero.
-	$$Cap_0 = \{(0, P(i)) : i \in Cap\},\quad T_t = (T' \setminus Cap) \cup Cap_0.$$
-\end{enumerate}
-De esta manera, toda jugada propuesta puede aceptarse o rechazarse. Un Juego de Go se define formalmente como una cuádrupla,
-$$ \Gamma = (G, E, A, \Delta).$$
-Donde a un Go $(G, E, A)$, le adjuntamos la función de transición $\Delta: \mathcal{T} \times \mathcal{J} \to \mathcal{T}$.
+	\item \textbf{Capture Detection:} Evaluating the adjacencies in $T'$, we identify the set $Cap$ by taking the union of all opposing groups that possess no liberties.$$Cap = \bigcup \{ i\in I^{e'} \subset T' \mid L(I^{e'}) = \varnothing, e' \notin \{0, e\}\}.$$If $Cap \neq \varnothing$, the move is legal and we skip to step 4; otherwise, we proceed to the next step.
+	
+	\item \textbf{Suicide Detection:} Considering $Cap = \varnothing$, we evaluate the state of the played stone $i^* = (e, p)$ in $T'$. The analysis is divided into two cases:
+	\begin{itemize}
+		\item \textbf{Isolated stone:} If $i^*$ does not connect to any stone of its own color, we evaluate its liberties. If $L(i^*) = \varnothing$, the move constitutes a suicide.
+		\item \textbf{Union with a group:} Let $I$ be the group to which $i^*$ belongs on this new board. If $L(I) = \varnothing$, the move constitutes a suicide.
+	\end{itemize}
+	If either of these two scenarios occurs, the move is illegal. If there is no suicide, we proceed to the next step.
+	
+	\item \textbf{Update:} We transform the captured stones to the free state ($Cap_0$) and update the board.$$Cap_0 = \{(0, P(i)) : i \in Cap\},\quad T_t = (T' \setminus Cap) \cup Cap_0.$$
+	We then proceed to the next step.
+	
+	\item \textbf{Superko Detection:}
+	We compute \(H(T_t)\) and compare it against the history. If the comparison yields \(\vec{0}\) for any hash, we have violated the rule and the move is discarded (in every hash sequence); otherwise, the turn concludes.
+	\end{enumerate}
+	
+In this manner, any candidate move can be accepted or rejected. A Game of Go is formally defined as a 4-tuple,
+$$\Gamma = (G, E, A, \Delta).$$
+	
+where, to a Go game $(G, E, A)$, we adjoin the transition function $\Delta: \mathcal{T} \times \mathcal{J} \to \mathcal{T}$.
 %	Para ilustrar el método mediante la función emparejadora de Cantor, observemos primero el comportamiento del polinomio. Para el caso bidimensional ($n=2$), obtenemos:
 %	\[ f(x_1,x_2)=\frac{(x_1 + x_2)^2 + 3x_1 + x_2}{2}.\]
 %	Evaluando esta función para los 9 puntos del, obtenemos los siguientes valores:
@@ -1529,10 +1543,10 @@ Donde a un Go $(G, E, A)$, le adjuntamos la función de transición $\Delta: \ma
 %	Un $Go$ además es notado por $Go^{n}_{m}$. Si quisiéramos explicitar: $Go^{2}_{2}(19,19)$ para el tablero convencional. En caso de omitir los jugadores, se interpretará que se está hablando del tablero de dimensión $n$, para cualquier cantidad de jugadores: $Go^{n}$. Del mismo modo, $Go_{m}$ representará el tablero de cualquier dimensión y de $m$ jugadores.
 %\onecolumn
 %	\newpage
-\section{Vida en el juego del Go}
-\label{sec-vida}
-Si recordamos las reglas, justo hacia el final habíamos visto brevemente el concepto de \textit{vivo}. En esta sección lo formalizaremos.
 
+\section{Life in the Game of Go}\label{sec-vida}
+
+If we recall the rules, towards the very end we briefly encountered the concept of being \textit{alive}. In this section, we shall formalize this notion.
 
 \begin{wrapfigure}[12]{r}{0.3\textwidth}
 	%\begin{figure}[H]
@@ -1562,16 +1576,21 @@ Si recordamos las reglas, justo hacia el final habíamos visto brevemente el con
 		\filldraw[black] (3,0) circle (12pt);
 		% Draw the central black dot
 	\end{tikzpicture}
-	\caption{Tablero con un grupo negro que posee vida incondicional.}
+	\caption{Board with a black group possessing unconditional life.}
 	\label{fig:vida_incond_ejemplo}
-\end{wrapfigure}En la Figura~\ref{fig:vida_incond_ejemplo}, el blanco no puede capturar porque la regla del suicidio le impide jugar en las libertades restantes del negro. El algoritmo para determinar la vida incondicional es sencillo: se simula que el negro pasa mientras el blanco intenta ocupar sus libertades. Si el blanco no logra capturarlo, el grupo tiene vida incondicional.	En 1976, David B. Benson formalizó este concepto \cite{Benson}. Demostró que la supervivencia de un conjunto de piedras depende únicamente de sus adyacencias. A continuación, adaptaremos sus definiciones y teoremas a nuestro marco formal.
+\end{wrapfigure}In Figure~\ref{fig:vida_incond_ejemplo}, White cannot capture because the suicide rule prohibits them from playing on Black's remaining liberties. The algorithm for determining unconditional life is straightforward: we simulate Black passing while White attempts to occupy their liberties. If White fails to capture it, the group possesses unconditional life.
 
-Para llegar a ello, primero necesitamos contar cuántos grupos rodean a una región. Sea $P$ un conjunto de piedras de color $e \in E \setminus \{0\}$ y $R$ una región rodeada completamente por $P$ (es decir, $K(R) \subseteq P$). Nos interesa saber, conociendo únicamente $R$, cuántos grupos distintos componen su \textit{frontera} en $P$.	Sabemos que el conjunto $K(R)$ contiene las piedras adyacentes a la región. Por lo visto en la Parte~\ref{parte1}, $0 \notin C(K(R))$.
-\begin{definition}[Frontera de una región]
-	Sea $R$ una región. Llamaremos frontera de $R$, denotada como $\partial R$, al conjunto de todos los grupos o piedras que tienen una intersección no nula con las adyacencias de la región.
-	$$ \partial R = \{ I \mid I \cap K(R) \neq \varnothing \}\cup \{ i \mid i \cap K(R) \neq \varnothing \}.$$
-\end{definition}
-Es crucial notar la diferencia: $\partial R$ agrupa los grupos adyacentes, mientras que $K(R)$ agrupa las piedras adyacentes, la Figura~\ref{fig:dif_k_partial} ilustra esta distinción.
+In 1976, David B. Benson formalized this concept \cite{Benson}. He demonstrated that the survival of a set of stones depends solely on its adjacencies. In what follows, we shall adapt his definitions and theorems to our formal framework.
+
+To achieve this, we first need to count how many groups surround a region. Let \(P\) be a set of stones of color \(e \in E \setminus \{0\}\), and let \(R\) be a region completely surrounded by \(P\) (that is, \(K(R) \subseteq P\)). We are interested in determining, knowing only \(R\), how many distinct groups comprise its \textit{boundary} in \(P\).
+
+We know that the set \(K(R)\) contains the stones adjacent to the region. As seen in Part~\ref{parte1}, \(0 \notin C(K(R))\).
+
+\begin{definition}[Boundary of a region]
+	Let \(R\) be a region. We define the boundary\footnote{Benson call this the Neighborhood} of \(R\), denoted by \(\partial R\), as the set of all groups or stones that have a non-empty intersection with the adjacencies of the region:
+	$$\partial R = \{ I \mid I \cap K(R) \neq \varnothing \}\cup \{ i \mid i \cap K(R) \neq \varnothing \}.$$
+	\end{definition}
+It is crucial to note the difference: $\partial R$ collects the adjacent groups, whereas $K(R)$ collects the adjacent stones; Figure~\ref{fig:dif_k_partial} illustrates this distinction.
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
@@ -1645,53 +1664,52 @@ Es crucial notar la diferencia: $\partial R$ agrupa los grupos adyacentes, mient
 		
 		% Draw the central black dot
 	\end{tikzpicture}
-	\caption{Izquierda. Tablero con los \textit{grupos frontera} de una \textcolor{Red}{Región}; \textcolor{Orange}{Naranja}, \textcolor{magenta}{Magenta}, \textcolor{OliveGreen}{Verde}, \textcolor{Blue}{Azul}. Derecha. \textcolor{OliveGreen}{Adyacencias} de una \textcolor{Red}{Región}.}
+	\caption{Left: Board with the \textit{boundary groups} of a \textcolor{Red}{Region}; \textcolor{Orange}{Orange}, \textcolor{magenta}{Magenta}, \textcolor{OliveGreen}{Green}, \textcolor{Blue}{Blue}. Right: \textcolor{OliveGreen}{Adjacencies} of a \textcolor{Red}{Region}.}
 	\label{fig:dif_k_partial}
 \end{figure}
+The cardinality of this set indicates exactly how many independent groups and stones surround the empty region.
 
-El cardinal de este conjunto nos indica exactamente cuántos grupos y piedras independientes rodean a la región vacía. 
+However, quantity alone does not suffice; we must also evaluate the quality of these regions. In Benson's terminology, they must be \textit{healthy} for the groups that contain them. 
 %	\begin{figure}[H]
-	%		\centering
-	%		\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
-		%			% Draw the background
-		%			\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
-		%			
-		%			% Draw the grid lines
-		%			\draw[step=1cm, black] (0,0) grid (6,6);
-		%			
-		%			% Draw the thick border
-		%			\draw[very thick] (0,0) rectangle (6,6);
-		%			\filldraw[black] (0,1) circle (12pt);
-		%			\filldraw[black] (1,0) circle (12pt);
-		%			\filldraw[Salmon] (0,1) circle (4pt);
-		%			\filldraw[Orange] (1,0) circle (4pt);
-		%			
-		%			\filldraw[black] (2,2) circle (12pt);
-		%			\filldraw[magenta] (2,2) circle (4pt);
-		%			\filldraw[black] (3,3) circle (12pt);
-		%			\filldraw[magenta] (3,3) circle (4pt);
-		%			\filldraw[black] (4,3) circle (12pt);
-		%			\filldraw[magenta] (4,3) circle (4pt);
-		%			\filldraw[black] (3,1) circle (12pt);
-		%			\filldraw[Violet] (3,1) circle (4pt);
-		%			\filldraw[black] (2,3) circle (12pt);
-		%			\filldraw[Magenta] (2,3) circle (4pt);
-		%			\filldraw[draw=black,fill=white] (4,1) circle (12pt);
-		%			\filldraw[OliveGreen] (4,1) circle (4pt);
-		%			\filldraw[draw=black,fill=white] (5,2) circle (12pt);
-		%			\filldraw[RawSienna] (5,2) circle (4pt);
-		%
-		%			\fill[draw=black,fill=Blue, very thin] (3.25,1.75) rectangle (2.75,2.25);
-		%			\fill[draw=black,fill=Blue, very thin] (4.25,1.75) rectangle (3.75,2.25);
-		%			\fill[draw=black,fill=Red, very thin] (0.25,0.25) rectangle (-0.25,-0.25);
-		%
-		%			% Draw the central black dot
-		%		\end{tikzpicture}
-	%		\caption{Tablero con un grupos frontera; \textcolor{Orange}{Naranja}, \textcolor{Salmon}{Salmón}; \textcolor{magenta}{Magenta}, \textcolor{Violet}{Violeta}, \textcolor{OliveGreen}{Verde}, \textcolor{RawSienna}{Marrón}. Que rodean respectivamente a una región \textcolor{Red}{Roja} y otra \textcolor{Blue}{Azul}.}
-	%		\label{fig:ej_frontera}
-	%	\end{figure}
-Sin embargo, no basta con la cantidad; también debemos evaluar la calidad de estas regiones. En términos de Benson, deben ser \textit{saludables} para los grupos que las contienen.
-
+%			\centering
+%			\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+%					% Draw the background
+%					\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
+%					
+%					% Draw the grid lines
+%					\draw[step=1cm, black] (0,0) grid (6,6);
+%					
+%					% Draw the thick border
+%					\draw[very thick] (0,0) rectangle (6,6);
+%					\filldraw[black] (0,1) circle (12pt);
+%					\filldraw[black] (1,0) circle (12pt);
+%					\filldraw[Salmon] (0,1) circle (4pt);
+%					\filldraw[Orange] (1,0) circle (4pt);
+%					
+%					\filldraw[black] (2,2) circle (12pt);
+%					\filldraw[magenta] (2,2) circle (4pt);
+%					\filldraw[black] (3,3) circle (12pt);
+%					\filldraw[magenta] (3,3) circle (4pt);
+%					\filldraw[black] (4,3) circle (12pt);
+%					\filldraw[magenta] (4,3) circle (4pt);
+%					\filldraw[black] (3,1) circle (12pt);
+%					\filldraw[Violet] (3,1) circle (4pt);
+%					\filldraw[black] (2,3) circle (12pt);
+%					\filldraw[Magenta] (2,3) circle (4pt);
+%					\filldraw[draw=black,fill=white] (4,1) circle (12pt);
+%					\filldraw[OliveGreen] (4,1) circle (4pt);
+%					\filldraw[draw=black,fill=white] (5,2) circle (12pt);
+%					\filldraw[RawSienna] (5,2) circle (4pt);
+%		
+%					\fill[draw=black,fill=Blue, very thin] (3.25,1.75) rectangle (2.75,2.25);
+%					\fill[draw=black,fill=Blue, very thin] (4.25,1.75) rectangle (3.75,2.25);
+%					\fill[draw=black,fill=Red, very thin] (0.25,0.25) rectangle (-0.25,-0.25);
+%		
+%					% Draw the central black dot
+%				\end{tikzpicture}
+%			\caption{Tablero con un grupos frontera; \textcolor{Orange}{Naranja}, \textcolor{Salmon}{Salmón}; \textcolor{magenta}{Magenta}, \textcolor{Violet}{Violeta}, \textcolor{OliveGreen}{Verde}, \textcolor{RawSienna}{Marrón}. Que rodean respectivamente a una región \textcolor{Red}{Roja} y otra \textcolor{Blue}{Azul}.}
+%			\label{fig:ej_frontera}
+%		\end{figure}
 \begin{wrapfigure}[10]{r}{0.3\textwidth}
 	\vspace{-10pt}
 	\centering
@@ -1728,28 +1746,33 @@ Sin embargo, no basta con la cantidad; también debemos evaluar la calidad de es
 		\fill[draw=black,fill=OliveGreen, very thin] (2.25,0.25) rectangle (1.75,-0.25);
 		\fill[draw=black,fill=OliveGreen, very thin] (3.25,0.25) rectangle (2.75,-0.25);
 	\end{tikzpicture}
-	\caption{Tablero con grupos negros cuya \textcolor{Blue}{región} controlada es \textcolor{OliveGreen}{no saludable}.}
+	\caption{Board with black groups whose controlled \textcolor{Blue}{region} is \textcolor{OliveGreen}{unhealthy}.}
 	\label{fig:benson_ej_2}
-\end{wrapfigure}\begin{definition}[Región saludable]
-	Sea $P$ un conjunto de grupos y piedras de un mismo color y $R$ una región rodeada por $P$ (es decir, $\partial R \subset P$). Se dice que $R$ es saludable para un grupo $I \in P$ (o $i\in P$) si todo elemento de $R$ es una libertad para $I$ ($i$). Formalmente:
-	$$R \text{ es saludable para } I \in P \iff R \subseteq L(I).$$
-\end{definition}Esta condición asegura que, si el oponente intenta jugar dentro de la región, quedará inmediatamente en contacto con el grupo $I$ ($i$). En el ejemplo de la Figura~\ref{fig:benson_ej_2}, Los puntos marcados en \textcolor{OliveGreen}{verde} no cumplen con esta premisa; por lo tanto, esa región no es saludable para ningún grupo negro. \break
+\end{wrapfigure}\begin{definition}[Healthy region]
+Let \(P\) be a set of groups and stones of the same color, and let \(R\) be a region surrounded by \(P\) (that is, \(\partial R \subset P\)). We say that \(R\) is healthy for a group \(I \in P\) (or \(i\in P\)) if every element of \(R\) is a liberty for \(I\) (\(i\)). Formally:
+$$R \text{ is healthy for } I \in P \iff R \subseteq L(I).$$\end{definition}
+This condition ensures that if the opponent attempts to play within the region, they will immediately come into contact with the group $I$ ($i$). In the example of Figure~\ref{fig:benson_ej_2}, the intersections marked in \textcolor{OliveGreen}{green} do not satisfy this premise; therefore, that region is not healthy for any black group. \break
 
-\begin{definition}[Región vital]\label{def:reg_vital}
-	Sea $P$ un conjunto de grupos y piedras de un mismo color, $I \in P$ un grupo específico y $R$ una región. Diremos que $R$ es vital para $I$ en $P$, si se cumplen simultáneamente las siguientes condiciones:
+Esta condición asegura que, si el oponente intenta jugar dentro de la región, quedará inmediatamente en contacto con el grupo $I$ ($i$). En el ejemplo de la Figura~\ref{fig:benson_ej_2}, Los puntos marcados en \textcolor{OliveGreen}{verde} no cumplen con esta premisa; por lo tanto, esa región no es saludable para ningún grupo negro. \break
+
+\begin{definition}[Vital region]\label{def:reg_vital}
+	Let $P$ be a set of groups and stones of the same color, let $I \in P$ be a specific group, and let $R$ be a region. We shall say that $R$ is vital for $I$ in $P$ if the following conditions are simultaneously satisfied:
 	\begin{enumerate}
-		\item $R$ es saludable para $I$, $R\subseteq L(I)$.
-		\item Todos los grupos que conforman la frontera de $R$ pertenecen a $P$, $\partial R \subseteq P$.
+		\item $R$ is healthy for $I$; $R\subseteq L(I)$.
+		\item All groups comprising the boundary of $R$ belong to $P$; $\partial R \subseteq P$.
 	\end{enumerate}
 \end{definition}
-A las regiones vitales las notaremos por $V$. Esta definición formaliza que una región debe proveer libertades inmediatas (ser saludable) y estar rodeada por grupos de un mismo color. A partir de la noción de región vital, podemos clasificar la naturaleza de las regiones completamente rodeadas.
-\begin{definition}[Ojo]
-	Sea $V$ una región vital para un grupo $I$ (o piedra) dentro de un conjunto $P$. Si la frontera de $V$ está conformada por un único grupo independiente, es decir, si $|\partial V| = 1$, entonces $V$ será un ojo para $I$.
+We shall denote vital regions by \(V\). This definition formalizes the requirement that a region must provide immediate liberties (be healthy) and be surrounded by groups of the same color. Building upon the notion of a vital region, we can classify the nature of completely surrounded regions.
+\begin{definition}[Eye]
+	Let \(V\) be a vital region for a group \(I\) (or stone) within a set \(P\). If the boundary of \(V\) is comprised of a single independent group—that is, if \(|\partial V| = 1\)—then \(V\) constitutes an eye for \(I\).
 \end{definition}
-Cuando la región está rodeada por múltiples grupos distintos, del mismo color, estamos ante una \textit{unión}.
-\begin{definition}[Unión]
-	Sea $R$ una región saludable para un grupo $I$ (o piedra) dentro de un conjunto $P$. Si la frontera de $R$ está compuesta por más de un grupo independiente, es decir, si $|\partial R| > 1$. Entonces $R$ es una unión para el conjunto $P$ («\textit{joiner}» para Benson). La Figura~\ref{fig:benson_ejemplos} ilustra la sutil diferencia entre las definiciones de Benson.
+
+When the region is surrounded by multiple distinct groups of the same color, it constitutes a \textit{union}.
+
+\begin{definition}[Union]
+	Let \(R\) be a healthy region for a group \(I\) (or stone) within a set \(P\). If the boundary of \(R\) is composed of more than one independent group—that is, if \(|\partial R| > 1\)—then \(R\) constitutes a union for the set \(P\) (a ``\textit{joiner}'' in Benson's terminology). Figure~\ref{fig:benson_ejemplos} illustrates the subtle difference between Benson's definitions.
 \end{definition}
+
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
@@ -1851,23 +1874,27 @@ Cuando la región está rodeada por múltiples grupos distintos, del mismo color
 		\end{scope}
 		
 	\end{tikzpicture}
-	\caption{Izquierda: \textcolor{Orange}{saludable} y \textcolor{OliveGreen}{no saludable}. Derecha: \textcolor{purple}{ojos} y \textcolor{cyan}{uniones}.}
+	\caption{Left: \textcolor{Orange}{healthy} and \textcolor{OliveGreen}{unhealthy}. Right: \textcolor{purple}{eyes} and \textcolor{cyan}{unions}.}
 	\label{fig:benson_ejemplos}
 \end{figure}
 
-\subsection{Teorema de Benson}
-Apliquemos la teoría y veamos el Teorema de Benson. Antes de llegar a él, necesitaremos establecer cuatro lemas previos. En lo que sigue, supondremos que el jugador que defiende el grupo atacado pasa en cada turno.
+\subsection{Benson's Theorem}
+
+Let us apply the theory and examine Benson's Theorem. Before proceeding to the main theorem, we must establish four preliminary lemmas. In what follows, we shall assume that the player defending the attacked group passes on every turn.
+
 \begin{lemma}\label{lem_1_benson}
-	Si un grupo $I$ posee al menos dos ojos distintos, entonces tiene vida incondicional.
+	If a group \(I\) possesses at least two distinct eyes, then it possesses unconditional life.
 \end{lemma}
+
+
 \begin{proof}
-	Sean $O_1$ y $O_2$ los ojos de $I$. Para capturar al grupo $I$, el oponente debe ocupar todas sus libertades, lo que implica llenar completamente $O_1$ y $O_2$.
+	Let \(O_1\) and \(O_2\) be the eyes of \(I\). To capture group \(I\), the opponent must occupy all of its liberties, which entails completely filling \(O_1\) and \(O_2\).
 	
-	Sin pérdida de generalidad, supongamos que el oponente intenta llenar primero $O_1$. Dado que la región es finita, eventualmente quedará un único punto $x \in O_1$.
+	Without loss of generality, let us suppose that the opponent attempts to fill \(O_1\) first. Since the region is finite, there will eventually remain a single intersection \(x \in O_1\).
 	
-	Al jugar en $x$, las piedras del oponente dentro de $O_1$ se quedan sin libertades, ya que $O_1$ está rodeado exclusivamente por $I$ ($|\partial O_1| = 1$). Dado que $I$ aún posee al menos una libertad en $O_2$, la jugada en $x$ no captura a $I$. Por consiguiente, la regla del suicidio determina que ocupar el punto $x$ es ilegal.
+	Upon playing at \(x\), the opponent's stones within \(O_1\) are left with no liberties, as \(O_1\) is exclusively surrounded by \(I\) (\(|\partial O_1| = 1\)). Given that \(I\) still possesses at least one liberty in \(O_2\), the move at \(x\) does not capture \(I\). Consequently, the suicide rule dictates that occupying intersection \(x\) is illegal.
 	
-	Como resultado, es imposible eliminar por completo ninguno de los dos ojos mediante jugadas legales. Por lo tanto, $I$ tiene vida incondicional.
+	As a result, it is impossible to completely eliminate either of the two eyes by means of legal moves. Therefore, \(I\) possesses unconditional life.
 \end{proof}
 %	\begin{figure}[H]
 	%		\centering
@@ -1907,23 +1934,27 @@ Apliquemos la teoría y veamos el Teorema de Benson. Antes de llegar a él, nece
 	%		\label{fig:dif_Unión}
 	%	\end{figure}
 \begin{lemma}\label{lem_2_benson}
-	Sea $S$ un conjunto de grupos de un mismo color tal que $|S| \ge 2$. Si un grupo $I_1 \in S$ posee un ojo $O$ y al menos una unión $U$ en cuya frontera se encuentra otro grupo distinto $I_2 \in S$, entonces $I_2$ debe ser capturado antes de poder capturar a $I_1$.
+	Let \(S\) be a set of groups of the same color such that \(|S| \ge 2\). If a group \(I_1 \in S\) possesses an eye \(O\) and at least one union \(U\) whose boundary contains another distinct group \(I_2 \in S\), then \(I_2\) must be captured before \(I_1\) can be captured.
 \end{lemma}
+
 \begin{proof}
-	Para capturar a $I_{1}$, el oponente debe ocupar todas las libertades provistas por la unión $U$, pues las del ojo $O$ solo pueden llenarse en última instancia (Lema~\ref{lem_1_benson}).
+	To capture \(I_{1}\), the opponent must occupy all the liberties provided by the union \(U\), since those of the eye \(O\) can only be filled last (Lemma~\ref{lem_1_benson}).
+	
+	Given that \(U\) is a union, its boundary contains more than one group (\(|\partial U| > 1\)), including \(I_1\) and \(I_2\). Every move within \(U\) simultaneously reduces the liberties of both. Upon attempting to occupy the last empty liberty of \(U\), the opponent's move will lack liberties of its own. By the suicide rule, this move is legal only if it executes a capture.
 	
 	Dado que $U$ es una unión, su frontera contiene más de un grupo ($|\partial U| > 1$), incluyendo a $I_1$ e $I_2$. Toda jugada en $U$ disminuye simultáneamente las libertades de ambos. Al intentar ocupar la última libertad vacía de $U$, el movimiento del oponente carecerá de libertades propias. Por la regla del suicidio, esta jugada es legal solo si realiza una captura.
 	
-	Como $I_1$ conserva al menos una libertad en su ojo $O$, no puede ser capturado en este turno. Por lo tanto, la jugada debe capturar obligatoriamente a otro grupo en la frontera de $U$, en este caso $I_2$. En consecuencia, $I_2$ es capturado antes que $I_1$.
+	Since \(I_1\) retains at least one liberty in its eye \(O\), it cannot be captured on this turn. Therefore, the move must necessarily capture another group on the boundary of \(U\), in this case \(I_2\). Consequently, \(I_2\) is captured before \(I_1\).
 \end{proof}
-En síntesis, para capturar a un grupo que posee un ojo y está conectado a una unión, es necesario capturar primero a los demás grupos que forman parte de la frontera de dicha unión, como se ilustra en la Figura~\ref{fig:lem_benson}.
+In summary, to capture a group that possesses an eye and is connected to a union, it is necessary to first capture the other groups comprising the boundary of said union, as illustrated in Figure~\ref{fig:lem_benson}.
+
 \begin{lemma}\label{lem_3_benson}
-	Sea $I$ un grupo sin ojos, pero conectado a $n$ uniones $U_1, U_2, \dots, U_n$ ($n \ge 2$). Entonces, antes de poder capturar a $I$, el oponente debe capturar al menos un grupo distinto en $n-1$ de estas uniones.
+	Let \(I\) be a group possessing no eyes, but connected to \(n\) unions \(U_1, U_2, \dots, U_n\) (\(n \ge 2\)). Then, before \(I\) can be captured, the opponent must capture at least one distinct group in \(n-1\) of these unions.
 \end{lemma}
 \begin{proof}
-	Para capturar a $I$, el oponente debe eliminar todas sus libertades en las $n$ uniones. Como no puede ocupar simultáneamente la última libertad de todas ellas, la regla del suicidio le obliga a reservar al menos una unión, digamos $U_n$, para la jugada final.
-	
-	Para agotar las libertades en las $n-1$ uniones restantes ($U_1, \dots, U_{n-1}$), cada unión presenta la situación descrita en el Lema~\ref{lem_2_benson}. Por lo tanto, el oponente se verá forzado a capturar al menos un grupo distinto en cada una de esas $n-1$ uniones antes de poder atacar a $I$.
+	To capture \(I\), the opponent must eliminate all of its liberties across the \(n\) unions. Since they cannot simultaneously occupy the final liberty of every union, the suicide rule compels them to reserve at least one union, say, \(U_n\), for the final move.
+
+	In order to exhaust the liberties in the \(n-1\) remaining unions (\(U_1, \dots, U_{n-1}\)), each union presents the situation described in Lemma~\ref{lem_2_benson}. Therefore, the opponent will be forced to capture at least one distinct group in each of those \(n-1\) unions before being able to attack \(I\).
 \end{proof}
 \begin{figure}[H]
 	\centering
@@ -1996,38 +2027,42 @@ En síntesis, para capturar a un grupo que posee un ojo y está conectado a una 
 		\end{scope}
 		% Draw the central black dot
 	\end{tikzpicture}
-	\caption{Izquierda: El grupo negro posee un ojo (rojo) y una unión (azul); el blanco debe capturar primero al grupo derecho (Lema~\ref{lem_2_benson}). Derecha: El grupo blanco superior izquierdo carece de ojos, pero comparte tres uniones (azul); el negro debe capturar a los grupos vecinos en al menos dos de ellas antes de poder capturarlo (Lema~\ref{lem_3_benson}).}
+	\caption{Left: The black group possesses one eye (red) and one union (blue); White must first capture the group on the right (Lemma~\ref{lem_2_benson}). Right: The upper-left white group lacks eyes, but shares three unions (blue); Black must capture the neighboring groups in at least two of them before being able to capture it (Lemma~\ref{lem_3_benson}).}
 	\label{fig:lem_benson}
 \end{figure}
 \begin{lemma}\label{lem_4_benson}
-	Sea $I$ un grupo o piedra, las libertades que no pertenecen a regiones vitales pueden ocuparse una a una mediante una secuencia de jugadas legales.
+	Let \(I\) be a group or stone; the liberties that do not belong to vital regions can be occupied one by one by means of a sequence of legal moves.
 \end{lemma}
 \begin{proof}
-	Sea $L(I)$ el conjunto de libertades de $I$. Toda libertad $x \in L(I)$ pertenece a alguna región vacía $R$. Si $R$ no es una región vital para el conjunto $P$ (al cual pertenece $I$), significa que incumple la segunda condición de la Definición~\ref{def:reg_vital}; es decir, su frontera no está contenida enteramente en $P$ ($\partial R \not\subset P$).
+	Let \(L(I)\) be the set of liberties of \(I\). Every liberty \(x \in L(I)\) belongs to some empty region \(R\). If \(R\) is not a vital region for the set \(P\) (to which \(I\) belongs), this implies that it fails to satisfy the second condition of Definition~\ref{def:reg_vital}—that is, its boundary is not entirely contained within \(P\) (\(\partial R \not\subset P\)).
 	
 	Al existir elementos en la frontera de $R$ que no pertenecen a $P$, el oponente puede colocar piedras en $R$ sin que estas se queden sin libertades. Como $\partial R \not\subset P$, las piedras enemigas jugadas en la región mantendrán o encontrarán libertades a través de esos grupos externos a $P$, evitando que la jugada sea un suicidio. Por lo tanto, el oponente puede ocupar estas libertades una a una de manera legal.
 \end{proof}
-\begin{theorem}[Vida incondicional de Benson]\label{teo_benson}
+\begin{theorem}[Benson's Unconditional Life Theorem]\label{teo_benson}
+	Let \(I\) be a group. Under a canonical \(\mathrm{Go}_{m}\) game (\(m \geq 2\)), \(I\) possesses unconditional life if and only if it belongs to a set of groups \(S\) of the same color such that, for every group \(J \in S\), there exist at least two distinct vital regions in \(S\).
+\end{theorem}
+
+\begin{theorem}[Vida incondicional de Benson]
 	Sea $I$ un grupo. Bajo un juego de $\mathrm{Go}_{m}$ canónico, ($m \geq 2$). Entonces, $I$ posee vida incondicional si y solo si pertenece a un conjunto de grupos $S$ de un mismo color tal que, para cada grupo $J \in S$, existen al menos dos regiones vitales distintas en $S$.
 \end{theorem}
-Comenzaremos demostrando la vuelta. Luego, mediante el contrarrecíproco, la ida.
+We shall begin by proving the backward implication. Then, via the contrapositive, the forward implication.
 \begin{proof}
-	$(\Leftarrow):$ Sea $I\in S$. Para capturarlo, debemos rodearlo completamente. En particular, debemos ocupar las libertades de sus regiones vitales. Por los Lemas~\ref{lem_1_benson}, \ref{lem_2_benson}, y \ref{lem_3_benson}, ya sean estas regiones ojos o uniones, la captura de $I$ exige la captura previa de algún otro grupo de $S$ que forme parte de la frontera de dichas regiones.
+	\((\Leftarrow):\) Let \(I\in S\). To capture it, we must surround it completely. In particular, we must occupy the liberties of its vital regions. By Lemmas~\ref{lem_1_benson}, \ref{lem_2_benson}, and \ref{lem_3_benson}, whether these regions are eyes or unions, the capture of \(I\) demands the prior capture of some other group in \(S\) that belongs to the boundary of said regions.
 	
-	Llamemos $I_k \in S$ a ese grupo. Para capturarlo, eventualmente debemos ocupar las libertades de sus propias regiones vitales (que podrían coincidir con las de $I$). Para ello, nuevamente, debemos capturar a otro grupo que pertenezca a la frontera de sus regiones vitales.
+	Let us denote this group by \(I_k \in S\). To capture it, we must eventually occupy the liberties of its own vital regions (which might coincide with those of \(I\)). To do so, once again, we must capture another group belonging to the boundary of its vital regions.
 	
-	Repitiendo el argumento, obtenemos que toda captura de un grupo de $S$ requiere una captura estrictamente previa de otro grupo de $S$. Por consiguiente, ninguna secuencia finita de jugadas puede contener una primera captura de un grupo de $S$. Por lo tanto, $S$ posee vida incondicional y, consecuentemente, $I$ también.
+	Repeating this argument, we deduce that every capture of a group in \(S\) requires a strictly prior capture of another group in \(S\). Consequently, no finite sequence of moves can contain a first capture of a group in \(S\). Therefore, \(S\) possesses unconditional life and, consequently, so does \(I\).
+
 	
-	$(\Rightarrow):$ Por contrarrecíproco, demostraremos que:
-	$$ \exists I \in S \text{ con a lo sumo una región vital en } S \implies S \text{ no posee vida incondicional.} $$
+	\((\Rightarrow):\) By contraposition, we shall prove that:
+	$$\exists I \in S \text{ with at most one vital region in } S \implies S \text{ does not possess unconditional life.}$$
 	
-	Sea $I \in S$ un grupo que posee, a lo sumo, una única región vital $V$ en $S$, por el lema~\ref{lem_4_benson}, mediante una secuencia de jugadas legales es posible ocupar todas las libertades externas de $I$. Una vez ocupadas las libertades externas, analizamos el estado de $I$:
+	Let \(I \in S\) be a group possessing at most a single vital region \(V\) in \(S\); by Lemma~\ref{lem_4_benson}, it is possible to occupy all the external liberties of \(I\) by means of a sequence of legal moves. Once the external liberties are occupied, we analyze the state of \(I\):
 	\begin{itemize}
-		\item Si $I$ carecía de regiones vitales, la ocupación del exterior agota sus libertades, concretando su captura.
-		\item Si $I$ poseía exactamente una región vital $V$, todas sus libertades están en $V$. Al intentar ocupar el último punto de $V$, como $I$ no posee una segunda región vital que le garantice al menos una libertad externa a la jugada, colocar esta piedra elimina la ultima libertad de $I$, efectuando la captura.
+		\item If \(I\) lacked vital regions, the occupation of the exterior exhausts its liberties, thereby executing its capture.
+		\item If \(I\) possessed exactly one vital region \(V\), all of its liberties lie within \(V\). Upon attempting to occupy the final intersection of \(V\), since \(I\) does not possess a second vital region to guarantee it at least one liberty external to the move, placing this stone eliminates the final liberty of \(I\), executing the capture.
 	\end{itemize}
-	
-	En ambos casos, existe una secuencia válida para reducir las libertades de $I$ y capturarlo. Por lo tanto, $S$ no posee vida incondicional, concluyendo la demostración.
+	In both cases, there exists a valid sequence to reduce the liberties of \(I\) and capture it. Therefore, \(S\) does not possess unconditional life, concluding the proof.
 \end{proof}
 
 \begin{wrapfigure}[8]{r}{0.3\textwidth}
@@ -2063,10 +2098,10 @@ Comenzaremos demostrando la vuelta. Luego, mediante el contrarrecíproco, la ida
 		\fill[draw=black,fill=Blue, very thin] (3.75,0.25) rectangle (4.25,-0.25);
 		% Draw the central black dot
 	\end{tikzpicture}
-	\caption{Tablero con un \textcolor{Red}{ojo} y una \textcolor{Blue}{Unión}.}
+	\caption{Board with an \textcolor{Red}{eye} and a \textcolor{Blue}{union}.}
 	\label{fig:ej_vidas}
-\end{wrapfigure}Es crucial diferenciar entre Vivo e Incondicionalmente Vivo. En la Figura~\ref{fig:ej_vidas}, si el negro jugara en el \textcolor{OliveGreen}{punto verde} obtendría vida incondicional; en su estado actual carece de ella. En una partida, un grupo sin vida incondicional puede estar prácticamente vivo, requiriendo apenas una o dos jugadas para asegurarla. La diferencia es justamente esa, la vida incondicional implica que estáticamente algo no pueda morir, la vida en el Go es sobre en cuanto tiempo puedo lograrlo y si los otros jugadores pueden impedirlo.
-
+\end{wrapfigure}
+It is crucial to distinguish between being Alive and being Unconditionally Alive. In Figure~\ref{fig:ej_vidas}, if Black were to play at the \textcolor{OliveGreen}{green intersection}, they would achieve unconditional life; in its current state, the group lacks it. In a game, a group lacking unconditional life may be practically alive, requiring merely one or two moves to secure it. The distinction lies precisely therein: unconditional life implies that, statically, a group cannot die; life in Go, however, is a question of how quickly one can achieve it and whether the other players can prevent it.
 \subsection{Seki}
 
 \begin{wrapfigure}[10]{r}{0.3\textwidth}
@@ -2105,16 +2140,18 @@ Comenzaremos demostrando la vuelta. Luego, mediante el contrarrecíproco, la ida
 		\fill[draw=black,fill=OliveGreen, very thin] (2.75,1.25) rectangle (3.25,0.75);
 		% Draw the central black dot
 	\end{tikzpicture}
-	\caption{Tablero con grupos en seki.}
+	\caption{Board with groups in \textit{seki}.}
 	\label{fig:seki}
-\end{wrapfigure}Habiendo visto la vida incondicional, es tiempo de la vida condicional. Existe otra estructura común en el Go que se denomina seki, esto sucede cuando dos grupos de colores distintos comparten libertades de manera que, si alguno de ellos intenta capturar al otro, el primero termina perdiendo véase Figura~\ref{fig:seki}. En la Figura~\ref{fig:seki}, quien juega primero y toma una de las dos \textcolor{OliveGreen}{libertades} de los grupos del interior, pierde, pues ya no será su turno y el otro jugador puede capturar (y lo hará).
-\begin{definition}[Seki sin ojos]
-	Sean $I$,$J$ dos grupos de colores distintos. Si existe $R$ una región tal que $|R|\geq 2$ y $L(I)=L(J)=R$.
-	Entonces $I, J$ están en seki.
+\end{wrapfigure}Having examined unconditional life, it is time to address conditional life. There exists another common structure in Go termed \textit{seki}; this occurs when two groups of distinct colors share liberties in such a manner that, if either of them attempts to capture the other, the initiator ends up losing (see Figure~\ref{fig:seki}). In Figure~\ref{fig:seki}, whoever plays first and takes one of the two \textcolor{OliveGreen}{liberties} of the interior groups loses, since it will no longer be their turn and the other player can (and most likely will) execute the capture.
+\begin{definition}[Seki without eyes]
+	Let \(I,J\) be two groups of distinct colors. If there exists a region \(R\) such that \(|R|\geq 2\) and \(L(I)=L(J)=R\), then \(I\) and \(J\) are in \textit{seki}.
 \end{definition}
+This definition perfectly encapsulates \textit{seki} without eyes, for if any player attempts to play in \(R\), there will eventually remain a single liberty; whoever plays on the subsequent turn will execute the capture. It is necessary to require that \(|R|\geq 2\); were this not the case, it would mean that both groups possess only a single liberty, and it would suffice for the active player to play on that liberty to execute a capture. By Benson's theorem, a group with two eyes possesses unconditional life. It remains, then, to analyze the case of groups possessing a single eye that find themselves in \textit{seki}.
+
+
 Esta definición encapsula perfectamente el seki sin ojos pues si algún jugador tratara de jugar en $R$, en algún momento quedará una sola libertad, quien juegue en el turno siguiente concreta la captura. Es necesario pedir que $|R|\geq 2$ de no serlo significa que ambos grupos tienen una sola libertad, basta que quien juega, juegue en esa libertad para capturar. Por el teorema de Benson, un grupo con dos ojos posee vida incondicional. Resta entonces analizar el caso de grupos con un único ojo que se encuentran en seki.
 
-\begin{wrapfigure}[7]{r}{0.4\textwidth}
+\begin{wrapfigure}[7]{r}{0.3\textwidth}
 	\vspace{-10pt}
 	\centering
 	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
@@ -2155,50 +2192,56 @@ Esta definición encapsula perfectamente el seki sin ojos pues si algún jugador
 		
 		% Draw the central black dot
 	\end{tikzpicture}
-	\caption{Tablero con grupos en seki.}
+	\caption{Board with groups in \textit{seki}.}
 	\label{fig:sekiojos}
-\end{wrapfigure}	\begin{definition}[Seki con Ojos]
-	Sean $I, J$ dos grupos de piedras de distinto color. 
-	Sean $O_I, O_J$ un ojo para $I$ y para $J$ respectivamente.
-	Si existe una región $R \subseteq L(I)\cap L(J)$ tal que $L(I)=R \cup O_I$ y $L(J)=R \cup O_J$, entonces $I$ y $J$ están en seki.
-\end{definition} Por el Lema~\ref{lem_1_benson}, todo ojo puede reducirse a una única libertad. En consecuencia, ocupar la región compartida R implica depender exclusivamente de dicho ojo, permitiendo al adversario capturar el grupo. Si bien existen variantes más complejas de seki (ojos falsos, doble ko, etc.), estas configuraciones básicas bastan para ilustrar la vida condicional.
+\end{wrapfigure}\begin{definition}[Seki with eyes]
+Let \(I\) and \(J\) be two groups of stones of distinct colors. 
+Let \(O_I\) and \(O_J\) be an eye for \(I\) and for \(J\), respectively.
+If there exists a region \(R \subseteq L(I)\cap L(J)\) such that \(L(I)=R \cup O_I\) and \(L(J)=R \cup O_J\), then \(I\) and \(J\) are in \textit{seki}.
+\end{definition}
+By Lemma~\ref{lem_1_benson}, every eye can be reduced to a single liberty. Consequently, occupying the shared region \(R\) entails relying exclusively on said eye, thereby allowing the opponent to capture the group. Although there exist more complex variants of \textit{seki} (false eyes, double \textit{ko}, etc.), these basic configurations suffice to illustrate conditional life.
+
+\textbf{This section will be continued some time in the future.}
 
 \vspace{1cm}
-\subsection{Observación sobre el Teorema 2 de Bai}
-Presentaremos un contraejemplo al Teorema 2 de Bai \cite{KJB1, KJB2}. Vale destacar que Bai primero se pregunta sobre la inmersión de un grupo incondicionalmente vivo de un tablero bidimensional en un tablero tridimensional. Sin embargo, el Teorema 2 afirma un resultado más fuerte,
+\subsection{Remark on Bai's Theorem 2}
+We shall present a counterexample to Bai's Theorem 2 \cite{KJB1, KJB2}. It is worth noting that Bai first raises the question of embedding an unconditionally alive group from a two-dimensional board into a three-dimensional board. However, Theorem 2 asserts a stronger result,
 
-«In a 2-person go-game on a 3-dimensional board, every two dimensional x-graph is not safe.»
+\begin{quote}
+	``In a 2-person go-game on a 3-dimensional board, every two dimensional x-graph is not safe.''
+\end{quote}
 
-Dado que Bai fundamenta su análisis en el trabajo de Benson, dentro de nuestro marco teórico este resultado se traduce como:
+Given that Bai grounds his analysis in Benson's work, within our theoretical framework, this result translates as follows:
 
-«En un juego de $Go_{2}^{3}$, ningún grupo de color $x$ de dos dimensiones posee vida incondicional.» 
+``In a \(Go_{2}^{3}\) game, no two-dimensional group of color \(x\) possesses unconditional life.''
 
-Para Bai, un «two dimensional x-graph» es un grupo de color $x$ que mantiene fija una de las dimensiones del espacio a una constante. Cabe destacar que, en su formulación, exige un tamaño mínimo de tablero de $9 \times 9 \times 9$. Exhibiremos una configuración que contradice el enunciado del Teorema 2 de Bai.
-
+For Bai, a ``two dimensional x-graph'' is a group of color \(x\) that holds one of the spatial dimensions fixed at a constant value. It is worth noting that, in his formulation, he imposes a minimum board size of \(9 \times 9 \times 9\). We shall exhibit a configuration that contradicts the statement of Bai's Theorem 2.
 
 \begin{wrapfigure}[7]{r}{0.25\textwidth}
 	\vspace{-15pt}
 	\begin{align*}
 		V,N,V,N,V,N,V,N,V
 	\end{align*}
-	\caption{Capas del contraejemplo.}
+	\caption{Layers of the counterexample.}
 	\label{contraej_bai}
-\end{wrapfigure}Por la naturaleza tridimensional del tablero, podemos particionarlo a lo largo de su tercera coordenada en distintos «pisos» como tableros de $9\times 9 \times 1$. Consideremos una capa enteramente ocupada por un grupo negro, a la que llamaremos $N$, y una capa enteramente vacía, que llamaremos $V$. Construyendo el tablero de abajo hacia arriba a lo largo de la tercer coordenada, podemos alternar estas capas de la siguiente manera, Figura~\ref{contraej_bai}.
+\end{wrapfigure}Due to the three-dimensional nature of the board, we can partition it along its third coordinate into distinct ``floors,'' treating them as \(9\times 9 \times 1\) boards. Let us consider a layer entirely occupied by a black group, which we shall call \(N\), and an entirely empty layer, which we shall call \(V\). Constructing the board from bottom to top along the third coordinate, we can alternate these layers in the following manner, as depicted in Figure~\ref{contraej_bai}. 
 
-Sea $S$ el conjunto formado por todos los grupos negros de la construcción. Toda intersección de una capa vacía es adyacente a una piedra de alguna de las capas negras vecinas, por lo que la región es saludable. Además, toda frontera de una capa vacía está constituida exclusivamente por piedras pertenecientes a $S$.
-Por consiguiente, constituyen al menos dos regiones vitales distintas para cada grupo de $S$. Por el Teorema de Benson (Teorema 1 de Bai), el conjunto $S$ posee vida incondicional. En consecuencia, el Teorema de Benson garantiza la existencia de grupos seguros contenidos en subtableros bidimensionales, contradiciendo el Teorema 2 de Bai. La construcción se generaliza inmediatamente a tableros de cualquier altura. Si el número de capas es impar, basta hacer como se ha mostrado. Si es par, es suficiente reemplazar la primer capa negra por una doble, de dos capas consecutivas de piedras negras, siempre espaciando con capas vacías.
+Let \(S\) be the set formed by all the black groups in the construction. Every intersection of an empty layer is adjacent to a stone from one of the neighboring black layers; therefore, the region is healthy. Furthermore, every boundary of an empty layer is comprised exclusively of stones belonging to \(S\).
 
-En consecuencia, bajo las definiciones de región vital y vida incondicional adoptadas por Benson y utilizadas por Bai, existen grupos bidimensionales seguros en un tablero tridimensional. Esto contradice el enunciado del Teorema 2.
+Consequently, they constitute at least two distinct vital regions for each group in \(S\). By Benson's Theorem (Bai's Theorem 1), the set \(S\) possesses unconditional life. As a result, Benson's Theorem guarantees the existence of safe groups contained within two-dimensional sub-boards, thereby contradicting Bai's Theorem 2. The construction generalizes immediately to boards of any height. If the number of layers is odd, it suffices to proceed as shown. If it is even, it is sufficient to replace the first black layer with a double layer, consisting of two consecutive layers of black stones, always spacing them with empty layers.
 
+Uunder the definitions of a vital region and unconditional life adopted by Benson and utilized by Bai, there exist safe two-dimensional groups on a three-dimensional board. This contradicts the statement of Theorem 2.
 
-%\begin{wrapfigure}{r}{0.7\textwidth}
-%	Más aún, si omitimos la restricción arbitraria del tamaño del tablero impuesta por Bai, el fenómeno puede ilustrarse en su mínima expresión con la ayuda de la herramienta \href{https://github.com/10500x/3dGo}{3dGo}. 
-%	\begin{figure}[H]
-	%		\centering
-	%		\includegraphics[width=0.8\linewidth]{baicontraej}
-	%		\caption{Contraejemplo mínimo al resultado de Bai. Grupo negro de dos dimensiones que posee vida incondicional en un tablero de $2 \times 2 \times 3$.}
-	%		\label{fig:baicontraejemplo}
-	%	\end{figure}
+Furthermore, if we omit the arbitrary board-size restriction imposed by Bai, the phenomenon can be illustrated in its minimal expression with the aid of the \href{https://github.com/10500x/3dGo}{3dGo} tool.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{figures/baicontraej}
+	\caption{Minimal counterexample to Bai's result. A two-dimensional black group possessing unconditional life on a \(2 \times 2 \times 3\) board.}
+	\label{fig:baicontraejemplo}
+\end{figure}	
+	
+
 
 
 %
