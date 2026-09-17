@@ -1390,17 +1390,18 @@ Bajo esta construcción, formalizamos las propiedades del flujo del juego. Denot
 
 \subsection{Anatomía de una jugada}
 Entendamos cómo funciona $\Delta$. Supongamos que estamos jugando al Go y que, en nuestro turno, pretendemos jugar $f(t)$.
+
 Si $f(t) = \varnothing$, el tablero permanece idéntico y pasamos el turno, es decir,
 $$T_{t} = \Delta(T_{t-1}, \varnothing) = T_{t-1}.$$
 Si $f(t) = i^{*} = (e, p)$, hemos de validar dicha jugada, el cálculo del nuevo tablero $T_t = \Delta(T_{t-1}, i^{*})$ en virtud del teorema~\ref{teoremalegal} se realiza de la siguiente manera:
 \begin{enumerate}
 	\item \textbf{Colocación:} Si existe $(e',p)\in T_{t-1}$ tal que $e' \neq 0$, la jugada es ilegal. Si $e' =0$, generamos un tablero transitorio $T'$ donde el punto $p$, previamente vacío, adquiere el estado $e$. Luego avanzamos al siguiente paso.
 	$$ T' = \left(T_{t-1} \setminus \{(0, p)\}\right) \cup \{(e, p)\}.$$
-	\item \textbf{Detección de SuperKo:}
-	Calculamos $H(T_{t-1}) \oplus h(i^{*})$ y lo comparamos con el historial. Si su comparación da $\vec{0}$, en cada hash, hemos roto la regla y la jugada se descarta, en caso contrario avanzamos al siguiente paso.
+	
 	\item \textbf{Detección de captura:} Evaluando las adyacencias en $T'$, identificamos el conjunto $Cap$, uniendo todos los grupos, de adversarios, que no poseen libertades.
 	$$ Cap = \bigcup \{ i\in I^{e'} \subset T' \mid L(I^{e'}) = \varnothing, e' \notin \{0, e\}\}.$$
-	Si $Cap \neq \varnothing$, la jugada es legal y saltamos al paso $5$, en caso contrario avanzamos al siguiente paso.
+	Si $Cap \neq \varnothing$, la jugada es legal y saltamos al paso $4$, en caso contrario avanzamos al siguiente paso.
+	
 	\item \textbf{Detección de suicidio:} Considerando $Cap = \varnothing$, evaluamos el estado de la piedra jugada $i^* = (e, p)$ en $T'$. El análisis se divide en dos casos:
 	\begin{itemize}
 		\item \textbf{Piedra aislada:} Si $i^*$ no se conecta con ninguna piedra de su mismo color, evaluamos sus libertades. Si $L(i^*) = \varnothing$, la jugada constituye un suicidio.
@@ -1410,6 +1411,10 @@ Si $f(t) = i^{*} = (e, p)$, hemos de validar dicha jugada, el cálculo del nuevo
 	
 	\item \textbf{Actualización:} Transformamos las piedras capturadas a estado libre ($Cap_0$) y actualizamos el tablero.
 	$$Cap_0 = \{(0, P(i)) : i \in Cap\},\quad T_t = (T' \setminus Cap) \cup Cap_0.$$
+	Luego, avanzamos al siguiente paso.
+	
+	\item \textbf{Detección de SuperKo:}
+	Calculamos $H(T_{t}) \oplus h(i^{*})$ y lo comparamos con el historial. Si su comparación da $\vec{0}$, en cada hash (en caso de tener más de uno), hemos roto la regla y la jugada se descarta, en caso contrario avanzamos al siguiente turno.
 \end{enumerate}
 De esta manera, toda jugada propuesta puede aceptarse o rechazarse. Un Juego de Go se define formalmente como una cuádrupla,
 $$ \Gamma = (G, E, A, \Delta).$$
@@ -2147,6 +2152,8 @@ Esta definición encapsula perfectamente el seki sin ojos pues si algún jugador
 	Sean $O_I, O_J$ un ojo para $I$ y para $J$ respectivamente.
 	Si existe una región $R \subseteq L(I)\cap L(J)$ tal que $L(I)=R \cup O_I$ y $L(J)=R \cup O_J$, entonces $I$ y $J$ están en seki.
 \end{definition} Por el Lema~\ref{lem_1_benson}, todo ojo puede reducirse a una única libertad. En consecuencia, ocupar la región compartida R implica depender exclusivamente de dicho ojo, permitiendo al adversario capturar el grupo. Si bien existen variantes más complejas de seki (ojos falsos, doble ko, etc.), estas configuraciones básicas bastan para ilustrar la vida condicional.
+
+\textbf{Esto será continuado en algún momento.}
 
 \vspace{1cm}
 \subsection{Observación sobre el Teorema 2 de Bai}
