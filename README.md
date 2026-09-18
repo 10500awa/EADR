@@ -10,6 +10,13 @@ This repository contains the complete $\LaTeX$ source code for **圍道 — Wéi
 - **Part II: Construction** — Formal two-dimensional, two-player mathematical model. Precise formulations of legal moves, captures, Superko resolution (via Zobrist hashing), $n$-dimensional generalization ($m$ players), and group life theory (revisiting David Benson work).
 - **Part III: Abstractions** — Geometric and graph-theoretic behavior of adjacencies in higher dimensions, an analysis of three-dimensional Go, one-dimensional variants, and common underlying structures across abstract board games.
 
-## Compilation Requirements
+## Prerequisites & LaTeX Dependencies
 
-**Important:** This document must be compiled using **XeLaTeX**. Standard pdfLaTeX will fail because the project relies on `fontspec`, external OpenType/TrueType fonts (such as CJK Unicode characters (Chinese/Japanese glyphs).
+To compile `main_en.tex`, you will need running **XeLaTeX** and **Biber**, along with the following packages:
+
+* **Language & Fonts:** `babel` (English), `fontspec`, `xeCJK` (*Noto Serif/Sans CJK SC* fonts), `csquotes`, `newpxtext`, `newpxmath`, `microtype`.
+* **Mathematics:** `amsmath`, `amsthm`, `amsfonts`, `mathtools`.
+* **Graphics & Diagramming:** `tikz`, `tikz-cd`, `pgfplots`, `xcolor`, `graphicx`, `wrapfig`, `float`, `pdfpages`.
+  * *TikZ libraries:* `arrows.meta`, `bending`, `positioning`, `shadows`, `calc`, `shapes.geometric`, `decorations.text`, `babel`.
+* **Layout & Editorial:** `geometry`, `fancyhdr`, `tocloft`, `caption`, `epigraph`, `booktabs`, `multicol`, `multirow`, `emptypage`.
+* **Citations & Hyperlinks:** `biblatex` (with `biber`), `hyperref`, `xurl`, `xspace`.
