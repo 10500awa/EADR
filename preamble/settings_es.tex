@@ -21,7 +21,7 @@
 \renewcommand{\cftaftertoctitle}{\par\noindent\rule{\linewidth}{1.2pt}}
 \renewcommand{\cftchappagefont}{\Large\bfseries}
 \renewcommand{\cftchapleader}{\hfill} 
-\renewcommand{\cftchappresnum}{Part }
+\renewcommand{\cftchappresnum}{Parte }
 \setlength{\cftchapnumwidth}{6.25em}
 \setlength{\cftsecnumwidth}{2.3em}
 \setlength{\cftsubsecnumwidth}{3.5em}
@@ -51,16 +51,16 @@
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0pt}
 \renewcommand{\chaptermark}[1]{%
-	\markboth{Part \thechapter: #1}{}
+	\markboth{Parte \thechapter: #1}{}
 }
 % --- 8. ENTORNOS PERSONALIZADOS ---
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{lemma}[theorem]{Lema}
 \theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
+\newtheorem{definition}{Definición}[section]
 % El nuevo Q.E.D. (Una piedra de Go redonda)
-\renewcommand{\qedsymbol}{\raisebox{-1.8pt}{\huge\(\bullet\)}}
-\newtheorem{corollary}{Corollary}[theorem]
+\renewcommand{\qedsymbol}{\raisebox{-1.8pt}{\huge$\bullet$}}
+\newtheorem{corollary}{Corolario}[theorem]
 % --- 9. HIPERVÍNCULOS (Siempre al final) ---
 \definecolor{linkdark}{HTML}{000055}
 \usepackage{hyperref}
@@ -76,19 +76,28 @@
 	bookmarksnumbered=true,  
 	pdfpagemode=UseOutlines, 
 	pdfstartview=FitH, 
-	pdftitle={Wéi Dào - The Art of Surrounding},
+	pdftitle={圍道 - El arte de rodear},
 	pdfauthor={W. Adrián Arias}
 }
 \setlength{\parskip}{0.5ex plus 0.2ex minus 0.2ex}  % Espacio entre párrafos
 \setlength{\parindent}{1.2em}                       % Sangría estándar
 \title{
 	\centering 
+	%{\LARGE \textsc{Universidad Nacional del Litoral}}\\
+	%{\Large \textsc{Facultad de Ingeniería Química}}\\
 	\vspace{30pt}
 	{\fontsize{100}{40}圍道}\\
 	\vspace{12pt}
-	\Large{\textsc{The art of surrounding}}\\
+	\Large{\textsc{El arte de rodear}}\\
 	\vspace{150pt}
 	\author{Arias, W. Adrián \\ \texttt{10500awa@gmail.com} \\ \href{https://github.com/10500awa/EADR}{https://github.com/10500awa/EADR}}
 	\date{2026}
+%	\begin{center}
+%		\begin{tikzpicture}[remember picture, overlay]
+%			\node[anchor=south, inner sep=0pt,yshift=-1pt] at (current page.south){
+%				\includegraphics{figures/portadauma.pdf} 
+%			};
+%		\end{tikzpicture}
+%	\end{center}
 	
 }

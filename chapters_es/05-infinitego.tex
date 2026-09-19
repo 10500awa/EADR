@@ -1,0 +1,321 @@
+{\centering
+	\chapter{Go infinito}\label{infgo}}
+\thispagestyle{empty}
+\noindent
+{\large\textbf{Este capítulo es un borrador. Incluiré mis pensamientos y procesos de todo en cuanto entiendo y soy capaz de formalizar.}}
+\vspace{20pt}
+
+Para comenzar, veamos \textit{donde} jugamos ahora. Nuestro tablero infinito debe ser capaz tambien de tener infinitas dimensiones donde cada una de ellas pueda ser o no infinita.
+
+Veamos el caso más sencillo (creo), jugemos en un tablero de dos dimensiones, donde una de ellas es infinita.
+
+Sea $G$ un tablero de go tal que,
+$$G=\mathbb{N}\times N.$$
+Donde $N$ es un subconjunto de $\mathbb{N}$.
+Como el número de jugadores no importa del todo, usemos tan solo dos jugadores. Además, usemos la adjacencia canónica. Así, nuestro juega será el: $$\Gamma=(G,E,A_{ort},\Delta_{Go_{\infty}}).$$
+Al menos por ahora, no estamos seguros de cómo funciona $\Delta_{Go_{\infty}}$ pero, llegamos a ello.
+
+Nuestro tablero podría (y para nosotros, tendrá) la siguiente forma, Figura~\ref{first_inf_board}:
+\begin{figure}[H]
+	%\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+		% Draw the background
+		\fill[goban] (-7,-0.5) rectangle (7,6.5);
+		% Draw the grid lines
+		\foreach \x in {6,5,...,0}{
+			\draw[black] (-5,\x) -- (5,\x); 
+			% draw horizontal lines
+		}
+		\foreach \x in {4,...,-4} {
+			\draw[black] (\x,0) -- (\x,6); 
+			% draw vertical lines
+		}
+		\foreach \x in {6,0}{
+		\draw[very thick] (-5,\x) rectangle (5,\x);
+		}% draw upper and lower lines.
+		%draw the triple dot line for each infinite side.
+		\foreach \x in {6,5,...,0} {
+			\node at (-6, \x) {\dots};
+			\node at (6, \x) {\dots};
+		}
+		
+	
+	\end{tikzpicture}
+	\caption{Un tablero de $7\times \infty$.}
+	\label{first_inf_board}
+\end{figure}
+
+El primer problema en el tablero infinito es cómo determinar una captura. Toda otra definición anterior debería funcionar bien. 
+
+Supongamos que estamos en la siguiente posición, Figura~\ref{first_inf_cap}
+\begin{figure}[H]
+	%\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+		% Draw the background
+		\fill[goban] (-7,-0.5) rectangle (7,6.5);
+		% Draw the grid lines
+		\foreach \x in {6,5,...,0}{
+			\draw[black] (-5,\x) -- (5,\x); 
+			% draw horizontal lines
+		}
+		\foreach \x in {4,...,-4} {
+			\draw[black] (\x,0) -- (\x,6); 
+			% draw vertical lines
+		}
+		\foreach \x in {6,0}{
+			\draw[very thick] (-5,\x) rectangle (5,\x);
+		}% draw upper and lower lines.
+		%draw the triple dot line for each infinite side.
+		\foreach \x in {6,5,...,0} {
+			\node at (-6, \x) {\dots};
+			\node at (6, \x) {\dots};
+		}
+		
+		%draw black stones.
+		\foreach \x in {5,...,-5} {
+			\filldraw[black] (\x,3) circle (12pt);
+		}
+		\begin{scope}[xshift=15cm]
+			% Draw the background
+			\fill[goban] (-7,-0.5) rectangle (7,6.5);
+			% Draw the grid lines
+			\foreach \x in {6,5,...,0}{
+				\draw[black] (-5,\x) -- (5,\x); 
+				% draw horizontal lines
+			}
+			\foreach \x in {4,...,-4} {
+				\draw[black] (\x,0) -- (\x,6); 
+				% draw vertical lines
+			}
+			\foreach \x in {6,0}{
+				\draw[very thick] (-5,\x) rectangle (5,\x);
+			}% draw upper and lower lines.
+			%draw the triple dot line for each infinite side.
+			\foreach \x in {6,5,...,0} {
+				\node at (-6, \x) {\dots};
+				\node at (6, \x) {\dots};
+			}
+			
+			%draw black stones.
+			\foreach \x in {5,...,-5} {
+				\filldraw[draw=black,fill=white] (\x,4) circle (12pt);
+			}
+			%draw black stones.
+			\foreach \x in {5,...,-5} {
+				\filldraw[black] (\x,3) circle (12pt);
+			}
+			%draw black stones.
+			\foreach \x in {5,...,-5} {
+				\filldraw[draw=black,fill=white] (\x,2) circle (12pt);
+				
+			}
+		\end{scope}
+		
+	\end{tikzpicture}
+	\caption{
+		Un tablero inifinito con un grupo negro infinito siendo capturado.}
+	\label{first_inf_cap}
+\end{figure}
+Como este grupo es infinito (numerable), va a tocar el final del tablero, por lo tanto, para rodearlo basta hacerlo por arriba y por abajo.
+
+Podemos asegurar que se trata de una captura pues si el grupo negro es $I$ luego $K(I)\subset S$ donde $\cup S$ es el conjuto de los grupos blancos. Luego $L(I)$ debe ser cero, concretando una captura.
+
+Veamos otro ejemplo, de un grupo infinito pero solo por un lado.
+\begin{figure}[H]
+	%\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+		% Draw the background
+		\fill[goban] (-7,-0.5) rectangle (7,6.5);
+		% Draw the grid lines
+		\foreach \x in {6,5,...,0}{
+			\draw[black] (-5,\x) -- (5,\x); 
+			% draw horizontal lines
+		}
+		\foreach \x in {4,...,-4} {
+			\draw[black] (\x,0) -- (\x,6); 
+			% draw vertical lines
+		}
+		\foreach \x in {6,0}{
+			\draw[very thick] (-5,\x) rectangle (5,\x);
+		}% draw upper and lower lines.
+		%draw the triple dot line for each infinite side.
+		\foreach \x in {6,5,...,0} {
+			\node at (-6, \x) {\dots};
+			\node at (6, \x) {\dots};
+		}
+		
+		%draw black stones.
+		\foreach \x in {5,...,0} {
+			\filldraw[black] (\x,3) circle (12pt);
+		}
+		\begin{scope}[xshift=15cm]
+			% Draw the background
+			\fill[goban] (-7,-0.5) rectangle (7,6.5);
+			% Draw the grid lines
+			\foreach \x in {6,5,...,0}{
+				\draw[black] (-5,\x) -- (5,\x); 
+				% draw horizontal lines
+			}
+			\foreach \x in {4,...,-4} {
+				\draw[black] (\x,0) -- (\x,6); 
+				% draw vertical lines
+			}
+			\foreach \x in {6,0}{
+				\draw[very thick] (-5,\x) rectangle (5,\x);
+			}% draw upper and lower lines.
+			%draw the triple dot line for each infinite side.
+			\foreach \x in {6,5,...,0} {
+				\node at (-6, \x) {\dots};
+				\node at (6, \x) {\dots};
+			}
+			
+			%draw white stones.
+			\foreach \x in {5,...,0} {
+				\filldraw[draw=black,fill=white] (\x,4) circle (12pt);
+			}
+			%draw black stones.
+			\foreach \x in {5,...,0} {
+				\filldraw[black] (\x,3) circle (12pt);
+			}
+			%draw white stones.
+			\foreach \x in {5,...,0} {
+				\filldraw[draw=black,fill=white] (\x,2) circle (12pt);
+				
+			}
+			\filldraw[draw=black,fill=white] (-1,3) circle (12pt);
+		\end{scope}
+		
+	\end{tikzpicture}
+	\caption{
+		Un grupo infinito, solo por un lado, siendo capturado.}
+	\label{first_1sideinf_cap}
+\end{figure}
+En este caso, no usar todo el tablero resulta beneficioso pues tenemos una libertad más (o no la perdemos)
+
+
+Veamos otro ejemplo para poder adentranos en la naturaleza del Go infinito.
+\begin{figure}[H]
+	%\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+		% Draw the background
+		\fill[goban] (-7,-0.5) rectangle (7,6.5);
+		% Draw the grid lines
+		\foreach \x in {6,5,...,0}{
+			\draw[black] (-5,\x) -- (5,\x); 
+			% draw horizontal lines
+		}
+		\foreach \x in {4,...,-4} {
+			\draw[black] (\x,0) -- (\x,6); 
+			% draw vertical lines
+		}
+		\foreach \x in {6,0}{
+			\draw[very thick] (-5,\x) rectangle (5,\x);
+		}% draw upper and lower lines.
+		%draw the triple dot line for each infinite side.
+		\foreach \x in {6,5,...,0} {
+			\node at (-6, \x) {\dots};
+			\node at (6, \x) {\dots};
+		}
+		
+		%draw black stones.
+		\foreach \x in {1,...,-1} {
+			\filldraw[black] (\x,3) circle (12pt);
+		}
+		\foreach \x in {2,4} {
+			\filldraw[black] (0,\x) circle (12pt);
+		}
+		\filldraw[draw=black,fill=white] (0,1) circle (12pt);
+		\filldraw[draw=black,fill=white] (0,5) circle (12pt);
+		\filldraw[draw=black,fill=white] (-1,4) circle (12pt);
+		\filldraw[draw=black,fill=white] (-1,2) circle (12pt);
+		\filldraw[draw=black,fill=white] (1,4) circle (12pt);
+		\filldraw[draw=black,fill=white] (1,2) circle (12pt);
+		\filldraw[draw=black,fill=white] (2,3) circle (12pt);
+		\filldraw[draw=black,fill=white] (-2,3) circle (12pt);
+
+		
+		\begin{scope}[xshift=15cm]
+			% Draw the background
+			\fill[goban] (-7,-0.5) rectangle (7,6.5);
+			% Draw the grid lines
+			\foreach \x in {6,5,...,0}{
+				\draw[black] (-5,\x) -- (5,\x); 
+				% draw horizontal lines
+			}
+			\foreach \x in {4,...,-4} {
+				\draw[black] (\x,0) -- (\x,6); 
+				% draw vertical lines
+			}
+			\foreach \x in {6,0}{
+				\draw[very thick] (-5,\x) rectangle (5,\x);
+			}% draw upper and lower lines.
+			%draw the triple dot line for each infinite side.
+			\foreach \x in {6,5,...,0} {
+				\node at (-6, \x) {\dots};
+				\node at (6, \x) {\dots};
+			}
+			
+			
+			%draw white stones.
+			\foreach \x in {5,...,-5} {
+				\filldraw[draw=black,fill=white] (\x,4) circle (12pt);
+			}
+			%draw white stones.
+			\foreach \x in {5,...,-5} {
+				\filldraw[draw=black,fill=white] (\x,2) circle (12pt);
+				
+			}
+			%draw white stones.
+			\foreach \x in {0,1,2,4,5,6} {
+				\filldraw[draw=black,fill=white] (-1,\x) circle (12pt);
+				
+			}
+			\foreach \x in {0,1,2,4,5,6} {
+				\filldraw[draw=black,fill=white] (1,\x) circle (12pt);
+				
+			}
+			
+			%draw black stones.
+			\foreach \x in {5,...,-5} {
+				\filldraw[black] (\x,3) circle (12pt);
+			}
+			\foreach \x in {0,...,6} {
+				\filldraw[black] (0,\x) circle (12pt);
+			}
+		\end{scope}
+		
+	\end{tikzpicture}
+	\caption{Dos capturas, una finita y otra infinita.}
+	\label{finite_infinite_capture}
+\end{figure}
+Parece ser que los grupos finitos son más fuertes que los infinitos, nuevamente, los primeros no pierden libertades en los extremos, por ser finitos.
+
+\section{SuperKo en el infinito}
+No podemos hacer uso del método de Zobrist para el Go infinito, pues requeriríamos de una cantidad infinita de bits. Necesitamos de algo mejor, intentemos crearlo.
+
+Si recordamos la naturaleza de la regla SuperKo, esta nos dice que no podemos replicar una posición que ya haya aparecido si es atraves de una jugada de pierdra. Nuevamente en funcion de nuestro SuperKo. 
+
+Debido a esto, todo juego debe ser una linea, es decir, como no se puede volver hacia atras en el historial, partiendo el estado inicial, el juego avanza de manera vertical, sin ciclos. Más aún, el mismo juego del Go se convierte en un arbol pues, partiendo del tablero vacío hay exactamente 362 jugadas posibles (361 de piedras y pasar).
+
+Definamos una manera de medir que tan cerca dos tableros están (finito).
+
+\begin{definition}[Función de diferencia de color]
+	Dados dos taleros $T_1$ y $T_2$ de un mismo juego de Go, su diferencia en un punto $t=(t_1,...t_m)$, se define como,
+	\[ 
+	\delta(T_1,T_2)_t=
+	\begin{cases}
+		1 \text{si }C(t)_{T_1}=C(t)_{T_2}, \\
+		0 \text{si } no. \\
+	\end{cases}
+	\]
+\end{definition}
+Now, let's apply this to every point,
+\begin{definition}[Distancia entre Tableros]
+	Dados dos tableros $T_1$ and $T_2$ de un mismo juego de Go, su diferencia se define como:
+	$$\sum_{t\in G} \delta(T_1,T_2)_{t}$$
+\end{definition}
+No tengo idea de cómo usar esto, aún.
