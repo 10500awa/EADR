@@ -14,7 +14,7 @@ This repository contains the complete LaTeX source code for **圍道 — Wéi D�
 
 ## Prerequisites & LaTeX Dependencies
 
-To compile `main_en.tex`, you will need a running distribution of **XeLaTeX** and **Biber**, along with the following packages:
+To compile `main.tex`, you will need a running distribution of **XeLaTeX** and **Biber**, along with the following packages:
 
 * **Language & Fonts:** `babel` (English), `fontspec`, `xeCJK` (*Noto Serif/Sans CJK SC* fonts), `csquotes`, `newpxtext`, `newpxmath`, `microtype`.
 * **Mathematics:** `amsmath`, `amsthm`, `amsfonts`, `mathtools`.
