@@ -39,7 +39,7 @@
 \setcounter{page}{1}
 
 \subsection{History of Go in China}
-The term 围棋 (Wéi Qí) originates from the characters 围 (Wéi), meaning ‘to surround,’ and 棋 (Qí), which refers to a ‘board game.’ In the West, it is commonly known as Go, a name derived from the Japanese 囲碁 (Igo). Although its exact chronology remains uncertain, ancient literary, pictorial, and archaeological records demonstrate that the game was an integral part of Chinese culture.
+The term 围棋 (Wéi Qí) originates from the characters 围 (Wéi), meaning ‘to surround’, and 棋 (Qí), which refers to a ‘board game’. In the West, it is commonly known as Go, a name derived from the Japanese 囲碁 (Igo). Although its exact chronology remains uncertain, ancient literary, pictorial, and archaeological records demonstrate that the game was an integral part of Chinese culture since BCE times.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.51\linewidth]{figures/Go_1200x1200}
@@ -1234,16 +1234,17 @@ In 1970, \textit{Albert L. Zobrist} published a method to encode a board positio
 
 In 1972, Thorp and Walden published a combinatorial study exploring the nature and rules of Go to generate a computational model. 
 
-In 1976, David B. Benson \cite{Benson} built upon Thorp and Walden's work to formally determine when a group is ``alive.'' Although at first glance this contribution might seem separate from general game models, it stands as a pioneering attempt to model the internal dynamics of Go. His approach will be revisited under our own thery in Section~\ref{sec-vida}.
+In 1976, David B. Benson \cite{Benson} built upon Thorp and Walden's work to formally determine when a group is ``alive''. Although at first glance this contribution might seem separate from general game models, it stands as a pioneering attempt to model the internal dynamics of Go. His approach will be revisited under our own thery in Section~\ref{sec-vida}.
 
 Finally, mention must be made of the work of \textit{Jin Bai Kim}, conceived in 1976 and published in two parts in 1978 \cite{KJB1, KJB2}. This study continues the tradition of using graphs to model Go, although Kim omits one of the possible board states and proposes an alternative definition of \textit{adjacencies}. In the second of these articles, we encounter the first formulation of three-dimensional Go (which we shall examine in Part~\ref{parte3}).
 
 \subsection{Rules and formats}
 
-\begin{wrapfigure}[11]{r}{0.5\textwidth}
+\begin{wrapfigure}[11]{r}{0.47\textwidth}
+	\vspace{-10pt}
 	%\begin{figure}[H]
 	\centering
-	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		% Draw the background
 		\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 		
@@ -1304,10 +1305,10 @@ On their turn, a player may perform one of two actions: place a piece (termed a 
 
 Intersections on a board have associated \textit{adjacencies}. These correspond to other intersections located at a distance of one unit in either the horizontal or vertical direction. Upon placing a stone on the board, it acquires \textit{liberties}, defined as the unoccupied intersections that are \textit{adjacent} to the stone or to a \textit{group}. Two or more adjacent stones of the same color constitute a \textit{group}; groups share the \textit{liberties} of each individual stone comprising them (see Figure~\ref{fig:Fig 3}).
 
-\begin{wrapfigure}[19]{r}{0.55\textwidth}
+\begin{wrapfigure}[19]{r}{0.47\textwidth}
 	%\begin{figure}[H]
 	\centering
-	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		% Draw the background
 		\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 		% Draw the grid lines
@@ -1383,7 +1384,7 @@ For a stone to be placed on the board, it must have liberties at the intersectio
 
 \begin{figure}[H]
 	\centering
-	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		% Draw the background
 		\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 		
@@ -1434,7 +1435,7 @@ There is, however, an exception to this rule: playing on an intersection with no
 %\begin{wrapfigure}[11]{l}{0.5\textwidth}
 %	\begin{figure}[H]
 %			\centering
-%			\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+%			\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 %					% Draw the background
 %					\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 %					
@@ -1482,7 +1483,7 @@ There is, however, an exception to this rule: playing on an intersection with no
 Furthermore, as seen in the figure, if both players were allowed to play on that intersection, the cycle of reciprocal captures could continue indefinitely. To prevent this loop, the \textit{ko rule} is introduced. If Black were to play at coordinates \((4, 4)\) (marked with a blue dot in the figure), the board would revert to the exact position of the preceding turn. The \textit{ko rule} forbids this.\footnote{We will see that the standard \textit{ko rule} proves insufficient in certain scenarios, as longer cycles can occur that repeat a previous board position without violating this basic rule (see Section~\ref{sec-superko}).}
 \begin{figure}[H]
 	\centering
-	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		% Draw the background
 		\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 		
@@ -1570,7 +1571,7 @@ Furthermore, as seen in the figure, if both players were allowed to play on that
 To recapture, Black must first play elsewhere on the board (a ko threat). This generates a different board configuration; if the opponent responds, Black may then play at \((4, 4)\) to recapture, as the board state will no longer be identical to the earlier one (see the final board in Figure~\ref{fig:Fig 6}).
 %		\begin{figure}[H]
 	%			\centering
-	%			\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	%			\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		%				% Draw the background
 		%				\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 		%				
@@ -1621,7 +1622,7 @@ To recapture, Black must first play elsewhere on the board (a ko threat). This g
 \begin{wrapfigure}[11]{l}{0.3\textwidth}
 	%\begin{figure}[H]
 	\centering
-	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		% Draw the background
 		\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 		
@@ -1685,13 +1686,14 @@ To recapture, Black must first play elsewhere on the board (a ko threat). This g
 		\filldraw[Orange] (6,1) circle (6pt);
 		\filldraw[Orange] (4,2) circle (6pt);
 	\end{tikzpicture}
-	\caption{Black \textcolor{OliveGreen}{territy}, white \textcolor{Blue}{Territory} and \textcolor{Orange}{neutral}.}
+	\caption{Black \textcolor{OliveGreen}{territory}, white \textcolor{Blue}{territory} and \textcolor{Orange}{neutral}.}
 	\label{fig:Fig 9}
 \end{wrapfigure}An empty intersection (or a group thereof) is considered the \textit{territory} of a given color if it is completely surrounded by stones of that color. Conversely, if an empty space is bounded by stones of both players, it is regarded as neutral, belonging to neither player (see Figure~\ref{fig:Fig 9}).
 
 When two players of different skill levels face each other, a handicap is ussually granted to the less experienced player. This advantage consists of playing with the black stones (moving first) and placing a predetermined number of \textit{handicap stones} on the board before the game begins; the greater the skill disparity, the more stones are placed (see Figure~\ref{fig:14}).
 
-\begin{wrapfigure}[14]{r}{0.35\textwidth}
+\begin{wrapfigure}[14]{r}{0.33\textwidth}
+	\vspace{-5pt}
 	%\begin{figure}[H]
 	\centering
 	\begin{tikzpicture}[scale=0.4]
@@ -1717,7 +1719,7 @@ When two players of different skill levels face each other, a handicap is ussual
 		\filldraw[black] (6,9) circle (14pt) node [color=white]{9};
 		\filldraw[black] (9,9) circle (14pt) node [color=white]{1};
 	\end{tikzpicture}
-	\caption{Handicap on a $13\times13$ board.}
+	\caption{Handicap of the $13\times13$ board.}
 	\label{fig:14}
 \end{wrapfigure} 
 This is the traditional placement of handicap stones (on both \(13 \times 13\) and \(19 \times 19\) boards). There also exists \textit{free handicap placement}, in which the weaker player freely chooses where to position these initial stones.
@@ -1728,7 +1730,7 @@ The objective of Go is to secure more \textit{territory} than the opponent. On t
 One might oppose Black's victory, given the inherent advantage of making the first move. To offset this disparity, White is awarded a compensation for playing second, known as \textit{komi}. This value varies according to board size and the skill difference between the players; generally, 5.5 points are used on standard boards.\footnote{The exact value of \textit{komi} depends on the chosen ruleset. Furthermore, in handicap games, a minimal \textit{komi} of 0.5 points is typically applied.} Were this compensation applied to the preceding example, White would win by 0.5 points, the narrowest possible margin. The inclusion of this half-point in the \textit{komi} precludes the possibility of a draw.
 \begin{figure}[H]
 	\centering
-	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		% Draw the background
 		\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 		
@@ -1804,7 +1806,7 @@ There exist, however, so-called false eyes: intersections that resemble \textit{
 %\begin{wrapfigure}[13]{r}{0.5\textwidth}
 \begin{figure}[H]
 	\centering
-	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		
 		\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 		

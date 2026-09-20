@@ -57,7 +57,7 @@ If none of these conditions hold, $t_1$ is not adjacent to $t_2$, which we denot
 
 \begin{figure}[H]
 	\centering
-	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		% Draw the background
 		\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 		
@@ -109,7 +109,8 @@ That is, in $T$ there is a unique state for each position. Having established th
 	
 Equipped with these, the notion of a group arises naturally:
 
-\begin{definition}[Connection]Let $T$ be a board and let $i_1, i_2 \in T$ be two stones. We say that $i_1$ and $i_2$ are connected, denoted by $i_1 \leftrightarrow i_2$, if
+\begin{definition}[Connection]
+	Given a board $T$ and $i_1, i_2 \in T$ two stones. We say that $i_1$ and $i_2$ are connected, denoted by $i_1 \leftrightarrow i_2$, if
 	$$C(i_1) = C(i_2) \quad \text{and} \quad P(i_1) \sim P(i_2).$$
 \end{definition}
 
@@ -128,12 +129,12 @@ Equipped with these, the notion of a group arises naturally:
 
 These definitions likewise encompass the groups $I^{0}$. Given their fundamental importance, these groups are given a dedicated name: we shall refer to them as \textit{regions} and denote them simply by the letter $R$.
 
-To refer to the color of a group as a whole, we define \(C(I^{e}) = e\), by virtue of the fact that all of its constituent elements share the same state.
+To refer to the color of a group as a whole, we define \(C(I^{e}) = e\), as every stone in $I$ has the same color.
 
 \begin{wrapfigure}[13]{r}{0.35\textwidth}
 	%\begin{figure}[H]
 	\centering
-	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		% Draw the background
 		\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 		
@@ -169,10 +170,12 @@ It will prove very useful to identify the adjacencies of a stone or group. To th
 
 
 \begin{definition}[Adjacency Set]
-	Let \(i\) be a stone and let \(I\) be a group of stones of color \(e\). We define the adjacency set of the stone as the stones satisfying the definition of adjacency, namely:
-	$$K(i) = \{i_r : P(i) \sim P(i_r)\}.$$
-	Analogously, for a group $I$, we define:
-	$$K(I) = \{i_r : I \sim i_r\}.$$
+	Given a board $T$, if \(i\) is a stone and \(I\) a group of stones of color \(e\). We define the adjacency set of the stone as the stones satisfying the definition of adjacency, namely:
+	$$K(i) = \{
+	i_r : P(i) \sim P(i_r), i_r\in T
+	\}.$$
+	For a group $I$, we define:
+	$$K(I) = \{i_r : I \sim i_r, i_r \in T \}.$$
 \end{definition}
 
 
@@ -181,18 +184,16 @@ Note that any adjacent stone of the same color already belongs to the group. Thu
 To characterize the states of these adjacencies, we will make use (and abuse) of the functions previously defined.
 
 \begin{definition}[State of the Adjacencies of a Group or Stone]\label{def_estados}
-	Let $I$ be a group of color $e$. Applying the function $C$ elementwise to its adjacency set $K(I)$, we obtain the intended set, defined as:
+	Given a board $T$, if $I$ is a group of color $e$. Applying the function $C$ elementwise to its adjacency set $K(I)$, we obtain the intended set, defined as:
 	$$C(K(I)) = \{C(i) \mid i \in K(I)\} \subseteq \{0, e'\}.$$
 	Analogously, for an individual stone $i = (e,t)$, we define:
 	$$C(K(i)) = \{C(i_k) \mid i_k \in K(i)\} \subseteq \{0, e'\}.$$
 	\end{definition}
 
-This definition is essential for describing much of the internal dynamics of Go. Henceforth, whenever we refer to groups $I$, it is to be understood that their color is distinct from $0$. Whenever we deal with $I^{0}$, we shall employ the notation $R$, unless explicitly stated otherwise.
-
-\begin{wrapfigure}[11]{r}{0.35\textwidth}
-	\vspace{-36pt}
+This definition is essential for describing much of the internal dynamics of Go. From now on, whenever we refer to groups $I$, it is to be understood that their color is distinct from $0$. Whenever we deal with $I^{0}$, we shall employ the notation $R$, unless explicitly stated otherwise.
+\begin{wrapfigure}[10]{r}{0.3\textwidth}
 	\centering
-	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		% Draw the background
 		\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 		
@@ -263,12 +264,9 @@ This definition is essential for describing much of the internal dynamics of Go.
 	\end{tikzpicture}
 	\caption{\textcolor{Blue}{White}, \textcolor{OliveGreen}{black}, and \textcolor{Orange}{neutral} territory.}
 	\label{fig:territorios}
-\end{wrapfigure}
-
-
-\begin{definition}[Territory]
-	A region \(R\) is territory belonging to the player of color \(e\) if there exists a set \(S\) of groups of color \(e\) such that
-	$$ K(R) \subseteq \bigcup_{I\in S} I. $$
+\end{wrapfigure}\begin{definition}[Territory]
+	A region \(R\) is territory belonging to the player of color \(e\) if there exists a set \(S\) of groups of color \(e\) such that,
+	\[K(R) \subseteq \bigcup_{I\in S} I.\]
 \end{definition}
 
 That is to say, all stones adjacent to the region belong to groups of the same color. We shall denote the \textit{territories}\footnote{From the term \textit{ji} (地), meaning ``land'' in Japanese.} of each color as:
@@ -284,7 +282,7 @@ With this, we have established a partition of the set of \textit{regions} ($I^{0
 	I^{0} = J^{0} \cup J^{1} \cup J^{2}.
 \end{align*}
 \label{posicion_espacial}
-Additionally, the cardinality of the adjacency set of an individual stone, $|K(i)|$\footnote{This is exactly as the degree of a vertex in graph theory.}, proves remarkably useful for determining its spatial placement on the board. Because $|K(i)|$ is bounded by Lemma~\ref{lem:2n}, a straightforward analysis of the number of adjacencies reveals precisely whether the stone is situated in the interior, on an edge, or in a corner. This geometric property will be essential, and we shall make use of it in Sections~\ref{teoremas_go1} and~\ref{sec_JR}.
+Additionally, the cardinality of the adjacency set of an individual stone, $|K(i)|$\footnote{This could be interpreted as the degree of a vertex in graph theory.}, proves remarkably useful for determining its spatial placement on the board. Because $|K(i)|$ is bounded by Lemma~\ref{lem:2n}, a straightforward analysis of the number of adjacencies reveals precisely whether the stone is situated in the interior, on an edge, or in a corner. This geometric property will be essential, and we shall make use of it in Sections~\ref{teoremas_go1} and~\ref{sec_JR}.
 
 To formalize captures, we first introduce the concept of a \textit{liberty}.
 
@@ -295,7 +293,7 @@ To formalize captures, we first introduce the concept of a \textit{liberty}.
 
 Note that if $L(I) = \varnothing$ for a given group, then that group is considered \textit{dead}. This situation can only occur upon executing a move and effecting a capture. But what constitutes a capture? What is a move?
 
-A group is captured when it loses all of its liberties. Captured stones are removed from the board\footnote{We employ Chinese rules for scoring; if another ruleset is used, such as the Japanese one, a point would be awarded for each captured stone.}.
+A group is captured when it loses all of its liberties. Captured stones are removed from the board\footnote{We'll employ Chinese rules for scoring.}.
 
 \begin{definition}[Capture Criterion]
 	Let $I$ be a group; then,
@@ -315,7 +313,7 @@ When playing Go on our turn, we rather take a stone and place it on the board, o
 \begin{wrapfigure}[4]{r}{0.4\textwidth}
 	%\begin{figure}[H]
 	\centering
-	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		
 		% Draw the background
 		\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
@@ -371,7 +369,7 @@ When playing Go on our turn, we rather take a stone and place it on the board, o
 	\vspace{-15pt}
 	%\begin{figure}[H]
 	\centering
-	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		% Draw the background
 		\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 		% Draw the grid lines
@@ -426,7 +424,7 @@ The function records the moves, but not their legality. Lets analyze the rules. 
 	\vspace{-12pt}
 	%\begin{figure}[H]
 	\centering
-	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		% Draw the background
 		\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 		
@@ -475,7 +473,7 @@ The function records the moves, but not their legality. Lets analyze the rules. 
 	\vspace{-12pt}
 	%\begin{figure}[H]
 	\centering
-	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		% Draw the background
 		\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 		
@@ -523,7 +521,7 @@ The function records the moves, but not their legality. Lets analyze the rules. 
 \vfill
 \begin{figure}[H]
 	\centering
-	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		% Draw the background
 		\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 		
@@ -1004,7 +1002,7 @@ Indeed, the sum of the parts equals the total number of points:
 \[ \left(\frac{3}{9} + \frac{2}{9} + \frac{4}{9}\right) \cdot 4 = 4. \]
 \begin{figure}
 	\centering
-	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		% Draw the background
 		\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 		
@@ -1547,7 +1545,7 @@ If we recall the rules, towards the very end we briefly encountered the concept 
 \begin{wrapfigure}[12]{r}{0.3\textwidth}
 	%\begin{figure}[H]
 	\centering
-	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		% Draw the background
 		\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 		
@@ -1589,7 +1587,7 @@ We know that the set \(K(R)\) contains the stones adjacent to the region. As see
 It is crucial to note the difference: $\partial R$ collects the adjacent groups, whereas $K(R)$ collects the adjacent stones; Figure~\ref{fig:dif_k_partial} illustrates this distinction.
 \begin{figure}[H]
 	\centering
-	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		% Draw the background
 		\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 		
@@ -1668,7 +1666,7 @@ The cardinality of this set indicates exactly how many independent groups and st
 However, quantity alone does not suffice; we must also evaluate the quality of these regions. In Benson's terminology, they must be \textit{healthy} for the groups that contain them. 
 %	\begin{figure}[H]
 %			\centering
-%			\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+%			\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 %					% Draw the background
 %					\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 %					
@@ -1706,10 +1704,10 @@ However, quantity alone does not suffice; we must also evaluate the quality of t
 %			\caption{Tablero con un grupos frontera; \textcolor{Orange}{Naranja}, \textcolor{Salmon}{Salmón}; \textcolor{magenta}{Magenta}, \textcolor{Violet}{Violeta}, \textcolor{OliveGreen}{Verde}, \textcolor{RawSienna}{Marrón}. Que rodean respectivamente a una región \textcolor{Red}{Roja} y otra \textcolor{Blue}{Azul}.}
 %			\label{fig:ej_frontera}
 %		\end{figure}
-\begin{wrapfigure}[11]{r}{0.3\textwidth}
-	\vspace{-5pt}
+\begin{wrapfigure}[13]{r}{0.3\textwidth}
+  	\vspace{15pt}
 	\centering
-	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		% Draw the background
 		\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 		
@@ -1769,7 +1767,7 @@ When the region is surrounded by multiple distinct groups of the same color, it 
 
 \begin{figure}[H]
 	\centering
-	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		% --------------------------------------------------------
 		% TABLERO 1: Saludable vs No Saludable
 		% --------------------------------------------------------
@@ -1892,7 +1890,7 @@ Let us apply the theory and examine Benson's Theorem. Before proceeding to the m
 \end{proof}
 %	\begin{figure}[H]
 	%		\centering
-	%		\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	%		\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		%			% Draw the background
 		%			\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 		%			
@@ -1950,7 +1948,7 @@ In summary, to capture a group that possesses an eye and is connected to a union
 \end{proof}
 \begin{figure}[H]
 	\centering
-	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		% Draw the background
 		\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 		
@@ -2056,7 +2054,7 @@ We shall begin by proving the backward implication. Then, via the contrapositive
 \begin{wrapfigure}[8]{r}{0.3\textwidth}
 	\vspace{-10pt}
 	\centering
-	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		% Draw the background
 		\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 		
@@ -2095,7 +2093,7 @@ It is crucial to distinguish between being Alive and being Unconditionally Alive
 \begin{wrapfigure}[10]{r}{0.3\textwidth}
 	\vspace{-10pt}
 	\centering
-	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		% Draw the background
 		\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 		
@@ -2139,7 +2137,7 @@ This definition perfectly encapsulates \textit{seki} without eyes, for if any pl
 \begin{wrapfigure}[10]{r}{0.3\textwidth}
 	\vspace{-5pt}
 	\centering
-	\begin{tikzpicture}[scale=0.485] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
 		% Draw the background
 		\fill[goban] (-0.5,-0.5) rectangle (6.5,6.5);
 		
