@@ -10,8 +10,8 @@ To begin with, let's see \textit{where} we are playing now. Our infinite board s
 Let's begin with the simplest case (I hope), let's play on a two dimensional board that has one infinite dimension.
 
 Let $G$ be a go board such that,
-$$G=\mathbb{N}\times N.$$
-where $N$ is a subset of $\mathbb{N}$.
+$$G=\{1,2,\dots,n\}\times \mathbb{N}.$$
+for $n\in \mathbb{N}$.
 As the number of players does not matter at all, let's use only two players and, the canonical adjacency.
 Our game will be $\Gamma=(G,E,A_{ort},\Delta_{Go_{\infty}})$.
 At least for now, we are not sure how $\Delta_{Go_{\infty}}$ works but, we will get there.
@@ -303,18 +303,18 @@ Because of the rule, every game has to be a line, that is, as we cannot go back 
 
 Let's define a way to measure how close are two given boards (finite).
 \begin{definition}[Color difference function]
-	Given two tables $T_1$ and $T_2$ of the same Go game, the difference in a point $t=(t_1,...t_m)$, we define the color difference as the following,
+	Given two tables $T_1$ and $T_2$ of the same Go game, the difference in a point $t=(t_1,...t_m)$ it's define as,
 	\[ 
 	\delta(T_1,T_2)_t=
 	\begin{cases}
-		1 \text{if }C(t)_{T_1}=C(t)_{T_2}, \\
-		0 \text{if } not. \\
+		1 \quad \text{ if }C(t)_{T_1}=C(t)_{T_2}, \\
+		0 \quad else. \\
 	\end{cases}
 	\]
 \end{definition}
 Now, let's apply this to every point,
 \begin{definition}[Distance between Tables]
 	Given two tables $T_1$ and $T_2$ of the same Go game, the difference between them will be:
-	$$\sum_{t\in G} \delta(T_1,T_2)_{t}$$
+	$$\sum_{t\in G} \delta(T_1,T_2)_{t}.$$
 \end{definition}
 I have no idea how to use this, yet.
