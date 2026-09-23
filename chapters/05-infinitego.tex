@@ -16,16 +16,14 @@ As the number of players does not matter at all, let's use only two players and,
 Our game will be $\Gamma=(G,E,A_{ort},\Delta_{Go_{\infty}})$.
 At least for now, we are not sure how $\Delta_{Go_{\infty}}$ works but, we will get there.
 
-The very fisrt change in this new game or extention of one its the next. A player in the infinite game of Go its allowed to play a line of stones or pass. a line of stone might be or not infinite (that correspond to the player to choose). This is neccesary to be able because if not, the difference between a really big finite board and a infinite one will reaming the same for almost the whole game. Being able to play infinite groups its a necesary change in the dynamic of the game.
-You might say, what about intersecting infinite lines? Very simple, as shown in the right board of Figure~\ref{first_inf_board}, a new line of stones that intersect another just splits, when the line touches a point that has a color that its not $0$, then the color that was just remanins, if the color its $0$ then it changes into whatever color the player might be.
+Our board could (and for us, will) look like this, Figure~\ref{first_inf_board}. Now, the very first change in this new game or extention of one its the next. A player in the infinite game of Go its allowed to play a hyperplane of stones. a hyperplane of stones might be or not infinite (that correspond to the player to choose), the only rule is that the hyperplane has to be o a lesser dimension than the board we are in. This is neccesary as if not, the difference between a really big finite board and a infinite one will reaming the same for almost the whole game. Being able to play infinite groups its a necesary change in the dynamic of the game. Of course, if a part of the hyperplane is in suicide, such play its illegal.
 
-Our board could (and for us, will) look like this, Figure~\ref{first_inf_board}:
-
+You might say, what about intersecting infinite planes? Very simple, as shown in the right board of Figure~\ref{first_inf_board}, a new line of stones that intersect another just splits, when the line touches a point that has a color that its not $0$, then the color that was just remanins, if the color its $0$ then it changes into whatever color the player might be. (I might need a proper definition of this but for now its more than enough.)
 
 \begin{figure}[H]
 	%\begin{figure}[H]
 	\centering
-	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5]
 		% Draw the background
 		\fill[goban] (-7,-1.5) rectangle (7,6.5);
 		% Draw the grid lines
@@ -89,11 +87,11 @@ Notice that, if the white line were infinite, such play generated two infinite l
 
 The very first problem on the infinite board it's how to determine a capture. Any other prior definition should work just fine.
 
-Let's say we are in the next position Figure~\ref{first_inf_cap}
+Lets say we are in the next position, Figure~\ref{first_inf_cap}
 \begin{figure}[H]
 	%\begin{figure}[H]
 	\centering
-	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5]
 		% Draw the background
 		\fill[goban] (-7,-0.5) rectangle (7,6.5);
 		% Draw the grid lines
@@ -165,7 +163,7 @@ Now let's take a look at another example, an infinite group but only on one side
 \begin{figure}[H]
 	%\begin{figure}[H]
 	\centering
-	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5]
 		% Draw the background
 		\fill[goban] (-7,-0.5) rectangle (7,6.5);
 		% Draw the grid lines
@@ -233,12 +231,12 @@ Now let's take a look at another example, an infinite group but only on one side
 \end{figure}
 In this case, not using the whole board, even though it's infinite, its better. As it provides one more liberty (or does not loses it).
 
-Let's see the following example, we might into the nature of inifinite Go.
+The following example reflects and interesting nature of inifinite Go. (More on this later)
 
 \begin{figure}[H]
 	%\begin{figure}[H]
 	\centering
-	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5]
 		% Draw the background
 		\fill[goban] (-7,-0.5) rectangle (7,6.5);
 		% Draw the grid lines
@@ -332,9 +330,9 @@ Let's see the following example, we might into the nature of inifinite Go.
 \end{figure}
 It seems that finite groups are stronger than infinite ones as, again, they don't lose liberties due to not being infinite.
 
-\section{SuperKo at infinity}
+\section{Infinite SuperKo}
 
-We cannot use Zobrits method for the infinite Go as we will need infinite many bits. We need a better method, let's try to make one.
+We cannot use Zobrist method for the infinite Go as we will need infinite many bits. We need a better method, let's try to make one.
 
 If we remember the nature of the SuperKo rule, it's says that we cannot replicate a prior board via a stone play. Again, we are using this version of SuperKo (Positional).
 
@@ -343,14 +341,13 @@ Because of the rule, every game has to be a line, that is, as we cannot go back 
 Let's define a way to measure how close are two given boards are.
 
 First, lets notice that, in the very beggining, there are exactly one region and not much else in the board. That is, before the first turn, $|J|=1$ (the big empty region).
-Lets say that in the infinite Go you can play a stone or you can play a line of stone (infinite or not) and, of course, you can pass. Yes, I'll admit a new move, in the infinite Go a player can play a line of stones (straight), not matter if finite or not.
 
-Now, the  very first turn will make so $|J|=1$ if the black player plays a stone or a finite line. If the player chooses to play an infinite one, then $|J|=2$ unless the play plays at infinity (I have no idea how). Lets pretend it did not play at infinity, we have just played an infinite group, with that zobrist method or any method that uses the stone itself go nuts and can't be use here but, $|J|$ it just a little bigger, finitely bigger. Now, this is not perfect as there are infinite many ways to play an infinite group so we end up with $|J|=2$. Before going forward, lets see an example.
+Now, the  very first turn will make so $|J|=1$ if the black player plays a stone or a finite line. If the player chooses to play an infinite one, then $|J|=2$. Lets pretend it just played an infinite group, with that, Zobrist method or any method that uses the stone itself go nuts and can't be use here but, $|J|$ it just a little bigger, finitely bigger. Now, this is not perfect as there are infinite many ways to play an infinite group so we end up with $|J|=2$. Before going forward, lets see an example.
 
 \begin{figure}[H]
 	%\begin{figure}[H]
 	\centering
-	\begin{tikzpicture}[scale=0.5] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.5]
 		% Draw the background
 		\fill[goban] (-7,-0.5) rectangle (7,6.5);
 		\filldraw[fill=orange, fill opacity=0.35, draw=black] (-5.35,0) rectangle (5.35,6);
@@ -431,7 +428,7 @@ In order to see this, lets consider the infinite one dimensional Go.
 \begin{figure}[H]
 	%\begin{figure}[H]
 	\centering
-	\begin{tikzpicture}[scale=0.7] \tikzstyle{every node}=[font=\small]
+	\begin{tikzpicture}[scale=0.7]
 		% Draw the background
 		\fill[goban] (-10,-1.5) rectangle (10,0.5);
 		\foreach \x in {0} {
@@ -493,13 +490,138 @@ In order to see this, lets consider the infinite one dimensional Go.
 	\caption{A one dimensional infinite Go board and a example of infinite many \textcolor{violet}{regions} by infinite many plays.}
 	\label{inf_onedim}
 \end{figure}
-Is it possibe to do many examples like this that end up with infinite many regions. The trick here, and perhaps my salvation, its that there are infinite plays, which is, given the nature of the game, something that shouldn't happen. If we restrict ourselves into only finite many plays, let's see if our problem its solvable. The question now goes as:
+Is it possibe to do many examples like this that end up with infinite many regions. The trick here, and perhaps, my salvation, its that there are infinite plays, which is, given the nature of the game, something that shouldn't happen. If we restrict ourselves into only finite many plays, let's see if our problem its solvable. The question now goes as:
 
 Given an infinite game of Go, the number of regions generated by a finite number of plays are always finite too?
+We want to prove that,
+$$t < \infty \Rightarrow |J(T_t)|<\infty.$$
 
 I'll give a shot via induction.
 
+We are going to do an induction in the number of dimensions and the number of turns.
+if $t$ its for turns and $n$ its for dimensions, we'll have the following the game, $\Gamma=(\mathbb{Z}\times \dots \times \mathbb{Z},\{0,1,2\},A_{ort},\Delta_{\infty}).$
 
+for $n=1$, we have $\Gamma=(\mathbb{Z},\{0,1,2\},A_{ort},\Delta_{\infty})$.
+
+
+We are going to assume that every turn a stone is placed, as there is no point in passing.
+
+for $t=1$, there will be two regions.
+
+\begin{figure}[H]
+	%\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[scale=0.7]
+		\node at (-11,0) {$t=0$};
+		\fill[goban] (-10,-0.5) rectangle (10,0.5);
+		\foreach \x in {0} {
+			\node at (-9, \x) {\dots};
+			\node at (9, \x) {\dots};
+		}
+		
+		\foreach \x in {0,1,...,6}{
+			\draw[black] (\x,-0.2) -- (\x,0.2); 
+			% draw horizontal lines
+		}
+		
+		\draw[very thick] (-8.5,0) rectangle (8.5,0);
+		
+		% draw vertical lines
+		\foreach \x in {-8,...,8} {
+			\draw[black] (\x,-0.25) -- (\x,0.25); 
+			
+		}
+		%		\foreach \x in {8,...,-8} {
+			%			\node at (\x,-1) {\x};
+			%		}
+		%draw a region
+		\filldraw[fill=orange, fill opacity=0.35, draw=black] (-8.65,-0.3) rectangle (8.35,0.3);
+		
+%		\begin{scope}[yshift=-1.5cm]
+%		\node at (-11,0) {$t=1$};
+%			% Draw the background
+%			\fill[goban] (-10,-0.5) rectangle (10,0.5);
+%			\foreach \x in {0} {
+%				\node at (-9, \x) {\dots};
+%				\node at (9, \x) {\dots};
+%			}
+%			
+%			\foreach \x in {0,1,...,6}{
+%				\draw[black] (\x,-0.2) -- (\x,0.2); 
+%				% draw horizontal lines
+%			}
+%			
+%			\draw[very thick] (-8.5,0) rectangle (8.5,0);
+%			
+%			% draw vertical lines
+%			\foreach \x in {-8,...,8} {
+%				\draw[black] (\x,-0.25) -- (\x,0.25); 
+%				
+%			}
+%			%		\foreach \x in {8,...,-8} {
+%				%			\node at (\x,-1) {\x};
+%				%		}
+%			%draw a region
+%			\filldraw[fill=violet, fill opacity=0.35, draw=black] (0.65,-0.3) rectangle (8.35,0.3);
+%			
+%			
+%			%draw black stones.
+%			\foreach \x in {0,...,-8} {
+%				\filldraw[black] (\x,0) circle (12pt);
+%			}
+%		\end{scope}
+		\begin{scope}[yshift=-1.5cm]
+		\node at (-11,0) {$t=1$};
+			% Draw the background
+			\fill[goban] (-10,-0.5) rectangle (10,0.5);
+			\foreach \x in {0} {
+				\node at (-9, \x) {\dots};
+				\node at (9, \x) {\dots};
+			}
+			
+			\foreach \x in {0,1,...,6}{
+				\draw[black] (\x,-0.2) -- (\x,0.2); 
+				% draw horizontal lines
+			}
+			
+			\draw[very thick] (-8.5,0) rectangle (8.5,0);
+			
+			% draw vertical lines
+			\foreach \x in {-8,...,8} {
+				\draw[black] (\x,-0.25) -- (\x,0.25); 
+				
+			}
+			%		\foreach \x in {8,...,-8} {
+				%			\node at (\x,-1) {\x};
+				%		}
+			%draw a region
+			\filldraw[fill=violet, fill opacity=0.35, draw=black] (-8.35,-0.3) rectangle (1.35,0.3);
+			\filldraw[fill=violet, fill opacity=0.35, draw=black] (2.65,-0.3) rectangle (8.35,0.3);
+			
+			
+			%draw black stones.
+			\foreach \x in {2} {
+				\filldraw[black] (\x,0) circle (12pt);
+			}
+		\end{scope}
+	\end{tikzpicture}
+	\caption{An infite suicide.}
+	\label{inf_ind_n=1_t=1}
+\end{figure}
+
+lets assume that for the turn $t-1$, the number of regions its finite.
+
+for the $t$ turn, lets say that we have $p$ regions. Playing a line of stone has to be done on a region or regions if the line its too long, because of that, if the line played was along groups of the same color, we end up filling a region, barely or completely, therefore the number does not increase or could be lower. if we play on a region such that we don't fill it completely, we could do this by playing in the interior (We need a lemma for this), therefore spliting the region in two or, by playing on the side of the region. such play adds no regions if its not a capture and at most finite many regions if there are captures. finally, the total number of regions stills finite.
+
+Now, lets assume that for $n-1$ dimensions, the number of regions stills finite.
+
+So, let $t=1$ but now on a $n$ dimension infinite game of Go.
+
+Again, the board begins empty and there is exactly one region, by playing whatever hyperplane, the number of regions stills finite.
+
+Lets pretend that for $n$ dimensions and $t-1$ turns, the number of regions stills finite.
+
+For the $t$ turn, we can only play in such way we touch at most a finite number of regions, the ones on turn $n-1$. In fact, we cannot interact with every region as they might be out the maximum hyperplane we can play. Lets suppose we can, in fact, interact with every possible region. The result of such play will end up creating new regions, by capturing. Filling regions (assuming legality) and nothing else. the result of the captures will be the creation of finite many new regions. Finally the number of them stills finite.
 
 %this might not be usefull at all.
 %\begin{definition}[Color difference function]
