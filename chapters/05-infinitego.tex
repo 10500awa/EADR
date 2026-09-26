@@ -7,7 +7,7 @@
 
 To begin with, let's see \textit{where} we are playing now. Our infinite board should be able to have also infinite dimensions and every one of those could or not be infinite as well.
 
-We'll begin with the simplest case (I hope), let's play on a two dimensional board that has one infinite dimension.
+We'll begin with the simplest case, let's play on a two dimensional board that has one infinite dimension.
 
 Let $\Gamma$ be a Go game such that,
 $$G=\{1,2,\dots,n\}\times \mathbb{Z}.$$
@@ -154,7 +154,7 @@ Lets say we are in the next position, Figure~\ref{first_inf_cap}
 	\caption{An infinite board with an infinite black group being capture.}
 	\label{first_inf_cap}
 \end{figure}
-As this group is infinite (numerable), will touch the very end of the board so we can capture it by surronding it at the top and bottom.
+As this group is infinite, it will touch the very end of the board so we can capture it by surronding it at the top and bottom.
 
 We can be sure that this is capture because if the black group it's $I$, then $K(I)\subset S$ where $S$ is the set of the two white groups. That is, $L(I)$ should be $0$.
 Now let's take a look at another example, an infinite group but only on one side.
@@ -365,9 +365,9 @@ Let me explain why $n-1$ dimensions.
 
 If we look back at the game of Go, stones are placed on a two dimensional board. In our formulation, this means that we place a connected $0$ dimensional subset of the board, that is, a single stone. In other words, the dimension of the object being played is $n-2$ relative to the dimension of the board.
 
-If we kept this relation, we would obtain a natural generalization for higher dimensional boards, but we would be unable to define a move in one dimensional Go, since this would require
+If we kept this relation, we would obtain a natural generalization for higher dimensional boards, but we wouldn't be unable to define a move in one dimensional Go, since this would require
 $$ n-2=-1. $$
-Since a negative-dimensional object is not part of our construction, we instead impose $0$ as the minimum dimension of a playable hyperplane. Thus, in an $n$ dimensional game, a player may propose a connected hyperplane $H$ satisfying
+ Thus, in an $n$ dimensional game, a player may propose a connected hyperplane $H$ satisfying
 $$ 0\leq\dim H\leq n-1. $$
 
 \section{Infinite SuperKo}
@@ -447,7 +447,7 @@ Now, the  very first turn will make so $|J|=1$ if the black player plays a stone
 		\end{scope}
 		
 	\end{tikzpicture}
-	\caption{A board where the number of regions (\textcolor{orange}{neutral} and \textcolor{violet}{black}) merely grows by one when an infinite group is played.}
+	\caption{A board where the number of regions merely grows by one when an infinite group is played.}
 	\label{inf_superko_intuition}
 \end{figure}
 As I said early, playing such group vertically (in  this case will be finite but you get the idea) or shifting it up or down, will end up with the same number of regions.
@@ -493,14 +493,7 @@ The third problem its color shifting, two boards might not be equal but the regi
 
  \end{proof}
  
- 
- 
- rough, but means that the only plays that we should care about are completely connected and "dense" that is they don't leave any empty spaces on the given plane, even that, only the ones that fill everysingle direction, except for the one we are unable to do so, are exactly the ones that splits a region. 
- 
-
-Given an infinite game of Go, the number of regions are always finite? If there are infinite moves then the answer is no.
-
-In order to see this, lets consider the infinite one dimensional Go.
+Now, given an infinite game of Go, the number of regions are always finite? If there are infinite moves then the answer is no. Lets consider the infinite one dimensional Go.
 
 \begin{figure}[H]
 	%\begin{figure}[H]
