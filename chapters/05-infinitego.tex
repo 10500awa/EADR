@@ -5,18 +5,18 @@
 {\large\textbf{This chapter it's a draft, at least for now. I'll include my thought process and most of what I'm able to understand/formalize about it.}}
 \vspace{20pt}
 
-To begin with, let's see \textit{where} we are playing now. Our infinite board should be able to have also infinite dimensions and every one of those could be or not infinite as well.
+To begin with, let's see \textit{where} we are playing now. Our infinite board should be able to have also infinite dimensions and every one of those could or not be infinite as well.
 
-Let's begin with the simplest case (I hope), let's play on a two dimensional board that has one infinite dimension.
+We'll begin with the simplest case (I hope), let's play on a two dimensional board that has one infinite dimension.
 
-Let $G$ be a go board such that,
+Let $\Gamma$ be a Go game such that,
 $$G=\{1,2,\dots,n\}\times \mathbb{Z}.$$
 for $n\in \mathbb{N}$. We'll use $\mathbb{Z}$ for simplicity as it's a better (easier) representation of the infinite board.
 As the number of players does not matter at all, let's use only two players and, the canonical adjacency.
 Our game will be $\Gamma=(G,E,A_{ort},\Delta_{Go_{\infty}})$.
 At least for now, we are not sure how $\Delta_{Go_{\infty}}$ works but, we will get there.
 
-Our board could (and for us, will) look like this, Figure~\ref{first_inf_board}. Now, the very first change in this new game or extention of one its the next. 
+Our board could (and for us, will) look like this, Figure~\ref{first_inf_board}. Now, there is a substantial change in this new game.
 
 \begin{figure}[H]
 	%\begin{figure}[H]
@@ -344,21 +344,20 @@ Lets characterize \textit{what} can be done in the game.
 		
 		The stones already present on the board may intersect $H$. Let
 		\[
-		P=\{x\in T_t:C(x)\neq 0\}
+		P=\{P(x)\in T_t:C(x)\neq 0\}
 		\]
 		be the set of occupied points at turn $t$. The stones that are
 		actually played are then
 		\[
-		H\setminus P.
+		H - P=\{h\in H: P(h)\notin P\}.
 		\]
-		
 		The set $H\setminus P$ may consist of several groups, as the
 		stones already present on the board may disconnect the proposed
 		hyperplane.
 		
-		If any group contained in $H\setminus P$ is in suicide
+		If any group contained in $H-P$ is in suicide
 		condition, the proposed move is rejected. Otherwise, the
-		stones in $H\setminus P$ are placed on the board, and captures
+		stones in $H-P$ are placed on the board, and captures
 		are resolved according to the usual rules.
 	\end{enumerate}
 \end{definition}
@@ -457,10 +456,47 @@ The first problem is to determine if the number of regions are always finite or 
 
 The second problem is how to determine those boards that has the same number of regions are infact different, we cannot look at them as that's too costly. My idea is, if we can solve the first problem, then we can measure every region and, by that, we can tell even if two boards have the same number of regions, those regions might not be equall (by biggest and smallest radius or something like that). 
 
-The third problem its color shifting, two boards might not be equal but the regions could be exactly the same (number and size), but the colors of the regions surronding them might not. I have not even the slightest idea on how attack this.
+The third problem its color shifting, two boards might not be equal but the regions could be exactly the same (number and size), but the colors of the regions surronding them might not. (I'm thiking about discrinating between finite and infinite regions. Then, in the set of finites, we can calculate the influence of each color, this should work but its just another filter and its far from perfect)
 
 
  Lets attack the first problem.
+ 
+ In order to do it, we need to show something about the nature of the game, we'll characterize how to split a region and when that happens. For that, we need some tools first.
+ 
+ \begin{definition}[Interior of a region]
+	Given a region $R$, its interior $R^\circ$ are the points in $R$ such that its adjacency set its in $R$, that is:
+	$$R^\circ = \{r \in R: K(r)\subset R \}$$
+ \end{definition}
+ 
+ \begin{lemma}[Adjacency bound]\label{lem_2n}
+ 	Given a $n\leq \infty$ dimensional board of Go, with the canonical adjacency, a point $t$ in the board, has at most $2n$ adjacencies and at least $n$.
+ 	$$n \leq |t|\leq 2n.$$
+ \end{lemma}
+ \begin{proof}
+ 	This is left as an exercise for the reader.
+ \end{proof}
+ 
+ \begin{definition}[Dense hyperplane]
+ 	Given a proposed hyperplane $H$, we say that $H$ is dense
+ 	if every stone $t\in H$ is occupied, that is,
+ 	$$C(t)\neq 0 \quad \forall t\in H.$$
+ \end{definition}
+ 
+ 
+ %this is the proper theorem, just think in a 1 dim region on a two dim board (a line) then a single stone (0 dim) can split it (if in the interior)
+ \begin{theorem}\label{lem_bigplays}
+ 	In an $n$-dimensional game of Go, the only moves that can
+ 	split a region $R$ of dimension $d$ are dense hyperplanes
+ 	of dimension $d-1$.
+ \end{theorem}
+ \begin{proof}
+
+ \end{proof}
+ 
+ 
+ 
+ rough, but means that the only plays that we should care about are completely connected and "dense" that is they don't leave any empty spaces on the given plane, even that, only the ones that fill everysingle direction, except for the one we are unable to do so, are exactly the ones that splits a region. 
+ 
 
 Given an infinite game of Go, the number of regions are always finite? If there are infinite moves then the answer is no.
 
@@ -531,21 +567,13 @@ In order to see this, lets consider the infinite one dimensional Go.
 	\caption{A one dimensional infinite Go board and a example of infinite many \textcolor{violet}{regions} by infinite many plays.}
 	\label{inf_onedim}
 \end{figure}
-Is it possibe to do many examples like this that end up with infinite many regions. The trick here, and perhaps, my salvation, its that there are infinite plays, which is, given the nature of the game, something that shouldn't happen. If we restrict ourselves into only finite many plays, let's see if our problem its solvable. The question now goes as:
+Is it possibe to do many examples like this that end up with infinite many regions. The trick here and, perhaps, my salvation, its that there are infinite plays, which is, given the nature of the game, something that shouldn't happen. If we restrict ourselves into only finite many plays, then our question becomes:
 
 Given an infinite game of Go, the number of regions generated by a finite number of plays are always finite too?
-We want to prove that,
+More preciselly, we want to prove that,
 $$t < \infty \Rightarrow |J(T_t)|<\infty.$$
 
-%Before, we need a little pretty lemma that will help us greatly.
-%
-%\begin{lemma}\label{lem_bigplays}
-%	Given an infinite game of Go of dimension $n$, the only moves that splits regions are the ones that fill completely the $n-1$ dimensions.
-%\end{lemma}
-%
-%\begin{proof}
-%	
-%\end{proof}
+
 
 I'll give a shot via induction.
 
